@@ -9,12 +9,12 @@ const Tasks = () => {
   return (
     <>
       <PageHeader
-        title="Tasks"
+        title="Projects"
         subTitle="Enable precise audience targeting using RTG users for effective campaign strategy and enhanced engagement"
       >
         <Link to={'/tasks/create'}>
           <Button type={'primary'} icon={<PlusCircleOutlined />}>
-            Create Task
+            Create Project
           </Button>
         </Link>
       </PageHeader>

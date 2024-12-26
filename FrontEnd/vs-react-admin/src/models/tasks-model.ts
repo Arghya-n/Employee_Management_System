@@ -7,7 +7,7 @@ export interface Tasks {
     end_date: string;
 }
 
-export type tasksPartial = Partial<Tasks>;
+export type TasksPartial = Partial<Tasks>;
 
 export interface Task {
     task: Tasks[];

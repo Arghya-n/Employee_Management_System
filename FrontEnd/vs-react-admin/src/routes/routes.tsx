@@ -9,6 +9,7 @@ import {
 } from '@/routes/route-utils';
 import Tasks from '@/pages/tasks';
 import TaskAssignment from '@/pages/new';
+import TaskCreate from '@/pages/tasks/create';
 
 const routes = [
   {
@@ -53,10 +54,22 @@ const routes = [
   },
   {
     path: 'tasks',
-    breadcrumb: 'Tasks',
-    component: Tasks,
+    breadcrumb: 'Projects',
     exact: true,
-    children: []
+    children: [
+      {
+        path: '',
+        breadcrumb: 'Projects',
+        component: Tasks,
+        exact: true
+      },
+      {
+        path : 'create',
+        breadcrumb: 'Create Project',
+        component: TaskCreate,
+        exact: true
+      }
+    ]
   },
   {
     path: 'taskAssignment',

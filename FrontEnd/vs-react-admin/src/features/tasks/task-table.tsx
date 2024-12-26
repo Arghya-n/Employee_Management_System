@@ -21,7 +21,7 @@ const TaskTable = () => {
   
   return (
     <Card
-      title={'Tasks'}
+      title={'Projects'}
       extra={(
         <div className="my-6">
           <Input.Search
