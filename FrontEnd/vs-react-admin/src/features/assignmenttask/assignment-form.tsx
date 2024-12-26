@@ -4,6 +4,7 @@ import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import { SaveOutlined } from '@ant-design/icons';
 // import { useUserForm } from '@hooks/use-users';
 import { TasksPartial } from '@/models/tasks-model';
+import { validationMessage } from '@/utils/helpers/message-helpers';
 
 interface TaskAssignmentFormProps {
   initialValues?: TasksPartial;
@@ -58,6 +59,7 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
             <Form.Item
               label="Project"
               name="project"
+              rules={[{ required: !isEditMode, message: validationMessage('Project') }]}
             >
             <Select options={SAMPLE_PROJECT} placeholder="Select Project" />
             </Form.Item>
@@ -67,6 +69,7 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
             <Form.Item
               label="Task Title"
               name="taskTitle" 
+              rules={[{ required: true, message: validationMessage('Task Title') }]}
             >
               <Input placeholder="Task Title" />
             </Form.Item>
@@ -74,7 +77,8 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
           <Col span={24}>
             <Form.Item
               label="Assigned Date"
-              name="assignedDate" 
+              name="assignedDate"
+              rules={[{ required: true, message: validationMessage('Assigned Date') }]} 
             >
               <DatePicker placeholder="Assigned Date" />
             </Form.Item>
