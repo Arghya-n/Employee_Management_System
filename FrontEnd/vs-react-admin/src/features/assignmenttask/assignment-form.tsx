@@ -1,17 +1,31 @@
 import TextArea from 'antd/es/input/TextArea';
 import { useEffect } from 'react';
-import { Button, Card, Col, DatePicker, Form, Input, Row } from 'antd';
+import { Button, Card, Col, DatePicker, Form, Row, Select } from 'antd';
 import { SaveOutlined } from '@ant-design/icons';
 // import { useUserForm } from '@hooks/use-users';
-import { validationMessage } from '@utils/helpers/message-helpers';
 import { TasksPartial } from '@/models/tasks-model';
 
-interface TaskFormProps {
+interface TaskAssignmentFormProps {
   initialValues?: TasksPartial;
   isEditMode?: boolean;
 }
 
-const TaskForm = ({ initialValues, isEditMode = false }: TaskFormProps) => {
+const SAMPLE_PROJECT = [
+  {
+    label : 'Project 1',
+    value : 'Project 1'
+  },
+  {
+    label : 'Project 2',
+    value : 'Project 2'
+  },
+  {
+    label : 'Project 3',
+    value : 'Project 3'
+  }
+];
+
+const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmentFormProps) => {
   const [form] = Form.useForm();
   
   // const { onSaved, isLoading } = useUserForm();
@@ -42,41 +56,35 @@ const TaskForm = ({ initialValues, isEditMode = false }: TaskFormProps) => {
         <Row gutter={24}>
           <Col span={24}>
             <Form.Item
-              label="Project Title"
-              name="title"
-              rules={[{ required: true, message: validationMessage('Project Title') }]}
+              label="Project"
+              name="project"
             >
-              <Input placeholder="Project Title" />
+            <Select options={SAMPLE_PROJECT} placeholder="Select Project" />
+            </Form.Item>
+          </Col>
+
+          <Col span={24}>
+            <Form.Item
+              label="Task Title"
+              name="taskTitle" 
+            >
+              <TextArea rows={4} placeholder="Task Title" />
+            </Form.Item>
+          </Col>
+          <Col span={24}>
+            <Form.Item
+              label="Assigned Date"
+              name="assignedDate" 
+            >
+              <DatePicker placeholder="Assigned Date" />
             </Form.Item>
           </Col>
           <Col span={24}>
             <Form.Item
               label="Description"
-              name="description"
+              name="description" 
             >
               <TextArea rows={4} placeholder="Description" />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              label="Start Date"
-              name="startDate"
-              rules={[
-                { required: true, message: validationMessage('Start Date') }
-              ]}
-            >
-              <DatePicker placeholder="Start Date" />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              label="End Date"
-              name="endDate"
-              rules={[
-                { required: true, message: validationMessage('End Date') }
-              ]}
-            >
-              <DatePicker placeholder="End Date" />
             </Form.Item>
           </Col>
         </Row>
@@ -96,4 +104,4 @@ const TaskForm = ({ initialValues, isEditMode = false }: TaskFormProps) => {
   );
 };
 
-export default TaskForm;
+export default TaskAssignmentForm;
