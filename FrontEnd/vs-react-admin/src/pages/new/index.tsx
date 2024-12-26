@@ -5,7 +5,7 @@ import PageContent from '@layouts/partials/page-content';
 import PageHeader from '@layouts/partials/page-header';
 import TaskAssignmentTable from '@/features/tasks/table';
 
-const Tasks = () => {
+const TaskAssignment = () => {
   return (
     <>
       <PageHeader
@@ -25,4 +25,4 @@ const Tasks = () => {
   );
 };
 
-export default Tasks;
+export default TaskAssignment;

@@ -34,5 +34,11 @@ export const MAIN_MENU_ITEMS = [
     key: '/tasks',
     label: 'Tasks',
     icon: <FileAddOutlined />
+  },
+  {
+    key: '/taskAssignment',
+    label: 'Task Assignment',
+    icon: <FileAddOutlined />
   }
+
 ];

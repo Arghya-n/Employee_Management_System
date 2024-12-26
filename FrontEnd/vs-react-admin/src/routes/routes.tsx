@@ -8,6 +8,7 @@ import {
   DynamicUserBreadcrumb,
 } from '@/routes/route-utils';
 import Tasks from '@/pages/tasks';
+import TaskAssignment from '@/pages/new';
 
 const routes = [
   {
@@ -54,6 +55,13 @@ const routes = [
     path: 'tasks',
     breadcrumb: 'Tasks',
     component: Tasks,
+    exact: true,
+    children: []
+  },
+  {
+    path: 'taskAssignment',
+    breadcrumb: 'Task Assignment',
+    component: TaskAssignment,
     exact: true,
     children: []
   }
