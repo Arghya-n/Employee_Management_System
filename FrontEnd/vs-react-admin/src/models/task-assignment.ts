@@ -5,6 +5,7 @@ export interface TaskAssignment {
     assignedDate: string;
     description: string;
     percentComplete: string;
+    
 }
 
 export type TaskAssignmentPartial = Partial<TaskAssignment>;
