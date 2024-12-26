@@ -32,7 +32,13 @@ export const MAIN_MENU_ITEMS = [
   },
   {
     key: '/tasks',
-    label: 'Tasks',
+    label: 'Projects',
+    icon: <FileAddOutlined />
+  },
+  {
+    key: '/taskAssignment',
+    label: 'Task Assignment',
     icon: <FileAddOutlined />
   }
+
 ];

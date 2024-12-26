@@ -3,26 +3,26 @@ import { Button } from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import PageContent from '@layouts/partials/page-content';
 import PageHeader from '@layouts/partials/page-header';
-import TaskTable from '@/features/tasks/task-table';
+import TaskAssignmentTable from '@/features/tasks/table';
 
-const Tasks = () => {
+const TaskAssignment = () => {
   return (
     <>
       <PageHeader
-        title="Projects"
+        title="Task Assignment"
         subTitle="Enable precise audience targeting using RTG users for effective campaign strategy and enhanced engagement"
       >
         <Link to={'/tasks/create'}>
           <Button type={'primary'} icon={<PlusCircleOutlined />}>
-            Create Project
+            Create Assignment
           </Button>
         </Link>
       </PageHeader>
       <PageContent>
-        <TaskTable />
+        <TaskAssignmentTable />
       </PageContent>
     </>
   );
 };
 
-export default Tasks;
+export default TaskAssignment;
