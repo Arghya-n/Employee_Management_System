@@ -7,6 +7,7 @@ import {
   DashboardBreadcrumb,
   DynamicUserBreadcrumb,
 } from '@/routes/route-utils';
+import Tasks from '@/pages/tasks';
 
 const routes = [
   {
@@ -46,6 +47,13 @@ const routes = [
     path: 'settings',
     breadcrumb: 'Settings',
     component: Settings,
+    exact: true,
+    children: []
+  },
+  {
+    path: 'tasks',
+    breadcrumb: 'Tasks',
+    component: Tasks,
     exact: true,
     children: []
   }

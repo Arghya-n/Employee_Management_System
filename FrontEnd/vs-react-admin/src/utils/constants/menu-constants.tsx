@@ -1,5 +1,6 @@
 import {
   DashboardOutlined,
+  FileAddOutlined,
   FolderOpenOutlined,
   LogoutOutlined,
   SettingOutlined
@@ -28,5 +29,10 @@ export const MAIN_MENU_ITEMS = [
     key: '/users',
     label: 'Users',
     icon: <FolderOpenOutlined />
+  },
+  {
+    key: '/tasks',
+    label: 'Tasks',
+    icon: <FileAddOutlined />
   }
 ];
