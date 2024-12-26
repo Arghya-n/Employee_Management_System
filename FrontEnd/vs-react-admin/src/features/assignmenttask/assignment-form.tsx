@@ -26,6 +26,17 @@ const SAMPLE_PROJECT = [
   }
 ];
 
+const SAMPLE_USER = [
+  {
+    label : 'User 1',
+    value : 'User 1'
+  },
+  {
+    label : 'User 2',
+    value : 'User 2'
+  },
+];
+
 const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmentFormProps) => {
   const [form] = Form.useForm();
   
@@ -62,6 +73,16 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
               rules={[{ required: !isEditMode, message: validationMessage('Project') }]}
             >
             <Select options={SAMPLE_PROJECT} placeholder="Select Project" />
+            </Form.Item>
+          </Col>
+
+          <Col span={24}>
+            <Form.Item
+              label="User"
+              name="user"
+              rules={[{ required: !isEditMode, message: validationMessage('User') }]}
+            >
+            <Select options={SAMPLE_USER} placeholder="Select User" />
             </Form.Item>
           </Col>
 
