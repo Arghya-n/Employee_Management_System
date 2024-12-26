@@ -21,7 +21,7 @@ const TaskAssignmentTable = () => {
   
   return (
     <Card
-      title={'Task Assignment'}
+      title={'Task Assignmemnt'}
       extra={(
         <div className="my-6">
           <Input.Search

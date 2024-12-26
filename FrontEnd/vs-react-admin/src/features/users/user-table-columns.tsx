@@ -46,6 +46,20 @@ const columns : TableProps<User>['columns'] = [
     )
   },
   {
+    title: 'Working Stack',
+    key: 'workingStack',
+    render: (_, record) => (
+        <Text>{record.workingStack}</Text>
+    )
+  },
+  {
+    title: 'Phone Number',
+    key: 'phoneNumber',
+    render: (_, record) => (
+        <Text>{record.phoneNumber}</Text>
+    )
+  },
+  {
     title: 'Action',
     key: 'action',
     fixed: 'right',

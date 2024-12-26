@@ -5,6 +5,8 @@ export interface User {
   password?: string;
   role: string;
   avatar?: string;
+  workingStack: string;
+  phoneNumber:string;
 }
 
 export type UserPartial = Partial<User>;
