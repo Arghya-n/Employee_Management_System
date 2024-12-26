@@ -54,6 +54,8 @@ const columns : TableProps<TaskAssignment>['columns'] = [
         <Text>{record.percentComplete}</Text>
     )
   },
+  
+
   {
     title: 'Action',
     key: 'action',

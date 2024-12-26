@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Image, Layout } from 'antd';
-import Logo from '@assets/logo.png';
+import { AutoComplete, Image, Layout } from 'antd';
+import Logo from '@assets/employee1.png';
 import MainMenu from '@layouts/partials/main-menu';
 import ProfileMenu from '@layouts/partials/profile-menu';
 
@@ -33,7 +33,7 @@ const Sidebar = () => {
     <Sider>
       <div className="p-4">
         <Link to="/">
-          <Image src={Logo} preview={false} height={40} />
+          <Image src={Logo} preview={false} height={120} />
         </Link>
       </div>
       

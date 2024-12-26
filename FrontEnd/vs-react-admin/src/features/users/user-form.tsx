@@ -108,6 +108,24 @@ const UserForm = ({ initialValues, isEditMode = false }: UserFormProps) => {
           </Col>
           <Col span={12}>
             <Form.Item
+              label="Phone Number"
+              name="phone"
+              rules={[{ required: false, message: validationMessage('phone') }]}
+            >
+              <Input placeholder="Phone Number" />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              label="Working Stack"
+              name="workingstack"
+              rules={[{ required: false, message: validationMessage('workingstack') }]}
+            >
+              <Input placeholder="Working Stack" />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
               label="Role"
               name="role"
               rules={[{ required: true, message: validationMessage('role') }]}>
