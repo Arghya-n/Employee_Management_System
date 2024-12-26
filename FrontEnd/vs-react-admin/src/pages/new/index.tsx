@@ -12,7 +12,7 @@ const TaskAssignment = () => {
         title="Task Assignment"
         subTitle="Enable precise audience targeting using RTG users for effective campaign strategy and enhanced engagement"
       >
-        <Link to={'/tasks/create'}>
+        <Link to={'/taskAssignment/create'}>
           <Button type={'primary'} icon={<PlusCircleOutlined />}>
             Create Assignment
           </Button>

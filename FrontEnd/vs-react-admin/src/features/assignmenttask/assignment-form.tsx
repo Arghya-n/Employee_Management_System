@@ -1,6 +1,6 @@
 import TextArea from 'antd/es/input/TextArea';
 import { useEffect } from 'react';
-import { Button, Card, Col, DatePicker, Form, Row, Select } from 'antd';
+import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import { SaveOutlined } from '@ant-design/icons';
 // import { useUserForm } from '@hooks/use-users';
 import { TasksPartial } from '@/models/tasks-model';
@@ -52,7 +52,7 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
       autoComplete={'off'}
       initialValues={initialValues}
       >
-      <Card title="Project Info">
+      <Card title="Task Assignment Info">
         <Row gutter={24}>
           <Col span={24}>
             <Form.Item
@@ -68,7 +68,7 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
               label="Task Title"
               name="taskTitle" 
             >
-              <TextArea rows={4} placeholder="Task Title" />
+              <Input placeholder="Task Title" />
             </Form.Item>
           </Col>
           <Col span={24}>
