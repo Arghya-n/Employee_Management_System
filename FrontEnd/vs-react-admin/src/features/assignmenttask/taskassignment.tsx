@@ -18,12 +18,12 @@ const getActions = (taskId: number): MenuProps['items'] => {
 
 const columns : TableProps<TaskAssignment>['columns'] = [
   {
-    title: 'Task ID',
-    dataIndex: 'taskId',
+    title: 'Task Title',
+    dataIndex: 'taskTitle',
     sorter: true,
-    key: 'taskId',
+    key: 'taskTitle',
     render: (_, record) => (
-        <Text>{record.taskId}</Text>
+        <Text>{record.taskTitle}</Text>
     )
   },
   {
