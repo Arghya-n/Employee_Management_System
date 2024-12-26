@@ -4,6 +4,7 @@ using EmpTaskAPI.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpTaskAPI.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241226071558_trying")]
+    partial class trying
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +27,11 @@ namespace EmpTaskAPI.Migrations
 
             modelBuilder.Entity("EmpTaskAPI.Models.Project", b =>
                 {
-                    b.Property<int>("ProjectId")
+                    b.Property<int>("ProjectID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProjectId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProjectID"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -44,35 +47,35 @@ namespace EmpTaskAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProjectId");
+                    b.HasKey("ProjectID");
 
                     b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("EmpTaskAPI.Models.Task", b =>
                 {
-                    b.Property<int>("TaskId")
+                    b.Property<int>("TaskID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskID"));
 
                     b.Property<DateTime>("AssignDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int>("ProjectID")
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("SubmitDate")
+                    b.Property<DateTime>("SubmitDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("TaskId");
+                    b.HasKey("TaskID");
 
-                    b.HasIndex("ProjectId");
+                    b.HasIndex("ProjectID");
 
                     b.ToTable("Tasks");
                 });
@@ -81,7 +84,7 @@ namespace EmpTaskAPI.Migrations
                 {
                     b.HasOne("EmpTaskAPI.Models.Project", "Project")
                         .WithMany("Tasks")
-                        .HasForeignKey("ProjectId")
+                        .HasForeignKey("ProjectID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
