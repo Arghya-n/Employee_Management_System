@@ -20,12 +20,12 @@ const PageHeader = ({
       <Breadcrumbs />
       <div className="px-6 py-6">
         <Row>
-          <Col span={12}>
+          <Col md={12} xs={24}>
             <Title level={2} style={{ marginBottom: 0 }}>
               {title}
             </Title>
           </Col>
-          <Col span={12} className="text-right">
+          <Col md={12} xs={24} className="text-right my-3 sm:my-0">
             {children}
           </Col>
         </Row>

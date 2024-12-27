@@ -53,40 +53,37 @@ const UserForm = ({ initialValues, isEditMode = false }: UserFormProps) => {
       onFinish={onFinished}>
       <Card title="User Info">
         <Row gutter={24}>
-          <Col span={12}>
+          <Col xs={24} sm={12} lg={12}>
             <Form.Item
               label="Name"
               name="name"
-              rules={[{ required: true, message: validationMessage('name') }]}
-            >
+              rules={[{ required: true, message: validationMessage('name') }]}>
               <Input placeholder="Name" />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={12} lg={12}>
             <Form.Item
               label="Email"
               name="email"
-              rules={[
+              rules={[ 
                 { required: true, message: validationMessage('email') },
                 { type: 'email', message: validationMessage('email', 'email') }
-              ]}
-            >
+              ]}>
               <Input placeholder="Email" />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={12} lg={12}>
             <Form.Item
               label="Password"
               name="password"
               rules={[
                 { required: !isEditMode, message: validationMessage('password') },
                 { min: 4, message: 'Password must be at least 4 characters' },
-              ]}
-            >
+              ]}>
               <Input.Password placeholder="Password" />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={12} lg={12}>
             <Form.Item
               label="Re-enter Password"
               name="confirm_password"
@@ -101,30 +98,27 @@ const UserForm = ({ initialValues, isEditMode = false }: UserFormProps) => {
                     return Promise.reject(new Error('The two passwords do not match'));
                   },
                 }),
-              ]}
-            >
+              ]}>
               <Input.Password placeholder="Re-enter Password" />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={12} lg={12}>
             <Form.Item
               label="Phone Number"
               name="phone"
-              rules={[{ required: false, message: validationMessage('phone') }]}
-            >
+              rules={[{ required: false, message: validationMessage('phone') }]}>
               <Input placeholder="Phone Number" />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={12} lg={12}>
             <Form.Item
               label="Working Stack"
               name="workingstack"
-              rules={[{ required: false, message: validationMessage('workingstack') }]}
-            >
+              rules={[{ required: false, message: validationMessage('workingstack') }]}>
               <Input placeholder="Working Stack" />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={12} lg={12}>
             <Form.Item
               label="Role"
               name="role"
@@ -135,7 +129,7 @@ const UserForm = ({ initialValues, isEditMode = false }: UserFormProps) => {
         </Row>
       </Card>
       <Row className="my-6">
-        <Col span={24} className="text-right">
+        <Col xs={24} className="text-right">
           <Button
             type="primary"
             htmlType="submit"
