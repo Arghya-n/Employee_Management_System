@@ -11,6 +11,7 @@ namespace EmpTaskAPI.DataAccessLayer
         public DbSet<Project> Projects { get; set; }
 
         public DbSet<Models.Task> Tasks { get; set; }
+        public DbSet<TaskAssignment> AssignedTasks { get; set; }
 
         
 

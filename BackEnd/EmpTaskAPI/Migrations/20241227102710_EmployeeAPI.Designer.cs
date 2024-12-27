@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpTaskAPI.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20241227085837_EmployeeAPI")]
+    [Migration("20241227102710_EmployeeAPI")]
     partial class EmployeeAPI
     {
         /// <inheritdoc />
@@ -65,6 +65,10 @@ namespace EmpTaskAPI.Migrations
                     b.Property<DateTime>("AssignDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Comments")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
@@ -78,6 +82,25 @@ namespace EmpTaskAPI.Migrations
                     b.HasKey("TaskId");
 
                     b.ToTable("Tasks");
+                });
+
+            modelBuilder.Entity("EmpTaskAPI.Models.TaskAssignment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TaskId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssignedTasks");
                 });
 #pragma warning restore 612, 618
         }

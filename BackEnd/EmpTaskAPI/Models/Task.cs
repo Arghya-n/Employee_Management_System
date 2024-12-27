@@ -13,6 +13,7 @@ namespace EmpTaskAPI.Models
         public DateTime AssignDate { get; set; }
         public DateTime? SubmitDate { get; set; }
         public string Status { get; set; }
+        public string Comments { get; set; }
 
      
      
