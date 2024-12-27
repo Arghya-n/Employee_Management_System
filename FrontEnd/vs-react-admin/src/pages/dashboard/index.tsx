@@ -22,8 +22,8 @@ const Dashboard = () => {
         subTitle="Quick access to analytical insights"
       />
       <PageContent>
-        <Row gutter={16} className='mb-4'>
-          <Col span={6}>
+        <Row gutter={[16, 16]} className='mb-4'>
+          <Col md={6} sm={12} xs={24}>
             <Card title={
               <Space>
                 <UserOutlined style={{color: 'red'}} />
@@ -33,7 +33,7 @@ const Dashboard = () => {
               300
             </Card>
           </Col>
-          <Col span={6}>
+          <Col md={6} sm={12} xs={24}>
             <Card title={
               <Space>
                 <ProjectOutlined style={{color: 'green'}} />
@@ -43,7 +43,7 @@ const Dashboard = () => {
               20
             </Card>
           </Col>
-          <Col span={6}>
+          <Col md={6} sm={12} xs={24}>
             <Card title={
               <Space>
                 <UserAddOutlined style={{color: 'yellow'}} />
@@ -53,7 +53,7 @@ const Dashboard = () => {
               100
             </Card>
           </Col>
-          <Col span={6}>
+          <Col md={6} sm={12} xs={24}>
             <Card title={
               <Space>
                 <UserSwitchOutlined style={{color: 'blue'}} />
@@ -64,13 +64,13 @@ const Dashboard = () => {
             </Card>
           </Col>
         </Row>
-        <Row gutter={16} style={{ minHeight: '400px' }}>
-          <Col span={12}>
+        <Row gutter={[16, 16]} style={{ minHeight: '400px' }}>
+          <Col md={12} sm={24} xs={24}>
             <Card title="Working Stack" bordered={false} style={{height: '100%'}}>
               <BarChart data={chartData} title="" />
             </Card>
           </Col>
-          <Col span={12}>
+          <Col md={12} sm={24} xs={24}>
             <Card title="Employee Status" bordered={false} style={{height: '100%'}}>
               <PieChartComponent/>
             </Card>
