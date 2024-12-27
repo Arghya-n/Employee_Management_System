@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpTaskAPI.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20241227065900_EmployeeAPI")]
+    [Migration("20241227085837_EmployeeAPI")]
     partial class EmployeeAPI
     {
         /// <inheritdoc />

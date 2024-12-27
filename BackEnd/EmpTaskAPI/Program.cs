@@ -11,14 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Check if you're using Newtonsoft.Json elsewhere in your code
-builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-        options.JsonSerializerOptions.WriteIndented = true;
-        options.JsonSerializerOptions.MaxDepth = 64;
-    });
-
+builder.Services.AddControllers();
 
 
 builder.Services.AddDbContext<AppDBContext>(options =>

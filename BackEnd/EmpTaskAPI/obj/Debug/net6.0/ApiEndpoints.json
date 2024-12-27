@@ -11,22 +11,6 @@
   },
   {
     "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
-    "Method": "CreateProject",
-    "RelativePath": "api/Project",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "project",
-        "Type": "EmpTaskAPI.Models.Project",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
     "Method": "PostProject",
     "RelativePath": "api/Project",
     "HttpMethod": "POST",
@@ -39,17 +23,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "EmpTaskAPI.Models.Project",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
@@ -89,7 +63,6 @@
     "ReturnTypes": []
   },
   {
-<<<<<<< HEAD
     "ContainingType": "EmpTaskAPI.Controllers.TaskController",
     "Method": "Get",
     "RelativePath": "api/Task",
@@ -104,23 +77,28 @@
     "Method": "Create",
     "RelativePath": "api/Task",
     "HttpMethod": "POST",
-=======
-    "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
-    "Method": "DeleteProject",
-    "RelativePath": "api/Project/{projectId}",
-    "HttpMethod": "DELETE",
->>>>>>> 1a53cef043d1830c9f0f7eaa089cc34811ffd128
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-<<<<<<< HEAD
         "Name": "ts",
         "Type": "EmpTaskAPI.Models.Task",
-=======
-        "Name": "projectId",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.TaskController",
+    "Method": "Get",
+    "RelativePath": "api/Task/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
         "Type": "System.Int32",
->>>>>>> 1a53cef043d1830c9f0f7eaa089cc34811ffd128
         "IsRequired": true
       }
     ],
