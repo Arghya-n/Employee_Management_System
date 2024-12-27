@@ -39,6 +39,7 @@ namespace EmpTaskAPI.Controllers
         public async Task<IActionResult> DeleteTask(int id)
         {
             var data = await context.Tasks.FirstOrDefaultAsync(x => x.TaskId == id);
+           
             if (data == null)
             {
                 return NotFound();

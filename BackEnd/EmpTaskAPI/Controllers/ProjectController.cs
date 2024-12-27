@@ -88,14 +88,21 @@ namespace EmpTaskAPI.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteTask(int id)
         {
+            if (id == null)
+            {
+                return BadRequest();
+            }
             var data = await context.Projects.FirstOrDefaultAsync(x => x.ProjectId == id);
             if(data == null)
             {
                 return NotFound();
             }
+
             context.Projects.Remove(data);
-            context.SaveChangesAsync();
-            return Ok(data);
+            var data1=  context.Tasks.Where(t => t.ProjectId == id);
+            context.Tasks.RemoveRange(data1);
+            await context.SaveChangesAsync();
+            return Ok("Successfully Deleted!");
 
         }
         
