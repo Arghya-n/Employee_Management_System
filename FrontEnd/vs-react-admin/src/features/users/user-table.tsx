@@ -19,7 +19,7 @@ const UserTable = () => {
       search: value
     });
   };
-  
+
   return (
     <Card
       title={'Users'}
@@ -30,7 +30,9 @@ const UserTable = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onSearch={onSearchHandle}
-            allowClear />
+            allowClear
+            style={{ maxWidth: 400, width: '100%' }} // Ensures the search input is responsive
+          />
         </div>
       )}
     >
@@ -40,13 +42,11 @@ const UserTable = () => {
         loading={isLoading}
         pagination={false}
         onChange={sortTableColumn}
-        scroll={{ y: 350 }}
+        scroll={{ x: 1200, y: 350 }} // Allow horizontal scrolling for large tables and vertical scrolling for rows
         rowKey="id"
         bordered
+        responsive // Makes the table responsive
       />
-      {/*<div className={'flex justify-end mt-4'}>*/}
-      {/*  <PaginationWrapper totalItems={data?.totalNumberOfElemements || 0} />*/}
-      {/*</div>*/}
     </Card>
   );
 };

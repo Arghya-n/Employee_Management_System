@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Button } from 'antd';
+import { Button, Row, Col } from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import UserTable from '@features/users/user-table';
 import PageContent from '@layouts/partials/page-content';
@@ -12,11 +12,15 @@ const Users = () => {
         title="Users"
         subTitle="Enable precise audience targeting using RTG users for effective campaign strategy and enhanced engagement"
       >
-        <Link to={'/users/create'}>
-          <Button type={'primary'} icon={<PlusCircleOutlined />}>
-            Create User
-          </Button>
-        </Link>
+        <Row justify="end" gutter={[16, 16]}>
+          <Col>
+            <Link to={'/users/create'}>
+              <Button type={'primary'} icon={<PlusCircleOutlined />} block>
+                Create User
+              </Button>
+            </Link>
+          </Col>
+        </Row>
       </PageHeader>
       <PageContent>
         <UserTable />

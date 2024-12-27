@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Button } from 'antd';
+import { Button, Row, Col } from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import PageContent from '@layouts/partials/page-content';
 import PageHeader from '@layouts/partials/page-header';
@@ -12,12 +12,17 @@ const Tasks = () => {
         title="Projects"
         subTitle="Enable precise audience targeting using RTG users for effective campaign strategy and enhanced engagement"
       >
-        <Link to={'/tasks/create'}>
-          <Button type={'primary'} icon={<PlusCircleOutlined />}>
-            Create Project
-          </Button>
-        </Link>
+        <Row justify="end" gutter={[16, 16]}>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Link to={'/tasks/create'}>
+              <Button type="primary" icon={<PlusCircleOutlined />} block>
+                Create Project
+              </Button>
+            </Link>
+          </Col>
+        </Row>
       </PageHeader>
+
       <PageContent>
         <TaskTable />
       </PageContent>

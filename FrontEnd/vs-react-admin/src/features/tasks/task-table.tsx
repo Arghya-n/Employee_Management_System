@@ -1,14 +1,10 @@
 import { useState } from 'react';
-import { Table, Input, Card } from 'antd';
+import { Table, Input, Card, Row, Col } from 'antd';
 import useFilter from '@hooks/utility-hooks/use-filter';
 import { columns } from './task-table-columns';
+//import { ResponsiveContainer } from 'recharts';
 
 const TaskTable = () => {
-//   const {
-//     isLoading,
-//     data
-//   } = useUsers();
-  
   const { getQueryParams, setQueryParams, sortTableColumn } = useFilter();
   const [search, setSearch] = useState(getQueryParams().search as string);
 
@@ -18,32 +14,34 @@ const TaskTable = () => {
       search: value
     });
   };
-  
+
   return (
     <Card
       title={'Projects'}
-      extra={(
-        <div className="my-6">
-          <Input.Search
-            placeholder={'Search'}
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            onSearch={onSearchHandle}
-            allowClear />
-        </div>
-      )}
+      extra={
+        <Row gutter={[16, 16]} justify="end">
+          <Col xs={24} sm={12} md={8}>
+            <Input.Search
+              placeholder={'Search'}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              onSearch={onSearchHandle}
+              allowClear
+              style={{ width: '100%' }}
+            />
+          </Col>
+        </Row>
+      }
     >
       <Table
         columns={columns}
         pagination={false}
         onChange={sortTableColumn}
-        scroll={{ y: 350 }}
+        scroll={{ x: 'max-content', y: 350 }} // x allows horizontal scroll for responsive table
         rowKey="id"
         bordered
+        //responsive
       />
-      {/*<div className={'flex justify-end mt-4'}>*/}
-      {/*  <PaginationWrapper totalItems={data?.totalNumberOfElemements || 0} />*/}
-      {/*</div>*/}
     </Card>
   );
 };

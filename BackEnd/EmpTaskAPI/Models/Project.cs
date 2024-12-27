@@ -13,7 +13,12 @@ namespace EmpTaskAPI.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
+<<<<<<< HEAD
         
+=======
+        // Navigation property
+        public ICollection<Task>? Tasks { get; set; }
+>>>>>>> 1a53cef043d1830c9f0f7eaa089cc34811ffd128
     }
 
 }

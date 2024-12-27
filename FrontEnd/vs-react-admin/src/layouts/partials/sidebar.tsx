@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { AutoComplete, Image, Layout } from 'antd';
-import Logo from '@assets/employee1.png';
+import { Image, Layout } from 'antd';
+import Logo from '@assets/employee3.png';
 import MainMenu from '@layouts/partials/main-menu';
 import ProfileMenu from '@layouts/partials/profile-menu';
 
