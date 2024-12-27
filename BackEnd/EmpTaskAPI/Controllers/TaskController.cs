@@ -55,11 +55,11 @@ namespace EmpTaskAPI.Controllers
 
             try
             {
-                var project = await context.Projects.FirstOrDefaultAsync(x => x.ProjectId == id);
+                var project = await context.Tasks.FirstOrDefaultAsync(x => x.TaskId == id);
                 if (project == null)
                     return NotFound("Project Data not found.");
 
-                context.Projects.Update(project);
+                context.Tasks.Update(uts);
                 await context.SaveChangesAsync();
                 return Ok(project);
             }
