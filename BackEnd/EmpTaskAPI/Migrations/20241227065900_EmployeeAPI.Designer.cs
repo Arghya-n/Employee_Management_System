@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpTaskAPI.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20241226065218_second")]
-    partial class second
+    [Migration("20241227065900_EmployeeAPI")]
+    partial class EmployeeAPI
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,12 @@ namespace EmpTaskAPI.Migrations
 
             modelBuilder.Entity("EmpTaskAPI.Models.Project", b =>
                 {
-                    b.Property<int>("ProjectID")
+                    b.Property<int>("ProjectId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ProjectId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProjectID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProjectId"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -47,53 +48,36 @@ namespace EmpTaskAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProjectID");
+                    b.HasKey("ProjectId");
 
                     b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("EmpTaskAPI.Models.Task", b =>
                 {
-                    b.Property<int>("TaskID")
+                    b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("TaskId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskId"));
 
                     b.Property<DateTime>("AssignDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProjectID")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("SubmitDate")
+                    b.Property<DateTime?>("SubmitDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("TaskID");
-
-                    b.HasIndex("ProjectID");
+                    b.HasKey("TaskId");
 
                     b.ToTable("Tasks");
-                });
-
-            modelBuilder.Entity("EmpTaskAPI.Models.Task", b =>
-                {
-                    b.HasOne("EmpTaskAPI.Models.Project", "Project")
-                        .WithMany("Tasks")
-                        .HasForeignKey("ProjectID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Project");
-                });
-
-            modelBuilder.Entity("EmpTaskAPI.Models.Project", b =>
-                {
-                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

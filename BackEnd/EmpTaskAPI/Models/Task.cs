@@ -6,6 +6,7 @@ namespace EmpTaskAPI.Models
     public class Task
     {
         [Key]  // Explicitly defining the primary key
+        [Column("TaskId")]
         public int TaskId { get; set; }
 
         public int ProjectId { get; set; }
@@ -14,7 +15,7 @@ namespace EmpTaskAPI.Models
         public string Status { get; set; }
 
         // Navigation property
-        public Project? Project { get; set; }
+     
     }
 
 

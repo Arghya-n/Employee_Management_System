@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EmpTaskAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59ada682588d05f34a81425b5902c5abe94b590a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e2da9869214afcf0ba817336e2677a79b40dc5a")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmpTaskAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmpTaskAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
