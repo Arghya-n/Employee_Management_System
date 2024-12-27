@@ -65,25 +65,25 @@ namespace EmpTaskAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, Project updatedProject)
         {
-            using var transaction = await context.Database.BeginTransactionAsync();
-
-            try
+            if (id == null)
             {
-                var project = await context.Projects.FirstOrDefaultAsync(x => x.ProjectId == id);
-
-                if (project == null)
-                    return NotFound("Project Data not found.");
-                context.Projects.Update(project);
-                await context.SaveChangesAsync();
-
-                
-                return Ok(project);
+                return BadRequest();
             }
-            catch
-            {
-                await transaction.RollbackAsync();
-                return BadRequest("Error updating user.");
-            }
+            var project = await context.Projects.FirstOrDefaultAsync(x => x.ProjectId == id);
+            if (project == null)
+                return NotFound("Project Data not found.");
+           
+
+            project.StartDate = updatedProject.StartDate;
+            project.EndDate = updatedProject.EndDate;
+            project.Title = updatedProject.Title;
+            project.Description = updatedProject.Description;
+
+            
+            await context.SaveChangesAsync();
+
+
+            return Ok(project);
         }
         [HttpDelete]
         public async Task<IActionResult> DeleteTask(int id)

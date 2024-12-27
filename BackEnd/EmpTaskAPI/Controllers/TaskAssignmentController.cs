@@ -42,15 +42,21 @@ namespace EmpTaskAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> AssignTask(int id,TaskAssignment ta)
         {
+            if (id == null)
+            {
+                return BadRequest();
+            }
             var data = await context.AssignedTasks.FirstOrDefaultAsync(x=>x.Id==id);
             if (data == null)
             {
                 return NotFound();
 
             }
-            context.AssignedTasks.Update(data);
+            data.EmployeeId = ta.EmployeeId;
+            data.TaskId = ta.TaskId;
+
             context.SaveChangesAsync();
-            return Ok(ta);
+            return Ok(data);
         }
 
         [HttpDelete]
