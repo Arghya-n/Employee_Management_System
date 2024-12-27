@@ -47,19 +47,7 @@ namespace EmpTaskAPI.Controllers
 
             return project;
         }
-
-        // POST: api/ProjectsTasks/Project
-        //[HttpPost("Project")]
-        //public async Task<ActionResult<Project>> PostProject(Project project)
-        //{
-        //    context.Projects.Add(project);
-        //    await context.SaveChangesAsync();
-
-        //    // Return the created project with a 201 status code
-        //    //return CreatedAtAction(nameof(GetProjectById), new { projectId = project.ProjectId }, project);
-        //    return Ok("Done");
-        //}
-        [HttpPost("Project")]
+        [HttpPost]
         public async Task<ActionResult<Project>> PostProject(Project project)
         {
             if (project.Tasks != null && project.Tasks.Count > 0)
@@ -81,22 +69,97 @@ namespace EmpTaskAPI.Controllers
         }
 
 
-        // POST: api/ProjectsTasks/Task
-        [HttpPost("Task")]
-        public async Task<ActionResult<Models.Task>> PostTask(Models.Task task)
+       
+        // PUT: api/ProjectsTasks/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] Project updatedProject)
         {
-            // Ensure the project exists before adding a task
-            var project = await context.Projects.FindAsync(task.ProjectId);
+            using var transaction = await context.Database.BeginTransactionAsync();
+
+            try
+            {
+                var project = await context.Projects.Include(u => u.Tasks).FirstOrDefaultAsync(u => u.ProjectId == id);
+
+                if (project == null)
+                    return NotFound("Project Data not found.");
+
+                // Update user details
+                project.Title = updatedProject.Title;
+                project.Description = updatedProject.Description;
+                project.StartDate = updatedProject.StartDate;
+                project.EndDate = updatedProject.EndDate;
+
+                // Update profile details
+                if (project.Tasks != null && updatedProject.Tasks != null)
+                {
+                    foreach (var updatedTask in updatedProject.Tasks)
+                    {
+                        // Check if the task already exists in the project
+                        var existingTask = project.Tasks.FirstOrDefault(t => t.TaskId == updatedTask.TaskId);
+
+                        if (existingTask != null)
+                        {
+                            // Update the existing task
+                            existingTask.AssignDate = updatedTask.AssignDate;
+                            existingTask.SubmitDate = updatedTask.SubmitDate;
+                            existingTask.Status = updatedTask.Status;
+                        }
+                        else
+                        {
+                            // Add the new task to the project
+                            project.Tasks.Add(new Models.Task
+                            {
+                                TaskId = updatedTask.TaskId,
+                                AssignDate = updatedTask.AssignDate,
+                                SubmitDate = updatedTask.SubmitDate,
+                                Status = updatedTask.Status,
+                                ProjectId = project.ProjectId // Ensure the ProjectId is set correctly
+                            });
+                        }
+                    }
+                }
+
+
+
+                context.Projects.Update(project);
+                await context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+                return Ok(project);
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                return BadRequest("Error updating user.");
+            }
+        }
+        // DELETE: api/ProjectsTasks/5
+        [HttpDelete("{projectId}")]
+        public async Task<IActionResult> DeleteProject(int projectId)
+        {
+            // Check if the project exists
+            var project = await context.Projects.Include(p => p.Tasks).FirstOrDefaultAsync(p => p.ProjectId == projectId);
             if (project == null)
             {
-                return NotFound($"Project with ID {task.ProjectId} not found.");
+                return NotFound($"Project with ID {projectId} not found.");
             }
 
-            context.Tasks.Add(task);
-            await context.SaveChangesAsync();
+            // Remove related tasks
+            context.Tasks.RemoveRange(project.Tasks);
 
-            // Return the created task with a 201 status code
-            return CreatedAtAction(nameof(GetProjectById), new { projectId = task.ProjectId }, task);
+            // Remove the project
+            context.Projects.Remove(project);
+
+            try
+            {
+                await context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                return BadRequest("Failed to delete the project.");
+            }
+
+            return Ok("Project deleted successfully.");
         }
 
     }
