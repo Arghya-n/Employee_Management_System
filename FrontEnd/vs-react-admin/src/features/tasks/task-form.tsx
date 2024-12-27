@@ -39,8 +39,7 @@ const TaskForm = ({ initialValues, isEditMode = false }: TaskFormProps) => {
               rules={[{ required: true, message: validationMessage('Project Title') }]}
             >
               <Input placeholder="Project Title"
-              //size="large" // Makes the input smaller
-              //style={{ width:'800px',height:'50px' }}
+              
                />
             </Form.Item>
           </Col>
@@ -83,14 +82,9 @@ const TaskForm = ({ initialValues, isEditMode = false }: TaskFormProps) => {
       </Card>
 
       {/* Save Button */}
-      <Row justify="end" style={{ marginTop: '24px' }}>
-        <Col xs={24} sm={12} md={8} lg={6} xl={4}>
-          <Button
-            type="primary"
-            htmlType="submit"
-            icon={<SaveOutlined />}
-            style={{ width: '100%' }}
-          >
+      <Row className="my-6">
+        <Col span={24} className="text-right">
+          <Button type="primary" htmlType="submit" icon={<SaveOutlined />}>
             Save changes
           </Button>
         </Col>

@@ -58,7 +58,7 @@ const Dashboard = () => {
               <div>100</div>
             </Card>
           </Col>
-          <Col xs={24} sm={12} md={6}>
+          <Col xs={24} sm={12} md={8} lg={6} >
             <Card
               title={
                 <Space>
