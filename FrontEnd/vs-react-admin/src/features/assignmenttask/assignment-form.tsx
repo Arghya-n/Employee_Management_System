@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
-import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
+import { useEffect, useState } from 'react';
+import { Button, Card, Col, DatePicker, Form, Input, Row, Select, Typography } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import { SaveOutlined } from '@ant-design/icons';
+import { validationMessage } from '@utils/helpers/message-helpers';
 import { TasksPartial } from '@/models/tasks-model';
-import { validationMessage } from '@/utils/helpers/message-helpers';
+
+const { Title } = Typography;
 
 interface TaskAssignmentFormProps {
   initialValues?: TasksPartial;
@@ -23,18 +25,29 @@ const SAMPLE_USER = [
 
 const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmentFormProps) => {
   const [form] = Form.useForm();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     if (initialValues) {
       form.setFieldsValue({ ...initialValues });
     }
-  }, [initialValues, form]);
+
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [initialValues, form, isEditMode]);
+
+  // Adjust title font size based on window width
+  const titleFontSize = windowWidth < 768 ? '1.2rem' : '1.5rem'; // Smaller title on mobile
 
   return (
-    <Form
+    
+      <Form
       form={form}
       layout="vertical"
-      autoComplete="off"
+      autoComplete={'off'}
+      
       initialValues={initialValues}
     >
       <Card
@@ -51,8 +64,9 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
           </div>
         }
       >
-        <Row gutter={[24, 24]} justify="center">
-          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+        <Row gutter={24}>
+          {/* Project */}
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <Form.Item
               label="Project"
               name="project"
@@ -63,8 +77,9 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
           </Col>
         </Row>
 
-        <Row gutter={[24, 24]} justify="center">
-          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+        <Row gutter={[16, 16]}>
+          {/* User */}
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <Form.Item
               label="User"
               name="user"
@@ -75,8 +90,9 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
           </Col>
         </Row>
 
-        <Row gutter={[24, 24]} justify="center">
-          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+        <Row gutter={[16, 16]}>
+          {/* Task Title */}
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <Form.Item
               label="Task Title"
               name="taskTitle"
@@ -87,8 +103,9 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
           </Col>
         </Row>
 
-        <Row gutter={[24, 24]} justify="center">
-          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+        <Row gutter={[16, 16]}>
+          {/* Assigned Date */}
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <Form.Item
               label="Assigned Date"
               name="assignedDate"
@@ -99,8 +116,9 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
           </Col>
         </Row>
 
-        <Row gutter={[24, 24]} justify="center">
-          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+        <Row gutter={[16, 16]}>
+          {/* Description */}
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <Form.Item label="Description" name="description">
               <TextArea rows={4} placeholder="Description" />
             </Form.Item>
@@ -108,6 +126,7 @@ const TaskAssignmentForm = ({ initialValues, isEditMode = false }: TaskAssignmen
         </Row>
       </Card>
 
+      {/* Save Button */}
       <Row className="my-6">
         <Col span={24} className="text-right">
           <Button type="primary" htmlType="submit" icon={<SaveOutlined />}>

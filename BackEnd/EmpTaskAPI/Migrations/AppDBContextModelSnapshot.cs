@@ -26,7 +26,8 @@ namespace EmpTaskAPI.Migrations
                 {
                     b.Property<int>("ProjectId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ProjectId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProjectId"));
 
@@ -53,7 +54,8 @@ namespace EmpTaskAPI.Migrations
                 {
                     b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("TaskId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskId"));
 
@@ -72,25 +74,7 @@ namespace EmpTaskAPI.Migrations
 
                     b.HasKey("TaskId");
 
-                    b.HasIndex("ProjectId");
-
                     b.ToTable("Tasks");
-                });
-
-            modelBuilder.Entity("EmpTaskAPI.Models.Task", b =>
-                {
-                    b.HasOne("EmpTaskAPI.Models.Project", "Project")
-                        .WithMany("Tasks")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Project");
-                });
-
-            modelBuilder.Entity("EmpTaskAPI.Models.Project", b =>
-                {
-                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

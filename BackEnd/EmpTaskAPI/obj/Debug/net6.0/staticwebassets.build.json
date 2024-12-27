@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "7TgQpTTzmSYVh6HSdyoPCsKHEpTU7ciamBICJgBm/cs=",
+  "Hash": "76h/25j8/ZvLj/KUQwNLJvSoJEZf0ro1Y1fq34ZIztE=",
   "Source": "EmpTaskAPI",
   "BasePath": "_content/EmpTaskAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

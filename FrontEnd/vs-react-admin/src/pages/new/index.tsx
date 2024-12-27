@@ -8,10 +8,12 @@ import TaskAssignmentTable from "@/features/tasks/table";
 const TaskAssignment = () => {
   return (
     <>
+      {/* Page Header Section */}
       <PageHeader
         title="Task Assignment"
         subTitle="Enable precise audience targeting using RTG users for effective campaign strategy and enhanced engagement"
       >
+        {/* Button Section */}
         <Row justify="end" gutter={[16, 16]}>
           <Col xs={24} sm={12} md={8} lg={6}>
             <Link to={"/taskAssignment/create"}>
@@ -23,6 +25,7 @@ const TaskAssignment = () => {
         </Row>
       </PageHeader>
 
+      {/* Main Content Section */}
       <PageContent>
         <TaskAssignmentTable />
       </PageContent>
