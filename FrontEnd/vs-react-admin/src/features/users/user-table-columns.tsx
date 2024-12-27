@@ -1,12 +1,20 @@
-import { Link } from 'react-router-dom';
-import { MenuProps, TableProps, Tag, Dropdown, Button, Typography, Table } from 'antd';
-import { EditOutlined, MoreOutlined } from '@ant-design/icons';
-import { User } from '@models/user-model';
+import { Link } from "react-router-dom";
+import {
+  MenuProps,
+  TableProps,
+  Tag,
+  Dropdown,
+  Button,
+  Typography,
+  Table,
+} from "antd";
+import { EditOutlined, MoreOutlined } from "@ant-design/icons";
+import { User } from "@models/user-model";
 
 const { Text } = Typography;
 
 // Dummy action menu for editing
-const getActions = (userId: number): MenuProps['items'] => {
+const getActions = (userId: number): MenuProps["items"] => {
   return [
     {
       key: `edit-${userId}`,
@@ -20,60 +28,58 @@ const getActions = (userId: number): MenuProps['items'] => {
 };
 
 // Table columns with responsive settings
-const columns: TableProps<User>['columns'] = [
+const columns: TableProps<User>["columns"] = [
   {
-    title: 'Name',
-    dataIndex: 'name',
+    title: "Name",
+    dataIndex: "name",
     sorter: true,
-    key: 'name',
+    key: "name",
     render: (_, record) => (
-      <Link to={`/users/${record.id}`}>
-        {record.name}
-        <Text type="secondary" className="text-xs">
-          {record.id}
-        </Text>
-      </Link>
+      <Link to={`/users/${record.id}`}>{record.name}</Link>
     ),
-    responsive: ['xs', 'sm', 'md', 'lg', 'xl'], 
+    responsive: ["xs", "sm", "md", "lg", "xl"],
   },
   {
-    title: 'Email',
-    key: 'email',
+    title: "Email",
+    key: "email",
     render: (_, record) => <Text>{record.email}</Text>,
-    responsive: ['xs', 'sm', 'md', 'lg', 'xl'], 
+    responsive: ["xs", "sm", "md", "lg", "xl"],
   },
   {
-    title: 'Role',
-    key: 'role',
+    title: "Role",
+    key: "role",
     render: (_, record) => (
       <Tag color="geekblue" className="uppercase">
         {record.role}
       </Tag>
     ),
-    responsive: ['xs', 'sm', 'md', 'lg', 'xl'], 
+    responsive: ["xs", "sm", "md", "lg", "xl"],
   },
   {
-    title: 'Working Stack',
-    key: 'workingStack',
+    title: "Working Stack",
+    key: "workingStack",
     render: (_, record) => <Text>{record.workingStack}</Text>,
-    responsive: ['xs', 'sm', 'md', 'lg', 'xl'],
-  }, 
-  {
-    title: 'Phone Number',
-    key: 'phoneNumber',
-    render: (_, record) => <Text>{record.phoneNumber}</Text>,
-    responsive: ['xs', 'sm', 'md', 'lg', 'xl'], 
+    responsive: ["xs", "sm", "md", "lg", "xl"],
   },
   {
-    title: 'Action',
-    key: 'action',
-    align: 'center',
+    title: "Phone Number",
+    key: "phoneNumber",
+    render: (_, record) => <Text>{record.phoneNumber}</Text>,
+    responsive: ["xs", "sm", "md", "lg", "xl"],
+  },
+  {
+    title: "Action",
+    key: "action",
+    align: "center",
     render: (_, record) => (
-      <Dropdown menu={{ items: getActions(record.id!) }} overlayClassName="grid-action">
+      <Dropdown
+        menu={{ items: getActions(record.id!) }}
+        overlayClassName="grid-action"
+      >
         <Button shape="circle" icon={<MoreOutlined />} />
       </Dropdown>
     ),
-    responsive: ['xs', 'sm', 'md', 'lg', 'xl'], // Visible on all screen sizes
+    responsive: ["xs", "sm", "md", "lg", "xl"], // Visible on all screen sizes
   },
 ];
 
@@ -81,7 +87,7 @@ const TableComponent = ({ data }: { data: User[] }) => (
   <Table
     columns={columns}
     dataSource={data}
-    scroll={{ x: 'max-content' }} // Allows horizontal scrolling for larger tables
+    scroll={{ x: "max-content" }} // Allows horizontal scrolling for larger tables
     //pagination={false} // Optional: turn off pagination if needed
     //size="middle" // Optional: adjust table size for readability
   />
