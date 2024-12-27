@@ -20,7 +20,21 @@ const UserDetails = () => {
           </Col>
           <Col span={12}>
             <Form.Item label="Password">
-              <Input value={user.password} />
+              <Input.Password
+                value={user.password}
+                visibilityToggle
+                iconRender={(visible) =>
+                  visible ? (
+                    <span role="img" aria-label="hide">
+                      👁️
+                    </span>
+                  ) : (
+                    <span role="img" aria-label="show">
+                      👁️‍🗨️
+                    </span>
+                  )
+                }
+              />
             </Form.Item>
           </Col>
           <Col span={12}>
