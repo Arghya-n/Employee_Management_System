@@ -27,7 +27,7 @@ namespace EmpTaskAPI.Controllers
                 return NotFound("Data not found.");
 
             return Ok(data);
-           // return await context.Projects.Include(p => p.Tasks).ToListAsync();
+          
 
         }
 
@@ -73,12 +73,6 @@ namespace EmpTaskAPI.Controllers
 
                 if (project == null)
                     return NotFound("Project Data not found.");
-
-
-                
-
-
-
                 context.Projects.Update(project);
                 await context.SaveChangesAsync();
 
@@ -90,6 +84,19 @@ namespace EmpTaskAPI.Controllers
                 await transaction.RollbackAsync();
                 return BadRequest("Error updating user.");
             }
+        }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteTask(int id)
+        {
+            var data = await context.Projects.FirstOrDefaultAsync(x => x.ProjectId == id);
+            if(data == null)
+            {
+                return NotFound();
+            }
+            context.Projects.Remove(data);
+            context.SaveChangesAsync();
+            return Ok(data);
+
         }
         
 
