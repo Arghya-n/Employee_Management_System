@@ -14,7 +14,7 @@ namespace EmpTaskAPI.Models
         public DateTime? SubmitDate { get; set; }
         public string Status { get; set; }
 
-        // Navigation property
+     
      
     }
 
