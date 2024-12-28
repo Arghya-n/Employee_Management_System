@@ -27,7 +27,7 @@
   },
   {
     "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
-    "Method": "DeleteTask",
+    "Method": "DeleteProject",
     "RelativePath": "api/Project",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -76,6 +76,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
+    "Method": "DeleteAllProjects",
+    "RelativePath": "api/Project/all",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

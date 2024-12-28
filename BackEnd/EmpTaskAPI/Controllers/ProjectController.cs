@@ -86,7 +86,7 @@ namespace EmpTaskAPI.Controllers
             return Ok(project);
         }
         [HttpDelete]
-        public async Task<IActionResult> DeleteTask(int id)
+        public async Task<IActionResult> DeleteProject(int id)
         {
             if (id == null)
             {
@@ -105,7 +105,36 @@ namespace EmpTaskAPI.Controllers
             return Ok("Successfully Deleted!");
 
         }
-        
+        [HttpDelete("all")]
+        public async Task<IActionResult> DeleteAllProjects()
+        {
+            var transaction = await context.Database.BeginTransactionAsync();
+            try
+            {
+                // Fetch project IDs
+                var projectIds = await context.Projects
+                                              .Select(p => p.ProjectId)
+                                              .ToListAsync();
+
+                // Delete tasks
+                context.Tasks.RemoveRange(context.Tasks.Where(t => projectIds.Contains(t.ProjectId)));
+
+                // Delete projects
+                context.Projects.RemoveRange(context.Projects.Where(p => projectIds.Contains(p.ProjectId)));
+
+                // Save changes
+                await context.SaveChangesAsync();
+
+                // Commit the transaction
+                await transaction.CommitAsync();
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+            return Ok("Deleted.");
+        }
 
     }
 }

@@ -131,6 +131,18 @@
         }
       }
     },
+    "/api/Project/all": {
+      "delete": {
+        "tags": [
+          "Project"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Task": {
       "get": {
         "tags": [
