@@ -111,21 +111,34 @@ namespace EmpTaskAPI.Controllers
             var transaction = await context.Database.BeginTransactionAsync();
             try
             {
-                // Fetch project IDs
+                // Fetch the Project IDs
                 var projectIds = await context.Projects
                                               .Select(p => p.ProjectId)
                                               .ToListAsync();
 
-                // Delete tasks
-                context.Tasks.RemoveRange(context.Tasks.Where(t => projectIds.Contains(t.ProjectId)));
+                // Fetch the Task IDs
+                var taskIds = await context.Tasks
+                                           .Where(t => projectIds.Contains(t.ProjectId))
+                                           .Select(t => t.TaskId)
+                                           .ToListAsync();
 
-                // Delete projects
-                context.Projects.RemoveRange(context.Projects.Where(p => projectIds.Contains(p.ProjectId)));
+                // Delete AssignedTasks
+                context.AssignedTasks.RemoveRange(
+                    context.AssignedTasks.Where(at => taskIds.Contains(at.TaskId))
+                );
 
-                // Save changes
+                // Delete Tasks
+                context.Tasks.RemoveRange(
+                    context.Tasks.Where(t => projectIds.Contains(t.ProjectId))
+                );
+
+                // Delete Projects
+                context.Projects.RemoveRange(
+                    context.Projects.Where(p => projectIds.Contains(p.ProjectId))
+                );
+
+                // Save changes and commit transaction
                 await context.SaveChangesAsync();
-
-                // Commit the transaction
                 await transaction.CommitAsync();
             }
             catch
