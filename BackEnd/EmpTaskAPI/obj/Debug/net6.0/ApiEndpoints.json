@@ -79,6 +79,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "EmpTaskAPI.Controllers.LoginController",
+    "Method": "GetToken",
+    "RelativePath": "api/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employee",
+        "Type": "EmpTaskAPI.Models.Employee",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
     "Method": "GetProjects",
     "RelativePath": "api/Project",

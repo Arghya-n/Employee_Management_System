@@ -1,10 +1,12 @@
 ﻿using EmpTaskAPI.DataAccessLayer;
 using EmpTaskAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmpTaskAPI.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController : ControllerBase
@@ -15,7 +17,7 @@ namespace EmpTaskAPI.Controllers
         {
             this.context = context;
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult> GetEmployees()
         {
@@ -31,6 +33,7 @@ namespace EmpTaskAPI.Controllers
         }
 
         // GET: api/Employee/5
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("{employeeId}")]
         public async Task<ActionResult> GetEmploeeById(int employeeId)
         {
@@ -45,7 +48,7 @@ namespace EmpTaskAPI.Controllers
 
             return Ok(employee);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult> PostEmployee(Employee employee)
         {
@@ -58,6 +61,7 @@ namespace EmpTaskAPI.Controllers
 
 
         // PUT: api/Employee/5
+        [Authorize(Roles = "User")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployee(int id, Employee updatedEmployee)
         {
@@ -85,6 +89,7 @@ namespace EmpTaskAPI.Controllers
                 return BadRequest("Error updating user.");
             }
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteEmployee(int id)
         {

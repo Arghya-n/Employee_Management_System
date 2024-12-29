@@ -363,3 +363,7 @@ D:\New folder (2)\Attachment_vivasoft\Employee_Management_System\BackEnd\EmpTask
 D:\New folder (2)\Attachment_vivasoft\Employee_Management_System\BackEnd\EmpTaskAPI\obj\Debug\net6.0\EmpTaskAPI.pdb
 D:\New folder (2)\Attachment_vivasoft\Employee_Management_System\BackEnd\EmpTaskAPI\obj\Debug\net6.0\EmpTaskAPI.genruntimeconfig.cache
 D:\New folder (2)\Attachment_vivasoft\Employee_Management_System\BackEnd\EmpTaskAPI\obj\Debug\net6.0\ref\EmpTaskAPI.dll
+D:\New folder (2)\Attachment_vivasoft\Employee_Management_System\BackEnd\EmpTaskAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\New folder (2)\Attachment_vivasoft\Employee_Management_System\BackEnd\EmpTaskAPI\bin\Debug\net6.0\Scrutor.dll
+D:\New folder (2)\Attachment_vivasoft\Employee_Management_System\BackEnd\EmpTaskAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
+D:\New folder (2)\Attachment_vivasoft\Employee_Management_System\BackEnd\EmpTaskAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
