@@ -1,4 +1,5 @@
-﻿using EmpTaskAPI.DataAccessLayer;
+﻿using System.Security.Claims;
+using EmpTaskAPI.DataAccessLayer;
 using EmpTaskAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EmpTaskAPI.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class ProjectController : ControllerBase
@@ -18,7 +19,7 @@ namespace EmpTaskAPI.Controllers
         {
             this.context = context;
         }
-        
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult> GetProjects()
         {
@@ -34,10 +35,24 @@ namespace EmpTaskAPI.Controllers
         }
 
         // GET: api/ProjectsTasks/5
+        [Authorize(Roles ="Admin,User")]
         [HttpGet("{projectId}")]
         public async Task<ActionResult> GetProjectById(int projectId)
         {
             // Retrieves a single project by ID with its related tasks
+            var loggedInEmployeeId = int.Parse(User.FindFirst("EmployeeId")?.Value);
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            var assignedTask =await context.AssignedTasks.FirstOrDefaultAsync(x=>x.EmployeeId==loggedInEmployeeId);
+            var task = await context.Tasks.FirstOrDefaultAsync(x => x.TaskId == assignedTask.TaskId);
+            var projectf = await context.Projects.FirstOrDefaultAsync(x => x.ProjectId == task.ProjectId);
+            
+            if (projectf == null)
+            {
+                return Unauthorized();
+            }
+            if (userRole != "Admin" && projectf.ProjectId!=projectId ) {
+                return Unauthorized();
+            }
             var project = await context.Projects.FindAsync(projectId);
                 
 
@@ -48,6 +63,7 @@ namespace EmpTaskAPI.Controllers
 
             return Ok(project);
         }
+        [Authorize(Roles = "Admin")]
 
         [HttpPost]
         public async Task<ActionResult> PostProject(Project project)
@@ -62,8 +78,9 @@ namespace EmpTaskAPI.Controllers
         }
 
 
-       
+
         // PUT: api/ProjectsTasks/5
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, Project updatedProject)
         {
@@ -87,6 +104,7 @@ namespace EmpTaskAPI.Controllers
 
             return Ok(project);
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteProject(int id)
         {
@@ -107,6 +125,7 @@ namespace EmpTaskAPI.Controllers
             return Ok("Successfully Deleted!");
 
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete("all")]
         public async Task<IActionResult> DeleteAllProjects()
         {

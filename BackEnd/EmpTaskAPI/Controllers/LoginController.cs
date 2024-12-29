@@ -46,15 +46,25 @@ namespace EmpTaskAPI.Controllers
         [HttpPost]
         public IActionResult GetToken(Employee employee)
         {
-            var data = _context.Employees.FirstOrDefault(e => e.Name.Equals(employee.Name) && e.Password.Equals(employee.Password));
+            // Authenticate the user
+            var data = _context.Employees
+                .FirstOrDefault(e => e.Name.Equals(employee.Name) && e.Password.Equals(employee.Password));
+
             if (data == null)
             {
                 return Unauthorized("Invalid Employee ID or Password.");
             }
 
-            // Check the role of the employee
+            // Generate a JWT token
             string token = GenerateToken(data);
-            return Ok(new { Token = token, Role = data.Role });
+
+            // Return the token along with EmployeeId and Role
+            return Ok(new
+            {
+                Token = token,
+                EmployeeId = data.EmployeeId,
+                Role = data.Role
+            });
         }
 
         private string GenerateToken(Employee emp)
@@ -63,23 +73,26 @@ namespace EmpTaskAPI.Controllers
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            // Define role-specific claims
+            // Define claims for the token
             var claims = new List<Claim>
-    {
-        new Claim(ClaimTypes.Name, emp.Name.ToString()),
-        new Claim(ClaimTypes.Role, emp.Role) // Add role claim
-    };
+            {
+                new Claim(ClaimTypes.Name, emp.Name),
+                new Claim(ClaimTypes.Role, emp.Role), // Role-based claim
+                new Claim("EmployeeId", emp.EmployeeId.ToString()) // Custom claim for Employee ID
+            };
 
-            // Create the token with role-based claims
+            // Create the token
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
                 expires: DateTime.Now.AddMinutes(10),
-                signingCredentials: credentials);
+                signingCredentials: credentials
+            );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using EmpTaskAPI.DataAccessLayer;
+﻿using System.Security.Claims;
+using EmpTaskAPI.DataAccessLayer;
 using EmpTaskAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,7 @@ namespace EmpTaskAPI.Controllers
             this.context = context;
         }
         [Authorize(Roles = "Admin")]
+       
         [HttpGet]
         public async Task<ActionResult> GetEmployees()
         {
@@ -32,21 +34,33 @@ namespace EmpTaskAPI.Controllers
 
         }
 
+
+
+
+
         // GET: api/Employee/5
         [Authorize(Roles = "Admin,User")]
         [HttpGet("{employeeId}")]
         public async Task<ActionResult> GetEmploeeById(int employeeId)
         {
-            // Retrieves a single project by ID with its related tasks
-            var employee = await context.Employees.FindAsync(employeeId);
+            var loggedInEmployeeId = int.Parse(User.FindFirst("EmployeeId")?.Value);
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
 
+            // Check if the user has access
+            if (userRole != "Admin" && loggedInEmployeeId != employeeId)
+            {
+                return Forbid(); // Return 403 Forbidden if the user is not authorized
+            }
+
+            // Retrieve the employee from the database
+            var employee = await context.Employees.FindAsync(employeeId);
 
             if (employee == null)
             {
-                return NotFound();
+                return NotFound(); // Return 404 if the employee does not exist
             }
 
-            return Ok(employee);
+            return Ok(employee); // Return the employee details
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
@@ -78,6 +92,8 @@ namespace EmpTaskAPI.Controllers
                 employee.Email = updatedEmployee.Email;
                 employee.Stack = updatedEmployee.Stack;
                 employee.Role = updatedEmployee.Role;
+
+                //employee.EmployeeId = updatedEmployee.EmployeeId;
 
                 context.Employees.Update(employee);
                 await context.SaveChangesAsync();
