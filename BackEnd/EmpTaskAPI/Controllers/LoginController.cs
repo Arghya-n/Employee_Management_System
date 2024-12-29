@@ -21,28 +21,7 @@ namespace EmpTaskAPI.Controllers
             _context = context;
             _configuration = configuration;
         }
-        //[HttpPost]
-        //public IActionResult GetToken(Employee employee)
-        //{
-        //    var data = _context.Employees.ToList();
-        //    string token = "";
-        //    if (data[0].Name.Equals(employee.Name) && data[0].Password.Equals(employee.Password))
-        //    {
-        //        token = GenerateToken(employee);
 
-        //    }
-        //    return Ok(token);
-        //}
-        //private string GenerateToken(Employee emp)
-        //{
-
-        //    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-
-        //    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-        //    var token = new JwtSecurityToken(_configuration["Jwt:Issuer"], _configuration["Jwt:Audience"], null, expires: DateTime.Now.AddMinutes(1), signingCredentials: credentials);
-
-        //    return new JwtSecurityTokenHandler().WriteToken(token);
-        //}
         [HttpPost]
         public IActionResult GetToken(Employee employee)
         {
@@ -76,9 +55,14 @@ namespace EmpTaskAPI.Controllers
             // Define claims for the token
             var claims = new List<Claim>
             {
+<<<<<<< HEAD
                 new Claim(ClaimTypes.Name, emp.Name),
                 new Claim(ClaimTypes.Role, emp.Role), // Role-based claim
                 new Claim("EmployeeId", emp.EmployeeId.ToString()) // Custom claim for Employee ID
+=======
+                new Claim(ClaimTypes.Name, emp.Name.ToString()),
+                new Claim(ClaimTypes.Role, emp.Role) // Add role claim
+>>>>>>> 1fdfae1d9510441a507371aa7f0fae75b4af260d
             };
 
             // Create the token
