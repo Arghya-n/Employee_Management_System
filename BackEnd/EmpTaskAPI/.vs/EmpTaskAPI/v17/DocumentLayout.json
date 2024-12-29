@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|d:\\new folder (2)\\attachment_vivasoft\\employee_management_system\\backend\\emptaskapi\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|d:\\new folder (2)\\attachment_vivasoft\\employee_management_system\\backend\\emptaskapi\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|d:\\new folder (2)\\attachment_vivasoft\\employee_management_system\\backend\\emptaskapi\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|d:\\new folder (2)\\attachment_vivasoft\\employee_management_system\\backend\\emptaskapi\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|d:\\new folder (2)\\attachment_vivasoft\\employee_management_system\\backend\\emptaskapi\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -85,21 +85,25 @@
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "LoginController.cs",
               "DocumentMoniker": "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
               "ToolTip": "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\Controllers\\LoginController.cs",
               "RelativeToolTip": "Controllers\\LoginController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACwAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAADEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-29T04:27:39.261Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "TaskController.cs",
               "DocumentMoniker": "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\Controllers\\TaskController.cs",
               "RelativeDocumentMoniker": "Controllers\\TaskController.cs",
@@ -107,12 +111,11 @@
               "RelativeToolTip": "Controllers\\TaskController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:46:38.156Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T07:46:38.156Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TaskAssignmentController.cs",
               "DocumentMoniker": "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\Controllers\\TaskAssignmentController.cs",
               "RelativeDocumentMoniker": "Controllers\\TaskAssignmentController.cs",
@@ -120,8 +123,7 @@
               "RelativeToolTip": "Controllers\\TaskAssignmentController.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:46:14.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T07:46:14.997Z"
             },
             {
               "$type": "Document",
@@ -133,8 +135,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAAAEgAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T15:45:30.295Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T15:45:30.295Z"
             },
             {
               "$type": "Document",
@@ -146,29 +147,24 @@
               "RelativeToolTip": "Models\\Employee.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:31:06.776Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T07:31:06.776Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "EmployeeController.cs",
               "DocumentMoniker": "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\Controllers\\EmployeeController.cs",
               "RelativeDocumentMoniker": "Controllers\\EmployeeController.cs",
               "ToolTip": "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\Controllers\\EmployeeController.cs",
               "RelativeToolTip": "Controllers\\EmployeeController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAFsAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAFsAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-28T07:32:32.43Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ProjectController.cs",
               "DocumentMoniker": "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\Controllers\\ProjectController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProjectController.cs",
@@ -176,8 +172,7 @@
               "RelativeToolTip": "Controllers\\ProjectController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:45:45.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T07:45:45.11Z"
             },
             {
               "$type": "Document",
@@ -189,8 +184,7 @@
               "RelativeToolTip": "DataAccessLayer\\AppDBContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:31:45.712Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T07:31:45.712Z"
             },
             {
               "$type": "Document",
@@ -202,8 +196,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-12-28T15:47:01.916Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T15:47:01.916Z"
             },
             {
               "$type": "Document",
@@ -215,8 +208,7 @@
               "RelativeToolTip": "Migrations\\20241228074000_createdatabase.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:40:00.982Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T07:40:00.982Z"
             },
             {
               "$type": "Document",
@@ -228,8 +220,7 @@
               "RelativeToolTip": "Models\\Project.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:36:02.142Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T07:36:02.142Z"
             }
           ]
         }
