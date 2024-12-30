@@ -75,7 +75,7 @@ namespace EmpTaskAPI.Controllers
 
 
         // PUT: api/Employee/5
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployee(int id, Employee updatedEmployee)
         {

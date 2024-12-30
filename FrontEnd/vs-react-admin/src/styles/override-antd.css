@@ -46,7 +46,6 @@
 }
 
 .ant-collapse-header {
-<<<<<<< HEAD
     color: rgba(0, 0, 0, 0.88) !important;
     font-weight: 600 !important;
     font-size: 16px !important;
@@ -57,9 +56,3 @@
         text-align: left !important;
     }
 }
-=======
-  color: rgba(0, 0, 0, 0.88) !important;
-  font-weight: 600 !important;
-  font-size: 16px !important;
-}
->>>>>>> f52a0c520f14ee0ffb2e1ee1f63c99acea2e8914

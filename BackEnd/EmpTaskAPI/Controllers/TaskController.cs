@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace EmpTaskAPI.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class TaskController : ControllerBase
@@ -17,19 +18,52 @@ namespace EmpTaskAPI.Controllers
         public TaskController(AppDBContext context) {
             this.context = context;
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Get() {
             var data = await context.Tasks.ToListAsync();
 
             return Ok(data);
         }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
+        //[Authorize(Roles = "Admin")]
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> Get(int id)
+        //{
 
-            var data = await context.Tasks.FirstOrDefaultAsync(x=>x.TaskId==id);
-            return Ok(data);
+        //    var data = await context.Tasks.FirstOrDefaultAsync(x=>x.TaskId==id);
+        //    return Ok(data);
+        //}
+        [Authorize(Roles = "Admin,User")]
+        [HttpGet("{employeeId}")]
+        public async Task<ActionResult> GetEmploeeById(int employeeId)
+        {
+            var loggedInEmployeeId = int.Parse(User.FindFirst("EmployeeId")?.Value);
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+
+            // Check if the user has access
+            if (userRole != "Admin" && loggedInEmployeeId != employeeId)
+            {
+                return Forbid(); // Return 403 Forbidden if the user is not authorized
+            }
+
+            // Retrieve the employee from the database
+         //   var assignTask = await context.AssignedTasks.FindAsync(employeeId);
+            var assignTask = await context.AssignedTasks.FirstOrDefaultAsync(x => x.EmployeeId == employeeId);
+            if (assignTask == null)
+            {
+                return NotFound(); // Return 404 if the employee does not exist
+            }
+            //var task = await context.Tasks.FindAsync(assignTask.TaskId);
+            var task = await context.Tasks.FirstOrDefaultAsync(x => x.TaskId == assignTask.TaskId);
+
+            if (task == null)
+            {
+                return NotFound(); // Return 404 if the employee does not exist
+            }
+
+            return Ok(task); // Return the employee details
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(Models.Task ts)
         {
@@ -37,6 +71,7 @@ namespace EmpTaskAPI.Controllers
             await context.SaveChangesAsync();
             return Ok(ts);
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteTask(int id)
         {
@@ -51,16 +86,34 @@ namespace EmpTaskAPI.Controllers
             return Ok(data);
 
         }
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, Models.Task uts)
+        [Authorize(Roles = "Admin")]
+        [HttpPut("{employeeId}")]
+        public async Task<IActionResult> UpdateUser(int employeeId, Models.Task uts)
         {
-            if (id == null)
+            var loggedInEmployeeId = int.Parse(User.FindFirst("EmployeeId")?.Value);
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+
+            // Check if the user has access
+            if (userRole != "Admin" && loggedInEmployeeId != employeeId)
+            {
+                return Forbid(); // Return 403 Forbidden if the user is not authorized
+            }
+            if (employeeId == null)
             {
                 return BadRequest();
             }
-            var task = await context.Tasks.FirstOrDefaultAsync(x => x.TaskId == id);
+            var assignTask = await context.AssignedTasks.FirstOrDefaultAsync(x => x.EmployeeId == employeeId);
+            if (assignTask == null)
+            {
+                return NotFound(); // Return 404 if the employee does not exist
+            }
+            //var task = await context.Tasks.FindAsync(assignTask.TaskId);
+            var task = await context.Tasks.FirstOrDefaultAsync(x => x.TaskId == assignTask.TaskId);
+
             if (task == null)
-                return NotFound("Task Data not found.");
+            {
+                return NotFound(); // Return 404 if the employee does not exist
+            }
 
             task.Status =uts.Status;
             task.SubmitDate = uts.SubmitDate;

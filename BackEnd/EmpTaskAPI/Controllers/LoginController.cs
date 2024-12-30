@@ -27,7 +27,7 @@ namespace EmpTaskAPI.Controllers
         {
             // Authenticate the user
             var data = _context.Employees
-                .FirstOrDefault(e => e.Name.Equals(employee.Name) && e.Password.Equals(employee.Password));
+                .FirstOrDefault(e => e.EmployeeId.Equals(employee.EmployeeId) && e.Password.Equals(employee.Password));
 
             if (data == null)
             {
@@ -55,14 +55,12 @@ namespace EmpTaskAPI.Controllers
             // Define claims for the token
             var claims = new List<Claim>
             {
-<<<<<<< HEAD
+
                 new Claim(ClaimTypes.Name, emp.Name),
                 new Claim(ClaimTypes.Role, emp.Role), // Role-based claim
                 new Claim("EmployeeId", emp.EmployeeId.ToString()) // Custom claim for Employee ID
-=======
-                new Claim(ClaimTypes.Name, emp.Name.ToString()),
-                new Claim(ClaimTypes.Role, emp.Role) // Add role claim
->>>>>>> 1fdfae1d9510441a507371aa7f0fae75b4af260d
+
+               
             };
 
             // Create the token
