@@ -99,8 +99,10 @@ namespace EmpTaskAPI.Controllers
 
                 if (employee == null)
                     return NotFound("Project Data not found.");
-
-                employee.Password = updatedEmployee.Password;
+                var salt = PasswordHasher.GenerateSalt();
+                var hashedPassword = PasswordHasher.HashPassword(updatedEmployee.Password, salt);
+                employee.Password = hashedPassword;
+                employee.Salt = salt;
                 employee.Name = updatedEmployee.Name;
                 employee.Email = updatedEmployee.Email;
                 employee.Stack = updatedEmployee.Stack;
