@@ -11,6 +11,9 @@ namespace EmpTaskAPI.Models
         public string Password { get; set; }
 
         [Required]
+        public string Salt { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         [Required]

@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using EmpTaskAPI.DataAccessLayer;
+using EmpTaskAPI.HashPassword;
 using EmpTaskAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -51,7 +52,6 @@ namespace EmpTaskAPI.Controllers
             {
                 return Forbid(); // Return 403 Forbidden if the user is not authorized
             }
-
             // Retrieve the employee from the database
             var employee = await context.Employees.FindAsync(employeeId);
 
@@ -67,9 +67,21 @@ namespace EmpTaskAPI.Controllers
         public async Task<ActionResult> PostEmployee(Employee employee)
         {
 
+            var salt = PasswordHasher.GenerateSalt();
+
+            // Hash the employee's password
+            var hashedPassword = PasswordHasher.HashPassword(employee.Password, salt);
+
+            // Update the employee object
+            employee.Password = hashedPassword; // Store the hashed password
+            employee.Role = employee.Role ?? "Employee"; // Default role if none provided
+            employee.Salt = salt; // Store the salt for later password verification (you need to add this field to the Employee model)
+
+            // Save the employee to the database
             context.Employees.Add(employee);
             await context.SaveChangesAsync();
-            return Ok("Done");
+
+            return Ok("Employee added successfully");
         }
 
 
