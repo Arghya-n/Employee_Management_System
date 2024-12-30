@@ -15,7 +15,7 @@ const TaskAssignment = () => {
       >
         {/* Button Section */}
         <Row justify="end" gutter={[16, 16]}>
-          <Col xs={24} sm={12} md={8} lg={6}>
+          <Col xs={24} sm={12} md={8}>
             <Link to={"/taskAssignment/create"}>
               <Button type="primary" icon={<PlusCircleOutlined />} block>
                 Create Assignment
