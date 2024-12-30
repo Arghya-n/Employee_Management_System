@@ -1,9 +1,13 @@
-import { Card, Col, Form, Input, Row, Tag } from 'antd';
-import { useAppSelector } from '@/store';
+import { Card, Col, Form, Input, Row, Tag } from "antd";
+import { useAppSelector } from "@/store";
+import { useState } from "react";
+import { LockOutlined, UnlockOutlined } from "@ant-design/icons";
 
 const UserDetails = () => {
   const user = useAppSelector((state) => state.user);
-  
+
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
   return (
     <Card title="Information">
       <Form layout="vertical">
@@ -22,18 +26,10 @@ const UserDetails = () => {
             <Form.Item label="Password">
               <Input.Password
                 value={user.password}
-                visibilityToggle
-                iconRender={(visible) =>
-                  visible ? (
-                    <span role="img" aria-label="hide">
-                      👁️
-                    </span>
-                  ) : (
-                    <span role="img" aria-label="show">
-                      👁️‍🗨️
-                    </span>
-                  )
-                }
+                visibilityToggle={{
+                  visible: passwordVisible,
+                  onVisibleChange: setPasswordVisible,
+                }}
               />
             </Form.Item>
           </Col>
@@ -47,19 +43,13 @@ const UserDetails = () => {
               <Input value={user.workingStack} />
             </Form.Item>
           </Col>
-          <Col span={12}>
-            <Form.Item label="Role">
-              <Input value={user.role} />
-            </Form.Item>
-          </Col>
-
-
-          
         </Row>
         <Row gutter={24}>
           <Col span={12}>
             <Form.Item label="Status">
-              <Tag key='status' color="geekblue">{user.role}</Tag>
+              <Tag key="status" color="geekblue">
+                {user.role}
+              </Tag>
             </Form.Item>
           </Col>
         </Row>

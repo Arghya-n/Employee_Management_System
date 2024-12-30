@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Attachment\\BackEnd\\EmpTaskAPI\\EmpTaskAPI.csproj": {}
+    "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\EmpTaskAPI.csproj": {}
   },
   "projects": {
-    "E:\\Attachment\\BackEnd\\EmpTaskAPI\\EmpTaskAPI.csproj": {
+    "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\EmpTaskAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\EmpTaskAPI.csproj",
+        "projectUniqueName": "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\EmpTaskAPI.csproj",
         "projectName": "EmpTaskAPI",
-        "projectPath": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\EmpTaskAPI.csproj",
-        "packagesPath": "C:\\Users\\Nazmus Sakib\\.nuget\\packages\\",
-        "outputPath": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\obj\\",
+        "projectPath": "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\EmpTaskAPI.csproj",
+        "packagesPath": "C:\\Users\\SHIKHON\\.nuget\\packages\\",
+        "outputPath": "D:\\New folder (2)\\Attachment_vivasoft\\Employee_Management_System\\BackEnd\\EmpTaskAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Nazmus Sakib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SHIKHON\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,8 +44,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net6.0": {
@@ -106,6 +106,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.35, 6.0.35]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.35, 6.0.35]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.35, 6.0.35]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.35, 6.0.35]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -114,7 +132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

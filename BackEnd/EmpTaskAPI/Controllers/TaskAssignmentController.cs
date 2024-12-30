@@ -33,20 +33,21 @@ namespace EmpTaskAPI.Controllers
             return Ok(ta);
         }
         [Authorize(Roles = "Admin,User")]
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetTaskAssignmentById(int id)
+        [HttpGet("{employeeId}")]
+        public async Task<IActionResult> GetTaskAssignmentById(int employeeId)
         {
             var loggedInEmployeeId = int.Parse(User.FindFirst("EmployeeId")?.Value);
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
 
-            var data = await context.AssignedTasks.FirstOrDefaultAsync(x => x.Id == id);
-            
+             var data = await context.AssignedTasks.FirstOrDefaultAsync(x => x.EmployeeId == employeeId);
+           // var data = await context.AssignedTasks.FindAsync(employeeId);
+
             if (data == null)
             {
                 return NotFound();
             }
 
-            if (userRole != "Admin" && data.EmployeeId != loggedInEmployeeId)
+            if (userRole != "Admin" && employeeId != loggedInEmployeeId)
             {
                 return Unauthorized();
             }
