@@ -86,7 +86,7 @@ namespace EmpTaskAPI.Controllers
             return Ok(data);
 
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User")]
         [HttpPut("{employeeId}")]
         public async Task<IActionResult> UpdateUser(int employeeId, Models.Task uts)
         {

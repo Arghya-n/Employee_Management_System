@@ -28,18 +28,14 @@ namespace EmpTaskAPI.Controllers
         public async Task<IActionResult> GetToken(Employee emp)
         {
             // Authenticate the user
-<<<<<<< HEAD
+
             var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Email == emp.Email);
             if (employee == null)
-=======
-            var data = _context.Employees
-                .FirstOrDefault(e => e.EmployeeId.Equals(employee.EmployeeId) && e.Password.Equals(employee.Password));
-
-            if (data == null)
->>>>>>> 0bfd6e34cda3b962c158ba7e0c9974b4bae6668d
             {
-                return Unauthorized("Invalid email");
+                return BadRequest("Invalid Email");
             }
+
+            
 
             var isValidPassword = PasswordHasher.HashPassword(emp.Password, employee.Salt) == employee.Password;
 
@@ -74,10 +70,7 @@ namespace EmpTaskAPI.Controllers
                 new Claim(ClaimTypes.Role, emp.Role), // Role-based claim
                 new Claim("EmployeeId", emp.EmployeeId.ToString()) // Custom claim for Employee ID
 
-<<<<<<< HEAD
-=======
-               
->>>>>>> 0bfd6e34cda3b962c158ba7e0c9974b4bae6668d
+
             };
 
             // Create the token
