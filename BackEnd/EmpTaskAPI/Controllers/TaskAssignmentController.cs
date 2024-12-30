@@ -87,7 +87,7 @@ namespace EmpTaskAPI.Controllers
 
             }
             context.AssignedTasks.Remove(data);
-            context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
             return Ok(data);
         }

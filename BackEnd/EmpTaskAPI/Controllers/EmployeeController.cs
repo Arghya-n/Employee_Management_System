@@ -19,9 +19,10 @@ namespace EmpTaskAPI.Controllers
         {
             this.context = context;
         }
+
         [Authorize(Roles = "Admin")]
-       
         [HttpGet]
+        
         public async Task<ActionResult> GetEmployees()
         {
             // Retrieves all projects with their related tasks
@@ -127,7 +128,7 @@ namespace EmpTaskAPI.Controllers
                 return NotFound();
             }
             context.Employees.Remove(data);
-            context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             return Ok(data);
 
         }

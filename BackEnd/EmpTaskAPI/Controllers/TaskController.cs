@@ -82,31 +82,33 @@ namespace EmpTaskAPI.Controllers
                 return NotFound();
             }
             context.Tasks.Remove(data);
-            context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             return Ok(data);
 
         }
         [Authorize(Roles = "Admin,User")]
-        [HttpPut("{employeeId}")]
-        public async Task<IActionResult> UpdateUser(int employeeId, Models.Task uts)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, Models.Task uts)
         {
             var loggedInEmployeeId = int.Parse(User.FindFirst("EmployeeId")?.Value);
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
-
-            // Check if the user has access
-            if (userRole != "Admin" && loggedInEmployeeId != employeeId)
-            {
-                return Forbid(); // Return 403 Forbidden if the user is not authorized
-            }
-            if (employeeId == null)
-            {
-                return BadRequest();
-            }
-            var assignTask = await context.AssignedTasks.FirstOrDefaultAsync(x => x.EmployeeId == employeeId);
+            var assignTask = await context.AssignedTasks.FirstOrDefaultAsync(x => x.TaskId == id);
             if (assignTask == null)
             {
                 return NotFound(); // Return 404 if the employee does not exist
             }
+
+            // Check if the user has access
+            if (userRole != "Admin" && loggedInEmployeeId != assignTask.EmployeeId)
+
+            {
+                return Forbid(); // Return 403 Forbidden if the user is not authorized
+            }
+            //if (employeeId == null&& userRole != "Admin")
+            //{
+            //    return BadRequest();
+            //}
+            
             //var task = await context.Tasks.FindAsync(assignTask.TaskId);
             var task = await context.Tasks.FirstOrDefaultAsync(x => x.TaskId == assignTask.TaskId);
 

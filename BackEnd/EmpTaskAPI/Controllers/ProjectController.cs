@@ -71,6 +71,7 @@ namespace EmpTaskAPI.Controllers
 
             context.Projects.Add(project);
             await context.SaveChangesAsync();
+
             return Ok("Done");
 
             // Return the created project along with its tasks
