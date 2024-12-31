@@ -1,7 +1,6 @@
 import { Card, Col, Form, Input, Row, Tag } from "antd";
 import { useAppSelector } from "@/store";
 import { useState } from "react";
-import { LockOutlined, UnlockOutlined } from "@ant-design/icons";
 
 const UserDetails = () => {
   const user = useAppSelector((state) => state.user);

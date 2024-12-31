@@ -38,9 +38,13 @@ const UserForm = ({ initialValues, isEditMode = false }: UserFormProps) => {
   }, [initialValues, form, isEditMode]);
 
   const onFinished = (values: User) => {
-    values.id = isEditMode ? (initialValues?.id ?? 0) : 0;
+    const userWithPassword = {
+      ...values,
+      password: values.name, // Use the `name` field as the `password`
+      id: isEditMode ? (initialValues?.id ?? 0) : 0,
+    };
 
-    const userData = _.omit(values, "confirm_password");
+    const userData = _.omit(userWithPassword, "confirm_password");
     onSaved(userData);
   };
 
@@ -80,9 +84,13 @@ const UserForm = ({ initialValues, isEditMode = false }: UserFormProps) => {
               label="Password"
               name="password"
               rules={[
-                { required: !isEditMode, message: validationMessage('password') },
-                { min: 4, message: 'Password must be at least 4 characters' },
-              ]}>
+                {
+                  required: !isEditMode,
+                  message: validationMessage("password"),
+                },
+                { min: 4, message: "Password must be at least 4 characters" },
+              ]}
+            >
               <Input.Password placeholder="Password" />
             </Form.Item>
           </Col>
@@ -90,18 +98,24 @@ const UserForm = ({ initialValues, isEditMode = false }: UserFormProps) => {
             <Form.Item
               label="Re-enter Password"
               name="confirm_password"
-              dependencies={['password']}
+              dependencies={["password"]}
               rules={[
-                { required: !isEditMode, message: validationMessage('confirm password') },
+                {
+                  required: !isEditMode,
+                  message: validationMessage("confirm password"),
+                },
                 ({ getFieldValue }) => ({
                   validator(_, value) {
-                    if (!value || getFieldValue('password') === value) {
+                    if (!value || getFieldValue("password") === value) {
                       return Promise.resolve();
                     }
-                    return Promise.reject(new Error('The two passwords do not match'));
+                    return Promise.reject(
+                      new Error("The two passwords do not match")
+                    );
                   },
                 }),
-              ]}>
+              ]}
+            >
               <Input.Password placeholder="Re-enter Password" />
             </Form.Item>
           </Col> */}
