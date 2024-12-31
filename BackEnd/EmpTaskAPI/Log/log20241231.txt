@@ -65,3 +65,8 @@ System.InvalidOperationException: An exception was thrown while attempting to ev
 2024-12-31 12:13:12.268 +06:00 [INF] Logging is working fine.
 2024-12-31 12:14:58.733 +06:00 [INF] GetProjectById endpoint called by user: Mubasshir for employeeId: 6.
 2024-12-31 12:14:58.866 +06:00 [INF] Successfully retrieved project for employeeId: 6.
+2024-12-31 12:28:34.062 +06:00 [INF] Logging is working fine.
+2024-12-31 12:30:21.486 +06:00 [INF] Fetching all tasks
+2024-12-31 12:30:21.661 +06:00 [INF] Fetched 1 tasks
+2024-12-31 12:30:36.248 +06:00 [INF] Fetching task for employee 6
+2024-12-31 12:30:36.307 +06:00 [INF] Task found for employee 6: 1
