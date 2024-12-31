@@ -17,6 +17,7 @@ namespace EmpTaskAPI.Models
         public string Name { get; set; }
 
         [Required]
+        
         public string Email { get; set; }
         
         public string? RefreshToken { get; set; }

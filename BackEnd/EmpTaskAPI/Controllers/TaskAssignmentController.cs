@@ -21,6 +21,13 @@ namespace EmpTaskAPI.Controllers
             this.context = context;
             _logger = logger;
         }
+
+
+        /// <summary>
+        /// Retrieves a list of all assigned tasks.
+        /// Requires Admin role.
+        /// </summary>
+        /// <returns>A list of assigned tasks.</returns>
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -31,6 +38,15 @@ namespace EmpTaskAPI.Controllers
             return Ok(data);
         }
 
+
+
+        /// <summary>
+        /// Creates a new task assignment.
+        /// Requires Admin role.
+        /// </summary>
+        /// <param name="ta">The task assignment object containing details of the task and employee.</param>
+        /// <returns>The created task assignment object.</returns>
+        
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(TaskAssignment ta)
@@ -42,6 +58,12 @@ namespace EmpTaskAPI.Controllers
             return Ok(ta);
         }
 
+        /// <summary>
+        /// Retrieves the task assignment details for a specific employee.
+        /// Requires Admin or User role.
+        /// </summary>
+        /// <param name="employeeId">The ID of the employee.</param>
+        /// <returns>The task assignment details if found and authorized, otherwise Unauthorized or NotFound result.</returns>
         [Authorize(Roles = "Admin,User")]
         [HttpGet("{employeeId}")]
         public async Task<IActionResult> GetTaskAssignmentById(int employeeId)
@@ -68,6 +90,14 @@ namespace EmpTaskAPI.Controllers
             return Ok(data);
         }
 
+        /// <summary>
+        /// Updates a specific task assignment.
+        /// Requires Admin role.
+        /// </summary>
+        /// <param name="id">The ID of the task assignment to update.</param>
+        /// <param name="ta">The updated task assignment object.</param>
+        /// <returns>The updated task assignment object if successful, otherwise BadRequest or NotFound result.</returns>
+
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> AssignTask(int id, TaskAssignment ta)
@@ -93,6 +123,13 @@ namespace EmpTaskAPI.Controllers
             return Ok(data);
         }
 
+
+        /// <summary>
+        /// Deletes a specific task assignment.
+        /// Requires Admin role.
+        /// </summary>
+        /// <param name="id">The ID of the task assignment to delete.</param>
+        /// <returns>The deleted task assignment object if successful, otherwise NotFound result.</returns>
         [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteAssignment(int id)

@@ -22,7 +22,12 @@ namespace EmpTaskAPI.Controllers
             _logger = logger;
         }
 
-        [Authorize(Roles = "Admin")]
+        /// <summary>
+        /// Retrieves a list of all projects.
+        /// </summary>
+        /// <returns>A list of projects if found, otherwise a NotFound result.</returns>
+
+        //[Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult> GetProjects()
         {
@@ -39,6 +44,13 @@ namespace EmpTaskAPI.Controllers
             return Ok(data);
         }
 
+
+        /// <summary>
+        /// Retrieves the project details for a specific employee.
+        /// Requires Admin or User role.
+        /// </summary>
+        /// <param name="employeeId">The ID of the employee.</param>
+        /// <returns>The project details if found and authorized, otherwise Unauthorized or NotFound result.</returns>
         [Authorize(Roles = "Admin,User")]
         [HttpGet("{employeeId}")]
         public async Task<ActionResult> GetProjectById(int employeeId)
@@ -67,6 +79,13 @@ namespace EmpTaskAPI.Controllers
             return Ok(projectf);
         }
 
+
+        /// <summary>
+        /// Creates a new project.
+        /// Requires Admin role.
+        /// </summary>
+        /// <param name="project">The project object containing project details.</param>
+        /// <returns>Success message if the project is created successfully.</returns>
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult> PostProject(Project project)
@@ -80,6 +99,14 @@ namespace EmpTaskAPI.Controllers
             return Ok("Done");
         }
 
+
+        /// <summary>
+        /// Updates an existing project.
+        /// Requires Admin role.
+        /// </summary>
+        /// <param name="id">The ID of the project to update.</param>
+        /// <param name="updatedProject">The updated project object containing new details.</param>
+        /// <returns>The updated project object if successful, otherwise an appropriate error result.</returns>
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, Project updatedProject)
@@ -110,6 +137,13 @@ namespace EmpTaskAPI.Controllers
             return Ok(project);
         }
 
+
+        /// <summary>
+        /// Deletes a specific project.
+        /// Requires Admin role.
+        /// </summary>
+        /// <param name="id">The ID of the project to delete.</param>
+        /// <returns>Success message if the project is deleted successfully, otherwise an appropriate error result.</returns>
         [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteProject(int id)
@@ -137,6 +171,13 @@ namespace EmpTaskAPI.Controllers
             _logger.LogInformation("Successfully deleted project with projectId: {ProjectId}.", id);
             return Ok("Successfully Deleted!");
         }
+
+
+        /// <summary>
+        /// Deletes all projects and related tasks.
+        /// Requires Admin role.
+        /// </summary>
+        /// <returns>Success message if all projects are deleted successfully, otherwise an appropriate error result.</returns>
 
         [Authorize(Roles = "Admin")]
         [HttpDelete("all")]

@@ -21,6 +21,13 @@ namespace EmpTaskAPI.Controllers
             this.context = context;
             _logger = logger;
         }
+
+        /// <summary>
+        /// Retrieves a list of all tasks.
+        /// Requires Admin role.
+        /// </summary>
+        /// <returns>A list of tasks.</returns>
+
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -30,6 +37,14 @@ namespace EmpTaskAPI.Controllers
             _logger.LogInformation("Fetched {count} tasks", data.Count);
             return Ok(data);
         }
+
+
+        /// <summary>
+        /// Retrieves the task details for a specific employee.
+        /// Requires Admin or User role.
+        /// </summary>
+        /// <param name="employeeId">The ID of the employee.</param>
+        /// <returns>The task details if found and authorized, otherwise Forbidden or NotFound result.</returns>
 
         [Authorize(Roles = "Admin,User")]
         [HttpGet("{employeeId}")]
@@ -63,6 +78,14 @@ namespace EmpTaskAPI.Controllers
             return Ok(task);
         }
 
+
+        /// <summary>
+        /// Creates a new task.
+        /// Requires Admin role.
+        /// </summary>
+        /// <param name="ts">The task object containing task details.</param>
+        /// <returns>The created task object.</returns>
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(Models.Task ts)
@@ -73,6 +96,14 @@ namespace EmpTaskAPI.Controllers
             _logger.LogInformation("Task created with ID {taskId}", ts.TaskId);
             return Ok(ts);
         }
+
+
+        /// <summary>
+        /// Deletes a specific task.
+        /// Requires Admin role.
+        /// </summary>
+        /// <param name="id">The ID of the task to delete.</param>
+        /// <returns>The deleted task object if successful, otherwise NotFound result.</returns>
 
         [Authorize(Roles = "Admin")]
         [HttpDelete]
@@ -90,6 +121,16 @@ namespace EmpTaskAPI.Controllers
             _logger.LogInformation("Task with ID {taskId} deleted", id);
             return Ok(data);
         }
+
+
+
+        /// <summary>
+        /// Updates the details of a specific task.
+        /// Requires Admin or User role.
+        /// </summary>
+        /// <param name="id">The ID of the task to update.</param>
+        /// <param name="uts">The updated task object containing new details.</param>
+        /// <returns>The updated task object if successful, otherwise NotFound or Forbidden result.</returns>
 
         [Authorize(Roles = "Admin,User")]
         [HttpPut("{id}")]

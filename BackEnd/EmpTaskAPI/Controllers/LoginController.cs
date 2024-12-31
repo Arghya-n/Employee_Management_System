@@ -26,7 +26,7 @@ namespace EmpTaskAPI.Controllers
         }
 
         [HttpPost]
-        [HttpPost]
+    
         public async Task<IActionResult> GetToken(Employee emp)
         {
             var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Email == emp.Email);

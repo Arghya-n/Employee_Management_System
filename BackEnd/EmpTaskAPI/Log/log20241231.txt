@@ -75,3 +75,105 @@ System.InvalidOperationException: An exception was thrown while attempting to ev
 2024-12-31 12:44:52.822 +06:00 [INF] Fetched 1 assigned tasks
 2024-12-31 12:45:06.608 +06:00 [INF] Fetching task assignment for employee 6
 2024-12-31 12:45:06.694 +06:00 [INF] Task assignment found for employee 6: 1
+2024-12-31 13:37:53.960 +06:00 [INF] Logging is working fine.
+2024-12-31 13:39:37.305 +06:00 [INF] GetEmployees endpoint called by user: NewEmployee
+2024-12-31 13:39:37.402 +06:00 [INF] Successfully retrieved 6 employees from the database.
+2024-12-31 13:40:02.996 +06:00 [INF] GetEmployeeById endpoint called by user: NewEmployee, requesting employeeId: 5
+2024-12-31 13:40:03.234 +06:00 [INF] Successfully retrieved employee with Id: 5.
+2024-12-31 13:41:37.396 +06:00 [INF] UpdateEmployee endpoint called by user: NewEmployee to update employee with Id: 5
+2024-12-31 13:41:37.443 +06:00 [INF] Successfully updated employee with Id: 5.
+2024-12-31 13:41:59.267 +06:00 [INF] UpdateEmployee endpoint called by user: NewEmployee to update employee with Id: 5
+2024-12-31 13:41:59.297 +06:00 [INF] Successfully updated employee with Id: 5.
+2024-12-31 13:46:31.696 +06:00 [INF] Logging is working fine.
+2024-12-31 13:48:39.926 +06:00 [INF] GetEmployees endpoint called by user: NewEmployee
+2024-12-31 13:48:40.013 +06:00 [INF] Successfully retrieved 6 employees from the database.
+2024-12-31 14:15:38.702 +06:00 [INF] Logging is working fine.
+2024-12-31 14:16:02.980 +06:00 [INF] Logging is working fine.
+2024-12-31 14:16:06.057 +06:00 [ERR] Failed executing DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Employees_Email] ON [Employees] ([Email]);
+2024-12-31 14:17:04.106 +06:00 [INF] Logging is working fine.
+2024-12-31 15:02:00.983 +06:00 [INF] Logging is working fine.
+2024-12-31 15:02:28.504 +06:00 [INF] Logging is working fine.
+2024-12-31 15:13:55.471 +06:00 [INF] Logging is working fine.
+2024-12-31 15:21:36.964 +06:00 [INF] Logging is working fine.
+2024-12-31 15:23:43.393 +06:00 [INF] GetEmployees endpoint called by user: NewEmployee
+2024-12-31 15:23:43.463 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:24:17.534 +06:00 [INF] Logging is working fine.
+2024-12-31 15:26:05.676 +06:00 [INF] Logging is working fine.
+2024-12-31 15:26:15.645 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:26:20.104 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:26:20.195 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:26:20.219 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:26:52.859 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:26:53.020 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:27:40.531 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:27:40.592 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:30:46.910 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:30:46.930 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:30:46.963 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:30:46.978 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:31:59.350 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:31:59.374 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:31:59.408 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:31:59.415 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:32:21.947 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:32:21.955 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:32:21.970 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:32:21.978 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:34:48.175 +06:00 [INF] Fetching all assigned tasks
+2024-12-31 15:34:48.219 +06:00 [INF] Fetched 2 assigned tasks
+2024-12-31 15:35:59.532 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:35:59.549 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:35:59.599 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:35:59.608 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:37:00.199 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:37:00.223 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:37:00.271 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:37:00.280 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:37:39.906 +06:00 [INF] Logging is working fine.
+2024-12-31 15:37:45.946 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:37:51.167 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:37:51.314 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:37:51.341 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:37:52.854 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:37:53.043 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:37:53.115 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:37:53.121 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:37:54.322 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:37:54.328 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:39:23.064 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:39:23.099 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:39:23.109 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:39:23.115 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:40:05.465 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:40:05.485 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:40:05.510 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:40:05.516 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:43:48.507 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:43:48.520 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:43:48.563 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:43:48.569 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:44:14.817 +06:00 [INF] Logging is working fine.
+2024-12-31 15:44:24.034 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:44:24.029 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:45:08.952 +06:00 [INF] Logging is working fine.
+2024-12-31 15:45:25.200 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:45:28.128 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:45:29.866 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:45:29.866 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:45:30.071 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:45:30.240 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:45:49.389 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:45:49.409 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:45:56.393 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:45:56.406 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:51:25.947 +06:00 [INF] Logging is working fine.
+2024-12-31 15:53:27.741 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:53:35.980 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:53:36.111 +06:00 [INF] GetProjects endpoint called.
+2024-12-31 15:53:36.203 +06:00 [INF] Successfully retrieved all projects.
+2024-12-31 15:53:50.085 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:53:50.363 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:53:50.403 +06:00 [INF] GetEmployees endpoint called by user: null
+2024-12-31 15:53:50.412 +06:00 [INF] Successfully retrieved 5 employees from the database.
+2024-12-31 15:57:33.429 +06:00 [INF] Logging is working fine.

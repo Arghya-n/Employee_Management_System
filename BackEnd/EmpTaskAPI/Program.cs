@@ -8,6 +8,7 @@ using System.Text;
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Compact;
+using System.Reflection;
 //using System.Text.Json.Serializatio;
 
 Log.Logger = new LoggerConfiguration()
@@ -57,7 +58,10 @@ builder.Services.AddSwaggerGen(
         }
     });
          options.OperationFilter<SecurityRequirementsOperationFilter>(); //Matt Frear
+         options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
      }
+
+     
 );
 
 builder.Services.AddSwaggerGen();
