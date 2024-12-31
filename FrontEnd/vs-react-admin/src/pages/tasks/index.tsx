@@ -13,7 +13,7 @@ const Tasks = () => {
         subTitle="Enable precise audience targeting using RTG users for effective campaign strategy and enhanced engagement"
       >
         <Row justify="end" gutter={[16, 16]}>
-          <Col xs={24} sm={12} md={8} lg={6}>
+          <Col xs={24} sm={12} md={8}>
             <Link to={"/tasks/create"}>
               <Button type="primary" icon={<PlusCircleOutlined />} block>
                 Create Project

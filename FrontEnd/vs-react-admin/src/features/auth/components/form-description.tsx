@@ -13,7 +13,7 @@ const formDetailsMap = {
     title: 'Sign In',
     description: (
       <>
-        Welcome back to <b>React Admin</b>
+        Welcome back to <b>Vivasoft Employee System</b>
         <br />
         Please enter your details below to sign in.
       </>
