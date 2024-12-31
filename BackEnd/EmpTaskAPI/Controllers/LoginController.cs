@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace EmpTaskAPI.Controllers
@@ -25,32 +26,36 @@ namespace EmpTaskAPI.Controllers
         }
 
         [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> GetToken(Employee emp)
         {
-            // Authenticate the user
-
             var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Email == emp.Email);
             if (employee == null)
             {
                 return BadRequest("Invalid Email");
             }
 
-            
-
             var isValidPassword = PasswordHasher.HashPassword(emp.Password, employee.Salt) == employee.Password;
-
             if (!isValidPassword)
             {
                 return Unauthorized("Invalid email or password");
             }
 
-            // Generate a JWT token
+            // Generate access token
             string token = GenerateToken(employee);
 
-            // Return the token along with EmployeeId and Role
+            // Generate refresh token
+            string refreshToken = GenerateRefreshToken();
+            employee.RefreshToken = refreshToken;
+            employee.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7); // Set refresh token validity for 7 days
+
+            // Update the employee in the database
+            await _context.SaveChangesAsync();
+
             return Ok(new
             {
                 Token = token,
+                RefreshToken = refreshToken,
                 EmployeeId = employee.EmployeeId,
                 Role = employee.Role
             });
@@ -84,6 +89,18 @@ namespace EmpTaskAPI.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+        
+        private string GenerateRefreshToken()
+        {
+            var randomNumber = new byte[32];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+            }
+            return Convert.ToBase64String(randomNumber);
+        }
+        
+
 
 
     }

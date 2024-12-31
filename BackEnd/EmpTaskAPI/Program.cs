@@ -24,7 +24,20 @@ builder.Services.AddSwaggerGen(
              Name = "Authorization",
              Type = SecuritySchemeType.ApiKey
          });
-
+         options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
          options.OperationFilter<SecurityRequirementsOperationFilter>(); //Matt Frear
      }
 );

@@ -18,6 +18,9 @@ namespace EmpTaskAPI.Models
 
         [Required]
         public string Email { get; set; }
+        
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiry {get; set;}
 
         [Required]
         public string Stack { get; set; }

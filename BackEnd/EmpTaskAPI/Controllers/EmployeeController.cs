@@ -19,7 +19,7 @@ namespace EmpTaskAPI.Controllers
         {
             this.context = context;
         }
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
        
         [HttpGet]
         public async Task<ActionResult> GetEmployees()
