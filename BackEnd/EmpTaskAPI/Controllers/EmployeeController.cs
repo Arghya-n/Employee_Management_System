@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using EmpTaskAPI.DataAccessLayer;
+using EmpTaskAPI.HashPassword;
 using EmpTaskAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +19,10 @@ namespace EmpTaskAPI.Controllers
         {
             this.context = context;
         }
+
         [Authorize(Roles = "Admin")]
-       
         [HttpGet]
+        
         public async Task<ActionResult> GetEmployees()
         {
             // Retrieves all projects with their related tasks
@@ -51,7 +53,6 @@ namespace EmpTaskAPI.Controllers
             {
                 return Forbid(); // Return 403 Forbidden if the user is not authorized
             }
-
             // Retrieve the employee from the database
             var employee = await context.Employees.FindAsync(employeeId);
 
@@ -67,15 +68,27 @@ namespace EmpTaskAPI.Controllers
         public async Task<ActionResult> PostEmployee(Employee employee)
         {
 
+            var salt = PasswordHasher.GenerateSalt();
+
+            // Hash the employee's password
+            var hashedPassword = PasswordHasher.HashPassword(employee.Password, salt);
+
+            // Update the employee object
+            employee.Password = hashedPassword; // Store the hashed password
+            employee.Role = employee.Role ?? "Employee"; // Default role if none provided
+            employee.Salt = salt; // Store the salt for later password verification (you need to add this field to the Employee model)
+
+            // Save the employee to the database
             context.Employees.Add(employee);
             await context.SaveChangesAsync();
-            return Ok("Done");
+
+            return Ok("Employee added successfully");
         }
 
 
 
         // PUT: api/Employee/5
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployee(int id, Employee updatedEmployee)
         {
@@ -86,8 +99,10 @@ namespace EmpTaskAPI.Controllers
 
                 if (employee == null)
                     return NotFound("Project Data not found.");
-
-                employee.Password = updatedEmployee.Password;
+                var salt = PasswordHasher.GenerateSalt();
+                var hashedPassword = PasswordHasher.HashPassword(updatedEmployee.Password, salt);
+                employee.Password = hashedPassword;
+                employee.Salt = salt;
                 employee.Name = updatedEmployee.Name;
                 employee.Email = updatedEmployee.Email;
                 employee.Stack = updatedEmployee.Stack;
@@ -115,7 +130,7 @@ namespace EmpTaskAPI.Controllers
                 return NotFound();
             }
             context.Employees.Remove(data);
-            context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             return Ok(data);
 
         }

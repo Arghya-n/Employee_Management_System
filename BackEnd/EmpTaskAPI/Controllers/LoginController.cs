@@ -1,6 +1,8 @@
 ﻿using EmpTaskAPI.DataAccessLayer;
+using EmpTaskAPI.HashPassword;
 using EmpTaskAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -23,26 +25,34 @@ namespace EmpTaskAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetToken(Employee employee)
+        public async Task<IActionResult> GetToken(Employee emp)
         {
             // Authenticate the user
-            var data = _context.Employees
-                .FirstOrDefault(e => e.Name.Equals(employee.Name) && e.Password.Equals(employee.Password));
 
-            if (data == null)
+            var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Email == emp.Email);
+            if (employee == null)
             {
-                return Unauthorized("Invalid Employee ID or Password.");
+                return BadRequest("Invalid Email");
+            }
+
+            
+
+            var isValidPassword = PasswordHasher.HashPassword(emp.Password, employee.Salt) == employee.Password;
+
+            if (!isValidPassword)
+            {
+                return Unauthorized("Invalid email or password");
             }
 
             // Generate a JWT token
-            string token = GenerateToken(data);
+            string token = GenerateToken(employee);
 
             // Return the token along with EmployeeId and Role
             return Ok(new
             {
                 Token = token,
-                EmployeeId = data.EmployeeId,
-                Role = data.Role
+                EmployeeId = employee.EmployeeId,
+                Role = employee.Role
             });
         }
 
@@ -55,14 +65,12 @@ namespace EmpTaskAPI.Controllers
             // Define claims for the token
             var claims = new List<Claim>
             {
-<<<<<<< HEAD
+
                 new Claim(ClaimTypes.Name, emp.Name),
                 new Claim(ClaimTypes.Role, emp.Role), // Role-based claim
                 new Claim("EmployeeId", emp.EmployeeId.ToString()) // Custom claim for Employee ID
-=======
-                new Claim(ClaimTypes.Name, emp.Name.ToString()),
-                new Claim(ClaimTypes.Role, emp.Role) // Add role claim
->>>>>>> 1fdfae1d9510441a507371aa7f0fae75b4af260d
+
+
             };
 
             // Create the token

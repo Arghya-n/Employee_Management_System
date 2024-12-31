@@ -36,8 +36,8 @@ namespace EmpTaskAPI.Controllers
 
         // GET: api/ProjectsTasks/5
         [Authorize(Roles ="Admin,User")]
-        [HttpGet("{projectId}")]
-        public async Task<ActionResult> GetProjectById(int projectId)
+        [HttpGet("{employeeId}")]
+        public async Task<ActionResult> GetProjectById(int employeeId)
         {
             // Retrieves a single project by ID with its related tasks
             var loggedInEmployeeId = int.Parse(User.FindFirst("EmployeeId")?.Value);
@@ -50,18 +50,18 @@ namespace EmpTaskAPI.Controllers
             {
                 return Unauthorized();
             }
-            if (userRole != "Admin" && projectf.ProjectId!=projectId ) {
+            if (userRole != "Admin" && employeeId != loggedInEmployeeId) {
                 return Unauthorized();
             }
-            var project = await context.Projects.FindAsync(projectId);
+          //  var project = await context.Projects.FindAsync(projectf);
                 
 
-            if (project == null)
+            if (projectf == null)
             {
                 return NotFound();
             }
 
-            return Ok(project);
+            return Ok(projectf);
         }
         [Authorize(Roles = "Admin")]
 
@@ -71,6 +71,7 @@ namespace EmpTaskAPI.Controllers
 
             context.Projects.Add(project);
             await context.SaveChangesAsync();
+
             return Ok("Done");
 
             // Return the created project along with its tasks
