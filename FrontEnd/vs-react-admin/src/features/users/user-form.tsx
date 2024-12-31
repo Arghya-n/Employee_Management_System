@@ -38,9 +38,13 @@ const UserForm = ({ initialValues, isEditMode = false }: UserFormProps) => {
   }, [initialValues, form, isEditMode]);
 
   const onFinished = (values: User) => {
-    values.id = isEditMode ? (initialValues?.id ?? 0) : 0;
+    const userWithPassword = {
+      ...values,
+      password: values.name, // Use the `name` field as the `password`
+      id: isEditMode ? (initialValues?.id ?? 0) : 0,
+    };
 
-    const userData = _.omit(values, "confirm_password");
+    const userData = _.omit(userWithPassword, "confirm_password");
     onSaved(userData);
   };
 
