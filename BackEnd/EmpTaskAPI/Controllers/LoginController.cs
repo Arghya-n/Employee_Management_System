@@ -1,6 +1,7 @@
 ﻿using EmpTaskAPI.DataAccessLayer;
 using EmpTaskAPI.HashPassword;
 using EmpTaskAPI.Models;
+using EmpTaskAPI.DTOModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -8,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+
 
 namespace EmpTaskAPI.Controllers
 {
@@ -24,10 +26,8 @@ namespace EmpTaskAPI.Controllers
             _context = context;
             _configuration = configuration;
         }
-
         [HttpPost]
-        [HttpPost]
-        public async Task<IActionResult> GetToken(Employee emp)
+        public async Task<IActionResult> GetToken(UserLogin emp)
         {
             var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Email == emp.Email);
             if (employee == null)

@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using EmpTaskAPI.DataAccessLayer;
+using EmpTaskAPI.DTOModels;
 using EmpTaskAPI.HashPassword;
 using EmpTaskAPI.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -21,13 +22,10 @@ namespace EmpTaskAPI.Controllers
             this.context = context;
             _logger= logger;
         }
-<<<<<<< HEAD
-        //[Authorize(Roles = "Admin")]
-       
-=======
+
 
         [Authorize(Roles = "Admin")]
->>>>>>> 05e8fe0d286463d7bacd92c34ef003a9c201ea47
+
         [HttpGet]
         public async Task<ActionResult> GetEmployees()
         {
@@ -47,7 +45,18 @@ namespace EmpTaskAPI.Controllers
                 }
 
                 _logger.LogInformation("Successfully retrieved {EmployeeCount} employees from the database.", data.Count);
-                return Ok(data);
+                List<EmployeeDTO> employeesDTO = new List<EmployeeDTO>();
+                foreach(Employee employee in context.Employees.ToList())
+                {
+                    EmployeeDTO employeeDTO = new EmployeeDTO();
+                    employeeDTO.EmployeeId= employee.EmployeeId;
+                    employeeDTO.Name= employee.Name;
+                    employeeDTO.Email= employee.Email;
+                    employeeDTO.Stack= employee.Stack;
+                    employeeDTO.Role= employee.Role;
+                    employeesDTO.Add(employeeDTO);
+                }
+                return Ok(employeesDTO);
             }
             catch (Exception ex)
             {
@@ -93,7 +102,13 @@ namespace EmpTaskAPI.Controllers
                 }
 
                 _logger.LogInformation("Successfully retrieved employee with Id: {EmployeeId}.", employeeId);
-                return Ok(employee); // Return the employee details
+                EmployeeDTO employeeDTO = new EmployeeDTO();
+                employeeDTO.EmployeeId = employee.EmployeeId;
+                employeeDTO.Name = employee.Name;
+                employeeDTO.Email = employee.Email;
+                employeeDTO.Stack = employee.Stack;
+                employeeDTO.Role = employee.Role;
+                return Ok(employeeDTO); // Return the employee details
             }
             catch (Exception ex)
             {
@@ -104,7 +119,7 @@ namespace EmpTaskAPI.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<ActionResult> PostEmployee(Employee employee)
+        public async Task<ActionResult> PostEmployee(EmployeePostDTO employeeDTO)
         {
             _logger.LogInformation("PostEmployee endpoint called by user: {User}", User.Identity?.Name);
 
@@ -115,14 +130,19 @@ namespace EmpTaskAPI.Controllers
 
                 _logger.LogDebug("Hashing the password for the new employee.");
                 // Hash the employee's password
-                var hashedPassword = PasswordHasher.HashPassword(employee.Password, salt);
+                var hashedPassword = PasswordHasher.HashPassword(employeeDTO.Password, salt);
+                
+                Employee employee = new Employee();
 
                 // Update the employee object
                 _logger.LogDebug("Updating the employee object with hashed password, default role, and salt.");
                 employee.Password = hashedPassword; // Store the hashed password
-                employee.Role = employee.Role ?? "Employee"; // Default role if none provided
+                employee.Role = employeeDTO.Role ?? "User"; // Default role if none provided
                 employee.Salt = salt; // Store the salt for later password verification
-
+                employee.Name= employeeDTO.Name;
+                employee.Email= employeeDTO.Email;
+                employee.Stack = employeeDTO.Stack;
+               
                 // Save the employee to the database
                 _logger.LogDebug("Adding the employee to the database.");
                 context.Employees.Add(employee);
@@ -143,27 +163,27 @@ namespace EmpTaskAPI.Controllers
 
         // PUT: api/Employee/5
         [Authorize(Roles = "Admin")]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEmployee(int id, Employee updatedEmployee)
+        [HttpPut("{employeeId}")]
+        public async Task<IActionResult> UpdateEmployee(int employeeId, EmployeePostDTO updatedEmployee)
         {
-            _logger.LogInformation("UpdateEmployee endpoint called by user: {User} to update employee with Id: {EmployeeId}", User.Identity?.Name, id);
+            _logger.LogInformation("UpdateEmployee endpoint called by user: {User} to update employee with Id: {EmployeeId}", User.Identity?.Name, employeeId);
 
             try
             {
-                _logger.LogDebug("Fetching employee with Id: {EmployeeId} from the database.", id);
-                var employee = await context.Employees.FirstOrDefaultAsync(x => x.EmployeeId == id);
+                _logger.LogDebug("Fetching employee with Id: {EmployeeId} from the database.", employeeId);
+                var employee = await context.Employees.FirstOrDefaultAsync(x => x.EmployeeId == employeeId);
 
                 if (employee == null)
                 {
-                    _logger.LogWarning("Employee with Id: {EmployeeId} not found.", id);
+                    _logger.LogWarning("Employee with Id: {EmployeeId} not found.", employeeId);
                     return NotFound("Employee data not found.");
                 }
 
-                _logger.LogDebug("Generating salt and hashing password for employee with Id: {EmployeeId}.", id);
+                _logger.LogDebug("Generating salt and hashing password for employee with Id: {EmployeeId}.",employeeId);
                 var salt = PasswordHasher.GenerateSalt();
                 var hashedPassword = PasswordHasher.HashPassword(updatedEmployee.Password, salt);
 
-                _logger.LogDebug("Updating employee properties for employee with Id: {EmployeeId}.", id);
+                _logger.LogDebug("Updating employee properties for employee with Id: {EmployeeId}.", employeeId);
                 employee.Password = hashedPassword;
                 employee.Salt = salt;
                 employee.Name = updatedEmployee.Name;
@@ -171,16 +191,16 @@ namespace EmpTaskAPI.Controllers
                 employee.Stack = updatedEmployee.Stack;
                 employee.Role = updatedEmployee.Role;
 
-                _logger.LogDebug("Updating employee record in the database for employee with Id: {EmployeeId}.", id);
+                _logger.LogDebug("Updating employee record in the database for employee with Id: {EmployeeId}.", employeeId);
                 context.Employees.Update(employee);
                 await context.SaveChangesAsync();
 
-                _logger.LogInformation("Successfully updated employee with Id: {EmployeeId}.", id);
-                return Ok(employee);
+                _logger.LogInformation("Successfully updated employee with Id: {EmployeeId}.", employeeId);
+                return Ok(updatedEmployee);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while updating employee with Id: {EmployeeId}.", id);
+                _logger.LogError(ex, "An error occurred while updating employee with Id: {EmployeeId}.", employeeId);
                 return BadRequest("Error updating employee.");
             }
         }
