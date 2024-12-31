@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { Form, Input, Button, Checkbox, Typography, Select } from 'antd';
-import { LockOutlined, UnlockOutlined, UserOutlined } from '@ant-design/icons';
-import useAuth from '@hooks/use-auth';
+import { useState } from "react";
+import { Form, Input, Button, Checkbox, Typography, Select } from "antd";
+import { LockOutlined, UnlockOutlined, UserOutlined } from "@ant-design/icons";
+import useAuth from "@hooks/use-auth";
 
 const { Link } = Typography;
 const { Option } = Select;
@@ -9,6 +9,7 @@ const { Option } = Select;
 interface LoginFormProps {
   email: string;
   password: string;
+  role: string;
 }
 
 const LoginForm = () => {
@@ -19,6 +20,7 @@ const LoginForm = () => {
     onLogin({
       email: values.email,
       password: values.password,
+      role: values.role,
     });
   };
 
@@ -26,19 +28,19 @@ const LoginForm = () => {
     <Form
       layout="vertical"
       initialValues={{
-        email: 'john@mail.com',
-        password: 'changeme',
+        email: "john@mail.com",
+        password: "changeme",
         remember: true,
       }}
       requiredMark={false}
       onFinish={onFinish}
-      style={{ width: '100%' }}
+      style={{ width: "100%" }}
     >
       {/* Role Selection */}
       <Form.Item
         name="role"
         label="Log in as"
-        rules={[{ required: true, message: 'Selection is required' }]}
+        rules={[{ required: true, message: "Selection is required" }]}
       >
         <Select placeholder="Select role">
           <Option value="admin">Admin</Option>
@@ -50,7 +52,7 @@ const LoginForm = () => {
       <Form.Item
         name="email"
         label="Email"
-        rules={[{ required: true, message: 'Email is required' }]}
+        rules={[{ required: true, message: "Email is required" }]}
       >
         <Input prefix={<UserOutlined />} placeholder="Email" />
       </Form.Item>
@@ -59,7 +61,7 @@ const LoginForm = () => {
       <Form.Item
         name="password"
         label="Password"
-        rules={[{ required: true, message: 'Password is required' }]}
+        rules={[{ required: true, message: "Password is required" }]}
       >
         <Input.Password
           prefix={passwordVisible ? <UnlockOutlined /> : <LockOutlined />}
