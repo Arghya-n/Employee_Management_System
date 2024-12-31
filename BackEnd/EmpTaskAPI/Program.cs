@@ -5,9 +5,27 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
+using Serilog;
+using Serilog.Events;
+using Serilog.Formatting.Compact;
 //using System.Text.Json.Serializatio;
 
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .Enrich.WithThreadId()
+    .Enrich.WithProcessId()
+    .Enrich.WithEnvironmentName()
+    .Enrich.WithMachineName()
+    .WriteTo.Console()
+    .WriteTo.File("Log/log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+//new CompactJsonFormatter()
+Log.Logger.Information("Logging is working fine.");
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog();
 
 // Add services to the container.
 
