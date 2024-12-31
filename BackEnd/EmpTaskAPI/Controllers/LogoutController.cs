@@ -17,6 +17,16 @@ namespace EmpTaskAPI.Controllers
         {
             this.context = context;
         }
+
+
+
+        /// <summary>
+        /// Logs out the user by invalidating the refresh token.
+        /// </summary>
+        /// <param name="refreshToken">The refresh token to invalidate.</param>
+        /// <returns>An IActionResult indicating the result of the logout operation.</returns>
+        /// <response code="200">Successfully logged out and refreshed token invalidated.</response>
+        /// <response code="400">Invalid refresh token provided.</response>
         [HttpPost("logout")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

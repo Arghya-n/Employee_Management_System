@@ -26,6 +26,16 @@ namespace EmpTaskAPI.Controllers
             _context = context;
             _configuration = configuration;
         }
+
+
+        /// <summary>
+        /// Authenticates a user and generates an access token and a refresh token.
+        /// </summary>
+        /// <param name="emp">The login details including email and password.</param>
+        /// <returns>
+        /// An object containing the access token, refresh token, employee ID, and role if authentication is successful;
+        /// otherwise, a BadRequest or Unauthorized response.
+        /// </returns>
         [HttpPost]
         public async Task<IActionResult> GetToken(UserLogin emp)
 
