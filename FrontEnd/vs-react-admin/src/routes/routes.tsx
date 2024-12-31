@@ -2,7 +2,6 @@ import Dashboard from '@pages/dashboard';
 import Settings from '@pages/settings';
 import Users from '@pages/users';
 import UserCreate from '@pages/users/create';
-import UserEdit from '@pages/users/edit';
 import {
   DashboardBreadcrumb,
   DynamicUserBreadcrumb,
@@ -10,7 +9,11 @@ import {
 import Tasks from '@/pages/tasks';
 import TaskAssignment from '@/pages/new';
 import TaskCreate from '@/pages/tasks/create';
+import UserEdit from '@pages/users/edit';
+
 import TaskAssignmentCreate from '@/pages/new/create';
+import TaskDetails from '@/features/tasks/task_details';
+import AssignedTask from '@/pages/tasks/assigned_task';
 
 const routes = [
   {
@@ -90,7 +93,14 @@ const routes = [
         exact: true
       }
     ]
-  }
+  },
+  {
+    path: 'assignedTask',
+    breadcrumb: 'Assigned Task',
+    component: AssignedTask,
+    exact: true,
+    children: []
+  },
 ];
 
 export default routes;

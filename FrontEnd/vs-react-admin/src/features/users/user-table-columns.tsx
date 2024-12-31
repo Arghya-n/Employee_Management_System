@@ -58,13 +58,7 @@ const columns: TableProps<User>["columns"] = [
   {
     title: "Working Stack",
     key: "workingStack",
-    render: (_, record) => <Text>{record.workingStack}</Text>,
-    responsive: ["xs", "sm", "md", "lg", "xl"],
-  },
-  {
-    title: "Phone Number",
-    key: "phoneNumber",
-    render: (_, record) => <Text>{record.phoneNumber}</Text>,
+    render: (_, record) => <Text>{record.stack}</Text>,
     responsive: ["xs", "sm", "md", "lg", "xl"],
   },
   {

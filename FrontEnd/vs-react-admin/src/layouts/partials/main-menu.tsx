@@ -46,10 +46,10 @@ const MainMenu: React.FC<MainMenuProps> = ({ activeMenu, onMenuClick }) => {
   // Filter menu items based on the user role
   const filteredMenuItems = MAIN_MENU_ITEMS.filter((item) => {
     if (userRole === "admin") {
-      return true; // Admin can see all menu items
+      return item.key !== "/assignedTask"; // Exclude assignedTask for admin
     }
     if (userRole === "customer") {
-      return item.key === "/"; // Customer sees only the dashboard
+      return item.key === "/" || item.key === "/assignedTask"; // Show only dashboard and assignedTask
     }
     return false; // Default to no menu items if role is unknown
   });
