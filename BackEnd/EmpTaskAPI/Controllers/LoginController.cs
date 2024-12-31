@@ -1,4 +1,5 @@
-﻿using EmpTaskAPI.DataAccessLayer;
+﻿
+using EmpTaskAPI.DataAccessLayer;
 using EmpTaskAPI.HashPassword;
 using EmpTaskAPI.Models;
 using EmpTaskAPI.DTOModels;
@@ -9,36 +10,41 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-
+using Serilog;
 
 namespace EmpTaskAPI.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
     {
         private readonly AppDBContext _context;
         private readonly IConfiguration _configuration;
+        private readonly ILogger<ProjectController> _logger;
 
-        public LoginController(AppDBContext context, IConfiguration configuration)
+        public LoginController(AppDBContext context, IConfiguration configuration, ILogger<ProjectController> logger)
         {
             _context = context;
             _configuration = configuration;
+            _logger = logger;
         }
+
         [HttpPost]
         public async Task<IActionResult> GetToken(UserLogin emp)
-
         {
+            Log.Information("Login attempt for email: {Email}", emp.Email);
+
             var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Email == emp.Email);
             if (employee == null)
             {
+                Log.Warning("Invalid email attempt: {Email}", emp.Email);
                 return BadRequest("Invalid Email");
             }
 
             var isValidPassword = PasswordHasher.HashPassword(emp.Password, employee.Salt) == employee.Password;
             if (!isValidPassword)
             {
+                Log.Warning("Invalid password attempt for email: {Email}", emp.Email);
                 return Unauthorized("Invalid email or password");
             }
 
@@ -52,6 +58,8 @@ namespace EmpTaskAPI.Controllers
 
             // Update the employee in the database
             await _context.SaveChangesAsync();
+
+            Log.Information("Login successful for email: {Email}", emp.Email);
 
             return Ok(new
             {
@@ -71,12 +79,9 @@ namespace EmpTaskAPI.Controllers
             // Define claims for the token
             var claims = new List<Claim>
             {
-
                 new Claim(ClaimTypes.Name, emp.Name),
                 new Claim(ClaimTypes.Role, emp.Role), // Role-based claim
                 new Claim("EmployeeId", emp.EmployeeId.ToString()) // Custom claim for Employee ID
-
-
             };
 
             // Create the token
@@ -90,7 +95,7 @@ namespace EmpTaskAPI.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-        
+
         private string GenerateRefreshToken()
         {
             var randomNumber = new byte[32];
@@ -100,9 +105,5 @@ namespace EmpTaskAPI.Controllers
             }
             return Convert.ToBase64String(randomNumber);
         }
-        
-
-
-
     }
 }
