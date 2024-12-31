@@ -14,9 +14,9 @@ namespace EmpTaskAPI.Controllers
     public class TaskController : ControllerBase
     {
         private readonly AppDBContext context;
-        private readonly ILogger<ProjectController> _logger;
+        private readonly ILogger<TaskController> _logger;
 
-        public TaskController(AppDBContext context, ILogger<ProjectController> logger)
+        public TaskController(AppDBContext context, ILogger<TaskController> logger)
         {
             this.context = context;
             _logger = logger;

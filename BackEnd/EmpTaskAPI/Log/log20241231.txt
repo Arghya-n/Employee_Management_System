@@ -70,3 +70,8 @@ System.InvalidOperationException: An exception was thrown while attempting to ev
 2024-12-31 12:30:21.661 +06:00 [INF] Fetched 1 tasks
 2024-12-31 12:30:36.248 +06:00 [INF] Fetching task for employee 6
 2024-12-31 12:30:36.307 +06:00 [INF] Task found for employee 6: 1
+2024-12-31 12:43:41.953 +06:00 [INF] Logging is working fine.
+2024-12-31 12:44:52.750 +06:00 [INF] Fetching all assigned tasks
+2024-12-31 12:44:52.822 +06:00 [INF] Fetched 1 assigned tasks
+2024-12-31 12:45:06.608 +06:00 [INF] Fetching task assignment for employee 6
+2024-12-31 12:45:06.694 +06:00 [INF] Task assignment found for employee 6: 1
