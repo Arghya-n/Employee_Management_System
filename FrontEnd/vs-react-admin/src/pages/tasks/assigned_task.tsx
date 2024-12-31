@@ -3,7 +3,7 @@ import PageContent from '@layouts/partials/page-content';
 import PageHeader from '@layouts/partials/page-header';
 import TaskDetails from '@/features/tasks/task_details';
 
-const UserSettings = () => {
+const AssignedTask = () => {
   return (
     <>
       <PageHeader
@@ -19,4 +19,4 @@ const UserSettings = () => {
   );
 };
 
-export default UserSettings;
+export default AssignedTask;
