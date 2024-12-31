@@ -13,7 +13,7 @@ const LoginLayout = () => {
           <Image
             src={IconMarketplace}
             preview={false}
-            width={35}
+            width={50}
             className="mb-8"
           />
           <Outlet/>
