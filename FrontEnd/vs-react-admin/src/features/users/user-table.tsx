@@ -1,38 +1,37 @@
-import { useState } from 'react';
-import { Table, Input, Card } from 'antd';
-import { useUsers } from '@hooks/use-users';
-import useFilter from '@hooks/utility-hooks/use-filter';
-import { columns } from './user-table-columns';
+import { useState } from "react";
+import { Table, Input, Card } from "antd";
+import { useUsers } from "@hooks/use-users";
+import useFilter from "@hooks/utility-hooks/use-filter";
+import { columns } from "./user-table-columns";
 
 const UserTable = () => {
-  const {
-    isLoading,
-    data
-  } = useUsers();
-  
+  const { isLoading, data } = useUsers();
+
   const { getQueryParams, setQueryParams, sortTableColumn } = useFilter();
   const [search, setSearch] = useState(getQueryParams().search as string);
 
   const onSearchHandle = (value: string) => {
     setQueryParams({
       ...getQueryParams(),
-      search: value
+      search: value,
     });
   };
-  
+
   return (
     <Card
-      title={'Users'}
-      extra={(
+      title={"Users"}
+      extra={
         <div className="my-6">
           <Input.Search
-            placeholder={'Search'}
+            placeholder={"Search"}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onSearch={onSearchHandle}
-            allowClear />
+            allowClear
+            style={{ maxWidth: 400, width: "100%" }} // Ensures the search input is responsive
+          />
         </div>
-      )}
+      }
     >
       <Table
         columns={columns}
@@ -40,13 +39,10 @@ const UserTable = () => {
         loading={isLoading}
         pagination={false}
         onChange={sortTableColumn}
-        scroll={{ y: 350 }}
+        scroll={{ x: 1200, y: 350 }} // Allow horizontal scrolling for large tables and vertical scrolling for rows
         rowKey="id"
         bordered
       />
-      {/*<div className={'flex justify-end mt-4'}>*/}
-      {/*  <PaginationWrapper totalItems={data?.totalNumberOfElemements || 0} />*/}
-      {/*</div>*/}
     </Card>
   );
 };

@@ -6,7 +6,6 @@ import BarChart from '@/components/shared/ant-design-chart';
 import PieChartComponent from '@/components/shared/pie-chart';
 
 const Dashboard = () => {
-
   const chartData = [
     { name: 'React', value: 50 },
     { name: 'DotNet', value: 30 },
@@ -17,13 +16,63 @@ const Dashboard = () => {
 
   return (
     <>
-      <PageHeader
-        title="Dashboard"
-        subTitle="Quick access to analytical insights"
-      />
+      <PageHeader title="Dashboard" subTitle="Quick access to analytical insights" />
       <PageContent>
-        <Row gutter={16} className='mb-4'>
-          <Col span={6}>
+<<<<<<< HEAD
+        <Row gutter={[16, 16]} className="mb-4">
+          <Col xs={24} sm={12} md={6}>
+            <Card
+              title={
+                <Space>
+                  <UserOutlined style={{ color: 'red' }} />
+                  Total Employee
+                </Space>
+              }
+              bordered={false}
+            >
+              <div>300</div>
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} md={6}>
+            <Card
+              title={
+                <Space>
+                  <ProjectOutlined style={{ color: 'green' }} />
+                  Total Projects
+                </Space>
+              }
+              bordered={false}
+            >
+              <div>20</div>
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} md={6}>
+            <Card
+              title={
+                <Space>
+                  <UserAddOutlined style={{ color: 'yellow' }} />
+                  Free Employee
+                </Space>
+              }
+              bordered={false}
+            >
+              <div>100</div>
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} >
+            <Card
+              title={
+                <Space>
+                  <UserSwitchOutlined style={{ color: 'blue' }} />
+                  Assigned Employee
+                </Space>
+              }
+              bordered={false}
+            >
+              <div>200</div>
+=======
+        <Row gutter={[16, 16]} className='mb-4'>
+          <Col md={6} sm={12} xs={24}>
             <Card title={
               <Space>
                 <UserOutlined style={{color: 'red'}} />
@@ -33,7 +82,7 @@ const Dashboard = () => {
               300
             </Card>
           </Col>
-          <Col span={6}>
+          <Col md={6} sm={12} xs={24}>
             <Card title={
               <Space>
                 <ProjectOutlined style={{color: 'green'}} />
@@ -43,7 +92,7 @@ const Dashboard = () => {
               20
             </Card>
           </Col>
-          <Col span={6}>
+          <Col md={6} sm={12} xs={24}>
             <Card title={
               <Space>
                 <UserAddOutlined style={{color: 'yellow'}} />
@@ -53,7 +102,7 @@ const Dashboard = () => {
               100
             </Card>
           </Col>
-          <Col span={6}>
+          <Col md={6} sm={12} xs={24}>
             <Card title={
               <Space>
                 <UserSwitchOutlined style={{color: 'blue'}} />
@@ -61,18 +110,30 @@ const Dashboard = () => {
               </Space>
             } bordered={false}>
               200
+>>>>>>> f52a0c520f14ee0ffb2e1ee1f63c99acea2e8914
             </Card>
           </Col>
         </Row>
-        <Row gutter={16} style={{ minHeight: '400px' }}>
-          <Col span={12}>
+        <Row gutter={[16, 16]} style={{ minHeight: '400px' }}>
+<<<<<<< HEAD
+          <Col xs={24} lg={12}>
+            <Card title="Working Stack" bordered={false} style={{ height: '100%' }}>
+              <BarChart data={chartData} title="" />
+            </Card>
+          </Col>
+          <Col xs={24} lg={12}>
+            <Card title="Employee Status" bordered={false} style={{ height: '100%' }}>
+              <PieChartComponent />
+=======
+          <Col md={12} sm={24} xs={24}>
             <Card title="Working Stack" bordered={false} style={{height: '100%'}}>
               <BarChart data={chartData} title="" />
             </Card>
           </Col>
-          <Col span={12}>
+          <Col md={12} sm={24} xs={24}>
             <Card title="Employee Status" bordered={false} style={{height: '100%'}}>
               <PieChartComponent/>
+>>>>>>> f52a0c520f14ee0ffb2e1ee1f63c99acea2e8914
             </Card>
           </Col>
         </Row>

@@ -7,17 +7,60 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
+    "Method": "PostProject",
+    "RelativePath": "api/Project",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[EmpTaskAPI.Models.Project, EmpTaskAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "project",
+        "Type": "EmpTaskAPI.Models.Project",
+        "IsRequired": true
       }
-    ]
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
+    "Method": "DeleteProject",
+    "RelativePath": "api/Project",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/Project/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedProject",
+        "Type": "EmpTaskAPI.Models.Project",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
@@ -33,68 +76,174 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "EmpTaskAPI.Models.Project",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
-    "Method": "PostProject",
-    "RelativePath": "api/Project/Project",
+    "Method": "DeleteAllProjects",
+    "RelativePath": "api/Project/all",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.TaskController",
+    "Method": "Get",
+    "RelativePath": "api/Task",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.TaskController",
+    "Method": "Create",
+    "RelativePath": "api/Task",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "project",
-        "Type": "EmpTaskAPI.Models.Project",
+        "Name": "ts",
+        "Type": "EmpTaskAPI.Models.Task",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "EmpTaskAPI.Models.Project",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
-    "ContainingType": "EmpTaskAPI.Controllers.ProjectController",
-    "Method": "PostTask",
-    "RelativePath": "api/Project/Task",
+    "ContainingType": "EmpTaskAPI.Controllers.TaskController",
+    "Method": "DeleteTask",
+    "RelativePath": "api/Task",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.TaskController",
+    "Method": "Get",
+    "RelativePath": "api/Task/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.TaskController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/Task/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "uts",
+        "Type": "EmpTaskAPI.Models.Task",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.TaskAssignmentController",
+    "Method": "Get",
+    "RelativePath": "api/TaskAssignment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.TaskAssignmentController",
+    "Method": "Create",
+    "RelativePath": "api/TaskAssignment",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "task",
-        "Type": "EmpTaskAPI.Models.Task",
+        "Name": "ta",
+        "Type": "EmpTaskAPI.Models.TaskAssignment",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.TaskAssignmentController",
+    "Method": "DeleteAssignment",
+    "RelativePath": "api/TaskAssignment",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Type": "EmpTaskAPI.Models.Task",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
-    ]
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.TaskAssignmentController",
+    "Method": "GetTaskAssignmentById",
+    "RelativePath": "api/TaskAssignment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmpTaskAPI.Controllers.TaskAssignmentController",
+    "Method": "AssignTask",
+    "RelativePath": "api/TaskAssignment/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "ta",
+        "Type": "EmpTaskAPI.Models.TaskAssignment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

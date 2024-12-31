@@ -26,7 +26,8 @@ namespace EmpTaskAPI.Migrations
                 {
                     b.Property<int>("ProjectId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ProjectId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProjectId"));
 
@@ -53,12 +54,17 @@ namespace EmpTaskAPI.Migrations
                 {
                     b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("TaskId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskId"));
 
                     b.Property<DateTime>("AssignDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Comments")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
@@ -72,25 +78,26 @@ namespace EmpTaskAPI.Migrations
 
                     b.HasKey("TaskId");
 
-                    b.HasIndex("ProjectId");
-
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("EmpTaskAPI.Models.Task", b =>
+            modelBuilder.Entity("EmpTaskAPI.Models.TaskAssignment", b =>
                 {
-                    b.HasOne("EmpTaskAPI.Models.Project", "Project")
-                        .WithMany("Tasks")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Navigation("Project");
-                });
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-            modelBuilder.Entity("EmpTaskAPI.Models.Project", b =>
-                {
-                    b.Navigation("Tasks");
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TaskId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssignedTasks");
                 });
 #pragma warning restore 612, 618
         }

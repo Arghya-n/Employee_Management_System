@@ -1,10 +1,9 @@
 export interface Tasks {
-    id?: number;
+    projectId?: number;
     title: string;
     description: string;
-    status: string;
-    start_date: string;
-    end_date: string;
+    startDate: string;
+    endDate: string;
 }
 
 export type TasksPartial = Partial<Tasks>;
