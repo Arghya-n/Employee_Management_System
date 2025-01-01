@@ -7,9 +7,7 @@ using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using Serilog;
 using Serilog.Events;
-using Serilog.Formatting.Compact;
 using System.Reflection;
-using EmpTaskAPI.Middlewares;
 //using System.Text.Json.Serializatio;
 
 Log.Logger = new LoggerConfiguration()
