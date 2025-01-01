@@ -1,5 +1,4 @@
-﻿
-using EmpTaskAPI.DataAccessLayer;
+﻿using EmpTaskAPI.DataAccessLayer;
 using EmpTaskAPI.HashPassword;
 using EmpTaskAPI.Models;
 using EmpTaskAPI.DTOModels;
@@ -28,8 +27,6 @@ namespace EmpTaskAPI.Controllers
             _configuration = configuration;
             _logger = logger;
         }
-
-
         /// <summary>
         /// Authenticates a user and generates an access token and a refresh token.
         /// </summary>
@@ -38,6 +35,7 @@ namespace EmpTaskAPI.Controllers
         /// An object containing the access token, refresh token, employee ID, and role if authentication is successful;
         /// otherwise, a BadRequest or Unauthorized response.
         /// </returns>
+
         [HttpPost]
         public async Task<IActionResult> GetToken(UserLogin emp)
         {
@@ -57,15 +55,12 @@ namespace EmpTaskAPI.Controllers
                 return Unauthorized("Invalid email or password");
             }
 
-            // Generate access token
             string token = GenerateToken(employee);
-
-            // Generate refresh token
             string refreshToken = GenerateRefreshToken();
-            employee.RefreshToken = refreshToken;
-            employee.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7); // Set refresh token validity for 7 days
 
-            // Update the employee in the database
+            employee.RefreshToken = refreshToken;
+            employee.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
+
             await _context.SaveChangesAsync();
 
             Log.Information("Login successful for email: {Email}", emp.Email);
@@ -81,19 +76,16 @@ namespace EmpTaskAPI.Controllers
 
         private string GenerateToken(Employee emp)
         {
-            // Create the security key
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            // Define claims for the token
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, emp.Name),
-                new Claim(ClaimTypes.Role, emp.Role), // Role-based claim
-                new Claim("EmployeeId", emp.EmployeeId.ToString()) // Custom claim for Employee ID
+                new Claim(ClaimTypes.Role, emp.Role),
+                new Claim("EmployeeId", emp.EmployeeId.ToString())
             };
 
-            // Create the token
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],

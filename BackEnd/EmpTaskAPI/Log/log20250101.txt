@@ -697,3 +697,37 @@ System.InvalidOperationException: Unable to resolve service for type 'Microsoft.
 2025-01-01 16:54:49.733 +06:00 [INF] Fetching all tasks
 
 2025-01-01 17:17:00.655 +06:00 [INF] Logging is working fine.
+2025-01-01 21:13:59.664 +06:00 [INF] Logging is working fine.
+2025-01-01 21:14:44.011 +06:00 [INF] Login attempt for email: Mubasshir@gmail.com
+2025-01-01 21:14:52.537 +06:00 [INF] Login successful for email: Mubasshir@gmail.com
+2025-01-01 21:15:19.017 +06:00 [INF] GetEmployees endpoint called.
+2025-01-01 21:15:31.729 +06:00 [INF] Fetching all tasks
+2025-01-01 21:28:01.375 +06:00 [INF] Logging is working fine.
+2025-01-01 21:28:35.438 +06:00 [INF] Login attempt for email: Mubasshir@gmail.com
+2025-01-01 21:28:42.640 +06:00 [INF] Login successful for email: Mubasshir@gmail.com
+2025-01-01 21:35:15.855 +06:00 [INF] Logging is working fine.
+2025-01-01 21:39:46.394 +06:00 [INF] Logging is working fine.
+2025-01-01 21:40:33.215 +06:00 [INF] Login attempt for email: Mubasshir@gmail.com
+2025-01-01 21:40:41.461 +06:00 [INF] Login successful for email: Mubasshir@gmail.com
+2025-01-01 21:41:11.899 +06:00 [INF] Fetching all assigned tasks
+2025-01-01 21:41:12.150 +06:00 [INF] Fetched 1 assigned tasks
+2025-01-01 21:41:34.131 +06:00 [INF] Fetching task assignment for employee 6
+2025-01-01 21:41:34.383 +06:00 [INF] Task assignment found for employee 6: 1
+2025-01-01 21:42:02.018 +06:00 [INF] GetProjects endpoint called.
+2025-01-01 21:42:02.138 +06:00 [INF] Successfully retrieved all projects.
+2025-01-01 21:42:16.487 +06:00 [INF] GetProjectById endpoint called by user: Mubasshir for employeeId: 6.
+2025-01-01 21:42:16.620 +06:00 [INF] Successfully retrieved project for employeeId: 6.
+2025-01-01 21:47:40.796 +06:00 [INF] Logging is working fine.
+2025-01-01 21:50:19.770 +06:00 [INF] Logging is working fine.
+2025-01-01 21:50:49.320 +06:00 [INF] Login attempt for email: Mubasshir@gmail.com
+2025-01-01 21:50:57.613 +06:00 [INF] Login successful for email: Mubasshir@gmail.com
+2025-01-01 21:52:52.454 +06:00 [INF] Login attempt for email: Mubasshir@gmail.com
+2025-01-01 21:52:52.547 +06:00 [INF] Login successful for email: Mubasshir@gmail.com
+2025-01-01 21:53:17.853 +06:00 [INF] Fetching all assigned tasks
+2025-01-01 21:53:18.083 +06:00 [INF] Fetched 1 assigned tasks
+2025-01-01 21:53:31.399 +06:00 [INF] Fetching task assignment for employee 6
+2025-01-01 21:53:31.419 +06:00 [INF] Task assignment found for employee 6: 1
+2025-01-01 22:03:37.657 +06:00 [INF] Logging is working fine.
+2025-01-01 22:04:38.469 +06:00 [INF] Login attempt for email: Mubasshir@gmail.com
+2025-01-01 22:04:45.795 +06:00 [INF] Login successful for email: Mubasshir@gmail.com
+2025-01-01 22:06:13.885 +06:00 [INF] Fetching all tasks
