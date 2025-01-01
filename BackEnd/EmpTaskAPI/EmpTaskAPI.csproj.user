@@ -8,5 +8,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+    <NameOfLastUsedPublishProfile>D:\New folder %282%29\Attachment_vivasoft\Employee_Management_System\BackEnd\EmpTaskAPI\Properties\PublishProfiles\FolderProfile1.pubxml</NameOfLastUsedPublishProfile>
+
   </PropertyGroup>
 </Project>
