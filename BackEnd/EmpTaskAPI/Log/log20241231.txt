@@ -546,3 +546,6 @@ Error Number:2601,State:1,Class:14
 2024-12-31 16:29:07.242 +06:00 [INF] GetEmployees endpoint called by user: Mubasshir
 2024-12-31 16:29:07.310 +06:00 [INF] Successfully retrieved 5 employees from the database.
 >>>>>>> f7cae9cf4c3b5b4512ae20ba8207fc7836b93137
+2024-12-31 23:40:47.404 +06:00 [INF] Logging is working fine.
+2024-12-31 23:41:28.211 +06:00 [INF] Logging is working fine.
+2024-12-31 23:44:28.234 +06:00 [INF] Logging is working fine.
