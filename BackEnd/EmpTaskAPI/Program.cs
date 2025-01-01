@@ -9,6 +9,7 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Compact;
 using System.Reflection;
+using EmpTaskAPI.Middlewares;
 //using System.Text.Json.Serializatio;
 
 Log.Logger = new LoggerConfiguration()
@@ -27,6 +28,7 @@ Log.Logger.Information("Logging is working fine.");
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog();
+//builder.Services.AddTransient<GlobalExceptionMiddleware>();
 
 // Add services to the container.
 
@@ -96,6 +98,7 @@ AddJwtBearer(options =>
 
 
 var app = builder.Build();
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -107,7 +110,6 @@ app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

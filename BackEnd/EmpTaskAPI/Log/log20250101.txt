@@ -1,0 +1,4 @@
+2025-01-01 16:51:05.429 +06:00 [INF] Logging is working fine.
+2025-01-01 16:52:08.113 +06:00 [INF] Login attempt for email: Mubasshir@gmail.com
+2025-01-01 16:52:16.123 +06:00 [INF] Login successful for email: Mubasshir@gmail.com
+2025-01-01 16:54:49.733 +06:00 [INF] Fetching all tasks
