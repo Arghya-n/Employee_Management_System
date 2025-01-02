@@ -188,5 +188,24 @@ namespace EmpTaskAPI.Controllers
 
             return Ok("Employee deleted successfully.");
         }
+
+        /// <summary>
+        /// Gets the count of employees grouped by their working stack.
+        /// </summary>
+        /// <returns>A list of stacks and their respective employee counts.</returns>
+        [HttpGet("stack-counts")]
+        public async Task<IActionResult> GetStackCounts()
+        {
+            var stackCounts = await context.Employees
+                .GroupBy(e => e.Stack)
+                .Select(g => new
+                {
+                    Stack = g.Key,
+                    Count = g.Count()
+                })
+                .ToListAsync();
+
+            return Ok(stackCounts);
+        }
     }
 }

@@ -141,5 +141,22 @@ namespace EmpTaskAPI.Controllers
             _logger.LogInformation("Task assignment with ID {assignmentId} deleted", id);
             return Ok(data);
         }
+
+        /// <summary>
+        /// Gets the total number of employees assigned to any tasks.
+        /// </summary>
+        /// <returns>The total count of employees assigned to tasks.</returns>
+        [HttpGet("assigned-employee-count")]
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> GetAssignedEmployeeCount()
+        {
+            // Count distinct EmployeeIds in the AssignedTasks table
+            var assignedEmployeeCount = await context.AssignedTasks
+                .Select(at => at.EmployeeId)
+                .Distinct()
+                .CountAsync();
+
+            return Ok(new { TotalAssignedEmployees = assignedEmployeeCount });
+        }
     }
 }

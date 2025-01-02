@@ -1,0 +1,5 @@
+2025-01-03 00:46:21.810 +06:00 [INF] Logging is working fine.
+2025-01-03 01:01:01.051 +06:00 [INF] Logging is working fine.
+2025-01-03 01:01:34.767 +06:00 [INF] Login attempt for email: s@gmail.com
+2025-01-03 01:01:43.781 +06:00 [INF] Login successful for email: s@gmail.com
+2025-01-03 01:05:26.217 +06:00 [INF] Logging is working fine.
