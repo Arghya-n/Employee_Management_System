@@ -30,9 +30,24 @@ namespace EmpTaskAPI.Controllers
         public async Task<IActionResult> Get()
         {
             _logger.LogInformation("Fetching all tasks");
-            var data = await context.Tasks.ToListAsync();
-            return Ok(data);
+
+            // Fetch all tasks
+            var tasks = await context.Tasks.ToListAsync();
+
+            // Transform tasks to include formatted dates
+            var formattedTasks = tasks.Select(task => new
+            {
+                task.TaskId,
+                task.ProjectId,
+                AssignDate = task.AssignDate.ToString("dd MMM, yyyy"),
+                SubmitDate = task.SubmitDate?.ToString("dd MMM, yyyy"),
+                task.Status,
+                task.Comments
+            });
+
+            return Ok(formattedTasks);
         }
+
 
         /// <summary>
         /// Retrieves the task details for a specific employee.
@@ -43,7 +58,7 @@ namespace EmpTaskAPI.Controllers
 
         [Authorize(Roles = "Admin,User")]
         [HttpGet("{employeeId}")]
-        public async Task<ActionResult> GetEmploeeById(int employeeId)
+        public async Task<ActionResult> GetEmployeeById(int employeeId)
         {
             var loggedInEmployeeId = int.Parse(User.FindFirst("EmployeeId")?.Value);
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
@@ -59,8 +74,20 @@ namespace EmpTaskAPI.Controllers
             var task = await context.Tasks.FirstOrDefaultAsync(x => x.TaskId == assignTask.TaskId);
             if (task == null) return NotFound();
 
-            return Ok(task);
+            // Transform the task into a DTO with formatted date
+            var taskDTO = new
+            {
+                task.TaskId,
+                task.ProjectId,
+                AssignDate = task.AssignDate.ToString("dd MMM, yyyy"),
+                SubmitDate = task.SubmitDate?.ToString("dd MMM, yyyy"),
+                task.Status,
+                task.Comments
+            };
+
+            return Ok(taskDTO);
         }
+
 
         /// <summary>
         /// Creates a new task.
@@ -77,7 +104,16 @@ namespace EmpTaskAPI.Controllers
         {
             await context.Tasks.AddAsync(ts);
             await context.SaveChangesAsync();
-            return Ok(ts);
+            var taskDTO = new
+            {
+                ts.TaskId,
+                ts.ProjectId,
+                AssignDate = ts.AssignDate.ToString("dd MMM, yyyy"),
+                SubmitDate = ts.SubmitDate?.ToString("dd MMM, yyyy"),
+                ts.Status,
+                ts.Comments
+            };
+            return Ok(taskDTO);
         }
         /// <summary>
         /// Deletes a specific task.
@@ -95,7 +131,16 @@ namespace EmpTaskAPI.Controllers
 
             context.Tasks.Remove(data);
             await context.SaveChangesAsync();
-            return Ok(data);
+            var taskDTO = new
+            {
+                data.TaskId,
+                data.ProjectId,
+                AssignDate = data.AssignDate.ToString("dd MMM, yyyy"),
+                SubmitDate = data.SubmitDate?.ToString("dd MMM, yyyy"),
+                data.Status,
+                data.Comments
+            };
+            return Ok(taskDTO);
         }
         /// <summary>
         /// Updates the details of a specific task.
@@ -130,7 +175,16 @@ namespace EmpTaskAPI.Controllers
             task.ProjectId = uts.ProjectId;
 
             await context.SaveChangesAsync();
-            return Ok(task);
+            var taskDTO = new
+            {
+                task.TaskId,
+                task.ProjectId,
+                AssignDate = task.AssignDate.ToString("dd MMM, yyyy"),
+                SubmitDate = task.SubmitDate?.ToString("dd MMM, yyyy"),
+                task.Status,
+                task.Comments
+            };
+            return Ok(taskDTO);
         }
     }
 }
