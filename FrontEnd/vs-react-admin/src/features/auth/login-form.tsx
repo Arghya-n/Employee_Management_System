@@ -74,16 +74,6 @@ const LoginForm = () => {
         />
       </Form.Item>
 
-      {/* Remember Me and Forgot Password */}
-      <Form.Item>
-        <div className="flex items-center justify-between">
-          <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-          <Link href="/forget-password">Forgot password</Link>
-        </div>
-      </Form.Item>
-
       {/* Submit Button */}
       <Form.Item>
         <Button loading={isLoading} type="primary" htmlType="submit" block>
