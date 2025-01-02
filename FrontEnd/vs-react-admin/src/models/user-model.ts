@@ -1,10 +1,9 @@
 export interface User {
-  id?: number;
+  employeeId?: number;
   name: string;
   email: string;
   password?: string;
   role: string;
-  avatar?: string;
   stack: string;
 }
 

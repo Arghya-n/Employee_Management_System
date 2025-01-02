@@ -8,7 +8,9 @@ const baseService = createApi({
   tagTypes: [
     'auth',
     'user',
-    'users'
+    'users',
+    'project',
+    'projects'
   ],
   endpoints: () => ({}),
 });

@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { App } from 'antd';
 import useFilter from '@hooks/utility-hooks/use-filter';
-import { User } from '@models/user-model';
+import { Tasks } from '@models/tasks-model';
 import { AppError, QueryParams } from '@models/utils-model';
-import { useLazyUsersQuery, useUserSavedMutation, useUserQuery } from '@services/user-service';
+import { useLazyProjectsQuery, useProjectSavedMutation, useProjectQuery } from '@services/project-service';
 import { formatQueryParams } from '@utils/helpers';
 
-export const useUsers = () =>{
+export const useProjects = () =>{
   const location = useLocation();
 
   const { getQueryParams, setQueryParams, getDefaultQueryParams } = useFilter();
@@ -15,7 +15,7 @@ export const useUsers = () =>{
 
   const [filterParams, setFilterParams] = useState<QueryParams>({});
   
-  const [onFetching, { isFetching, data: response }] = useLazyUsersQuery();
+  const [onFetching, { isFetching, data: response }] = useLazyProjectsQuery();
 
   useEffect(() => {
     setFilterParams(queryParams);
@@ -41,16 +41,16 @@ export const useUsers = () =>{
   };
 };
 
-export const useUserForm = () => {
+export const useProjectForm = () => {
   const { message } = App.useApp();
   const navigate = useNavigate();
   
-  const [userSaved, { isLoading, isSuccess, isError, error }] = useUserSavedMutation();
+  const [projectSaved, { isLoading, isSuccess, isError, error }] = useProjectSavedMutation();
   
   useEffect(() => {
     if (isSuccess) {
-      message.success('User saved successfully.');
-      navigate('/users');
+      message.success('project saved successfully.');
+      navigate('/projects');
     }
     
     if (isError && error) {
@@ -58,9 +58,9 @@ export const useUserForm = () => {
     }
   }, [isSuccess, isError, error]);
   
-  const onSaved = (user: User) => {
-    userSaved({
-      ...user
+  const onSaved = (Tasks: Tasks) => {
+    projectSaved({
+      ...Tasks
     });
   };
   
@@ -70,11 +70,11 @@ export const useUserForm = () => {
   };
 };
 
-export const useUser = (userId: number) => {
-  const { isLoading, data: user } = useUserQuery(userId);
+export const useproject = (projectId: number) => {
+  const { isLoading, data: project } = useProjectQuery(projectId);
   
   return {
     isLoading,
-    user
+    project
   };
 };

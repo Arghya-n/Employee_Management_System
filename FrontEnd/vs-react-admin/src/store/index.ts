@@ -9,13 +9,12 @@ export const store = configureStore({
   reducer: {
     auth: authSlice,
     user: userSlice,
-    [baseService.reducerPath]: baseService.reducer
+    [baseService.reducerPath]: baseService.reducer,
   },
-  middleware: (getDefaultMiddlewares) =>
-    getDefaultMiddlewares().concat([
-      baseService.middleware
-    ])
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat([baseService.middleware]),
 });
+
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

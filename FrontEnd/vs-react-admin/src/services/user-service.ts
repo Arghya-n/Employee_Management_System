@@ -4,9 +4,9 @@ import API_END_POINTS from '@utils/constants/api-end-points';
 
 export const userService = baseService.injectEndpoints({
   endpoints: (builder) => ({
-    userProfile: builder.query<User, void>({
-      query: () => ({
-        url: API_END_POINTS.user,
+    userProfile: builder.query<User, number>({
+      query: (userId) => ({
+        url: API_END_POINTS.getEmployeeDetails(userId),
         method: 'GET'
       }),
       providesTags: ['user']
@@ -27,8 +27,8 @@ export const userService = baseService.injectEndpoints({
     }),
     userSaved: builder.mutation<User, User>({
       query: (user) => {
-        const requestUrl = user?.id ? API_END_POINTS.users + `/${user.id}` : API_END_POINTS.users;
-        const requestMethod = user?.id ? 'PUT' : 'POST';
+        const requestUrl = user?.employeeId ? API_END_POINTS.users + `/${user.employeeId}` : API_END_POINTS.users;
+        const requestMethod = user?.employeeId ? 'PUT' : 'POST';
         
         return {
           url: requestUrl,

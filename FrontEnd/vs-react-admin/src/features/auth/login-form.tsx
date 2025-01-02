@@ -1,10 +1,7 @@
 import { useState } from "react";
-import { Form, Input, Button, Checkbox, Typography, Select } from "antd";
+import { Form, Input, Button } from "antd";
 import { LockOutlined, UnlockOutlined, UserOutlined } from "@ant-design/icons";
 import useAuth from "@hooks/use-auth";
-
-const { Link } = Typography;
-const { Option } = Select;
 
 interface LoginFormProps {
   email: string;
@@ -28,26 +25,15 @@ const LoginForm = () => {
     <Form
       layout="vertical"
       initialValues={{
-        email: "john@mail.com",
-        password: "changeme",
+        email: "s@gmail.com",
+        password: "123456",
+        role: "Admin",
         remember: true,
       }}
       requiredMark={false}
       onFinish={onFinish}
       style={{ width: "100%" }}
     >
-      {/* Role Selection */}
-      <Form.Item
-        name="role"
-        label="Log in as"
-        rules={[{ required: true, message: "Selection is required" }]}
-      >
-        <Select placeholder="Select role">
-          <Option value="admin">Admin</Option>
-          <Option value="user">User</Option>
-        </Select>
-      </Form.Item>
-
       {/* Email Field */}
       <Form.Item
         name="email"

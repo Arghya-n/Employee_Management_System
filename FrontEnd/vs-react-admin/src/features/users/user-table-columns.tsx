@@ -35,7 +35,10 @@ const columns: TableProps<User>["columns"] = [
     sorter: true,
     key: "name",
     render: (_, record) => (
-      <Link to={`/users/${record.id}`}>{record.name}</Link>
+      <Link to={`/users/${record.employeeId}`}>
+        {record.name}
+        <Text>{record.employeeId}</Text>
+      </Link>
     ),
     responsive: ["xs", "sm", "md", "lg", "xl"],
   },
@@ -67,7 +70,7 @@ const columns: TableProps<User>["columns"] = [
     align: "center",
     render: (_, record) => (
       <Dropdown
-        menu={{ items: getActions(record.id!) }}
+        menu={{ items: getActions(record.employeeId!) }}
         overlayClassName="grid-action"
       >
         <Button shape="circle" icon={<MoreOutlined />} />

@@ -41,11 +41,11 @@ const MainMenu: React.FC<MainMenuProps> = ({ activeMenu, onMenuClick }) => {
 
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
-  const userRole = useAppSelector((state) => state.user?.role || "customer");
+  const userRole = useAppSelector((state) => state.auth?.role || "customer");
 
   // Filter menu items based on the user role
   const filteredMenuItems = MAIN_MENU_ITEMS.filter((item) => {
-    if (userRole === "admin") {
+    if (userRole === "Admin") {
       return item.key !== "/assignedTask"; // Exclude assignedTask for admin
     }
     if (userRole === "customer") {

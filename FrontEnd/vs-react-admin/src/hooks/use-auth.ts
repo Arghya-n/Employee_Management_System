@@ -15,8 +15,10 @@ const useAuth = () => {
       const response = await login(requestData).unwrap();
       
       const authData = {
-        accessToken: response.access_token,
-        refreshToken: response.refresh_token
+        accessToken: response.token,
+        refreshToken: response.refreshToken,
+        employeeId: response.employeeId,
+        role: response.role
       };
       
       localStorage.setItem('auth', JSON.stringify(authData));
