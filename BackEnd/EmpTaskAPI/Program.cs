@@ -64,6 +64,10 @@ builder.Services.AddSwaggerGen(
      
 );
 
+
+
+//builder.Services.AddResponseCaching(x=> x.MaximumBodySize=1024 );
+
 builder.Services.AddSwaggerGen();
 // Check if you're using Newtonsoft.Json elsewhere in your code
 builder.Services.AddControllers();
@@ -95,14 +99,28 @@ AddJwtBearer(options =>
 });
 
 
-var app = builder.Build();
 
+
+builder.Services.AddDistributedMemoryCache(); // For in-memory session storage
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(20); // Session timeout
+    options.Cookie.HttpOnly = true; // Prevent client-side script access
+    options.Cookie.IsEssential = true; // Ensure session cookies work without consent
+});
+
+var app = builder.Build();
+app.UseHttpLogging();
+app.UseSession();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthentication();
@@ -110,4 +128,20 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+
+//app.UseResponseCaching();
+//app.Use(async (context, next) =>
+//{
+//    context.Response.GetTypedHeaders().CacheControl =
+//    new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
+//    {
+//        Public = true,
+//        MaxAge = TimeSpan.FromSeconds(10)
+
+//    };
+//    await next();
+//    context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary]= new String[] {"Accept-Encoding"};
+
+
+//});
 app.Run();

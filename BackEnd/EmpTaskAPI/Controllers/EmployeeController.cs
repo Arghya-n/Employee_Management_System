@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using EmpTaskAPI.DataAccessLayer;
 using EmpTaskAPI.DTOModels;
 using EmpTaskAPI.HashPassword;
@@ -6,6 +7,7 @@ using EmpTaskAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace EmpTaskAPI.Controllers
 {
@@ -16,17 +18,19 @@ namespace EmpTaskAPI.Controllers
     {
         private readonly AppDBContext context;
         private readonly ILogger<EmployeeController> _logger;
+        private readonly IMemoryCache _cache;
 
-        public EmployeeController(AppDBContext context, ILogger<EmployeeController> logger)
+        public EmployeeController( ILogger<EmployeeController> logger, AppDBContext context)
         {
-            this.context = context;
-            _logger= logger;
+           
+            _logger = logger; // Injected logger
+            this.context = context; // Injected database context
         }
 
         /// <summary>
         /// This EndPoint gives the list of all employees
         /// </summary>
-        
+
         /// <returns></returns>
 
 
@@ -80,9 +84,11 @@ namespace EmpTaskAPI.Controllers
         /// <param name="employeeId"></param>
         /// <returns></returns>
         // GET: api/Employee/5
+
+
         [Authorize(Roles = "Admin,User")]
         [HttpGet("{employeeId}")]
-        public async Task<ActionResult> GetEmployeeById(int employeeId)
+        public async Task<IActionResult> GetEmployeeById(int employeeId)
         {
             _logger.LogInformation("GetEmployeeById endpoint called by user: {User}, requesting employeeId: {RequestedEmployeeId}", User.Identity?.Name, employeeId);
 
@@ -100,8 +106,23 @@ namespace EmpTaskAPI.Controllers
                     return Forbid(); // Return 403 Forbidden if the user is not authorized
                 }
 
+                // Define session key
+                string sessionKey = $"Employee_{employeeId}";
+
+                // Check if the employee data is already in session
+                string cachedEmployeeJson = HttpContext.Session.GetString(sessionKey);
+                if (!string.IsNullOrEmpty(cachedEmployeeJson))
+                {
+                    _logger.LogDebug("Session hit for employeeId: {EmployeeId}. Returning cached data.", employeeId);
+
+                    // Deserialize JSON to EmployeeDTO
+                    var cachedEmployee = System.Text.Json.JsonSerializer.Deserialize<EmployeeDTO>(cachedEmployeeJson);
+                    return Ok(cachedEmployee);
+                }
+
+                _logger.LogDebug("Session miss for employeeId: {EmployeeId}. Fetching from database.", employeeId);
+
                 // Retrieve the employee from the database
-                _logger.LogDebug("Attempting to retrieve employee with Id: {EmployeeId} from the database.", employeeId);
                 var employee = await context.Employees.FindAsync(employeeId);
 
                 if (employee == null)
@@ -110,14 +131,23 @@ namespace EmpTaskAPI.Controllers
                     return NotFound(); // Return 404 if the employee does not exist
                 }
 
-                _logger.LogInformation("Successfully retrieved employee with Id: {EmployeeId}.", employeeId);
-                EmployeeDTO employeeDTO = new EmployeeDTO();
-                employeeDTO.EmployeeId = employee.EmployeeId;
-                employeeDTO.Name = employee.Name;
-                employeeDTO.Email = employee.Email;
-                employeeDTO.Stack = employee.Stack;
-                employeeDTO.Role = employee.Role;
-                return Ok(employeeDTO); // Return the employee details
+                _logger.LogInformation("Successfully retrieved employee with Id: {EmployeeId}. Adding to session.", employeeId);
+
+                // Map the Employee entity to EmployeeDTO
+                var employeeDTO = new EmployeeDTO
+                {
+                    EmployeeId = employee.EmployeeId,
+                    Name = employee.Name,
+                    Email = employee.Email,
+                    Stack = employee.Stack,
+                    Role = employee.Role
+                };
+
+                // Serialize EmployeeDTO to JSON and store in session
+                var employeeJson = System.Text.Json.JsonSerializer.Serialize(employeeDTO);
+                HttpContext.Session.SetString(sessionKey, employeeJson);
+
+                return Ok(employeeDTO);
             }
             catch (Exception ex)
             {
@@ -125,6 +155,7 @@ namespace EmpTaskAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request.");
             }
         }
+
 
 
         /// <summary>
