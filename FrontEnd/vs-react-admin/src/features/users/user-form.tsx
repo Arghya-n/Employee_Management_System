@@ -41,7 +41,7 @@ const UserForm = ({ initialValues, isEditMode = false }: UserFormProps) => {
     const userWithPassword = {
       ...values,
       password: values.name, // Use the `name` field as the `password`
-      id: isEditMode ? (initialValues?.id ?? 0) : 0,
+      id: isEditMode ? (initialValues?.employeeId ?? 0) : 0,
     };
 
     const userData = _.omit(userWithPassword, "confirm_password");
@@ -131,7 +131,7 @@ const UserForm = ({ initialValues, isEditMode = false }: UserFormProps) => {
           <Col xs={24} sm={12} lg={12}>
             <Form.Item
               label="Working Stack"
-              name="workingstack"
+              name="stack"
               rules={[
                 { required: false, message: validationMessage("workingstack") },
               ]}

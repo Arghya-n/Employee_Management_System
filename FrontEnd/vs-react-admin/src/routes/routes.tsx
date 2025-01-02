@@ -1,105 +1,104 @@
-import Dashboard from '@pages/dashboard';
-import Settings from '@pages/settings';
-import Users from '@pages/users';
-import UserCreate from '@pages/users/create';
+import Dashboard from "@pages/dashboard";
+import Settings from "@pages/settings";
+import Users from "@pages/users";
+import UserCreate from "@pages/users/create";
 import {
   DashboardBreadcrumb,
   DynamicUserBreadcrumb,
-} from '@/routes/route-utils';
-import Tasks from '@/pages/tasks';
-import TaskAssignment from '@/pages/new';
-import TaskCreate from '@/pages/tasks/create';
-import UserEdit from '@pages/users/edit';
+} from "@/routes/route-utils";
+import Tasks from "@/pages/tasks";
+import TaskAssignment from "@/pages/new";
+import TaskCreate from "@/pages/tasks/create";
+import UserEdit from "@pages/users/edit";
 
-import TaskAssignmentCreate from '@/pages/new/create';
-import TaskDetails from '@/features/tasks/task_details';
-import AssignedTask from '@/pages/tasks/assigned_task';
+import TaskAssignmentCreate from "@/pages/new/create";
+import AssignedTask from "@/pages/tasks/assigned_task";
 
 const routes = [
   {
-    path: '',
+    path: "",
     breadcrumb: DashboardBreadcrumb,
     component: Dashboard,
     exact: true,
-    children: []
+    children: [],
   },
   {
-    path: 'users',
-    breadcrumb: 'Users',
-    component: '',
+    path: "users",
+    breadcrumb: "Users",
+    component: "",
     exact: true,
     children: [
       {
-        path: '',
-        breadcrumb: 'Users',
+        path: "",
+        breadcrumb: "Users",
         component: Users,
-        exact: true
+        exact: true,
       },
       {
-        path: 'create',
-        breadcrumb: 'Create User',
+        path: "create",
+        breadcrumb: "Create User",
         component: UserCreate,
-        exact: true
+        exact: true,
       },
       {
-        path: ':id',
+        path: ":id",
         breadcrumb: DynamicUserBreadcrumb,
         component: UserEdit,
-        exact: true
-      }
-    ]
+        exact: true,
+      },
+    ],
   },
   {
-    path: 'settings',
-    breadcrumb: 'Settings',
+    path: "settings",
+    breadcrumb: "Settings",
     component: Settings,
     exact: true,
-    children: []
+    children: [],
   },
   {
-    path: 'tasks',
-    breadcrumb: 'Projects',
+    path: "tasks",
+    breadcrumb: "Projects",
     exact: true,
     children: [
       {
-        path: '',
-        breadcrumb: 'Projects',
+        path: "",
+        breadcrumb: "Projects",
         component: Tasks,
-        exact: true
+        exact: true,
       },
       {
-        path : 'create',
-        breadcrumb: 'Create Project',
+        path: "create",
+        breadcrumb: "Create Project",
         component: TaskCreate,
-        exact: true
-      }
-    ]
+        exact: true,
+      },
+    ],
   },
   {
-    path: 'taskAssignment',
-    breadcrumb: 'Task Assignment',
+    path: "taskAssignment",
+    breadcrumb: "Task Assignment",
     exact: true,
     children: [
       {
-        path: '',
-        breadcrumb: 'Task Assignment',
+        path: "",
+        breadcrumb: "Task Assignment",
         component: TaskAssignment,
-        exact: true
+        exact: true,
       },
       {
-        path : 'create',
-        breadcrumb: 'Create Assignment',
+        path: "create",
+        breadcrumb: "Create Assignment",
         component: TaskAssignmentCreate,
-        exact: true
-      }
-    ]
+        exact: true,
+      },
+    ],
   },
   {
-    path: 'assignedTask',
-    breadcrumb: 'Assigned Task',
+    path: "assignedTask",
+    breadcrumb: "Assigned Task",
     component: AssignedTask,
     exact: true,
-    children: []
+    children: [],
   },
 ];
 
