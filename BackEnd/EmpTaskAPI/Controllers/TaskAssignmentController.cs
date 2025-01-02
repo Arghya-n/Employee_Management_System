@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EmpTaskAPI.Controllers
 {
-    
     [Route("api/[controller]")]
     [ApiController]
     public class TaskAssignmentController : ControllerBase
@@ -21,7 +20,6 @@ namespace EmpTaskAPI.Controllers
             this.context = context;
             _logger = logger;
         }
-
 
         /// <summary>
         /// Retrieves a list of all assigned tasks.
@@ -38,15 +36,12 @@ namespace EmpTaskAPI.Controllers
             return Ok(data);
         }
 
-
-
         /// <summary>
         /// Creates a new task assignment.
         /// Requires Admin role.
         /// </summary>
         /// <param name="ta">The task assignment object containing details of the task and employee.</param>
         /// <returns>The created task assignment object.</returns>
-        
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(TaskAssignment ta)
@@ -97,12 +92,12 @@ namespace EmpTaskAPI.Controllers
         /// <param name="id">The ID of the task assignment to update.</param>
         /// <param name="ta">The updated task assignment object.</param>
         /// <returns>The updated task assignment object if successful, otherwise BadRequest or NotFound result.</returns>
-
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> AssignTask(int id, TaskAssignment ta)
         {
             _logger.LogInformation("Updating task assignment with ID {assignmentId}", id);
+
             if (id == null)
             {
                 _logger.LogWarning("Invalid task assignment ID {assignmentId}", id);
@@ -123,7 +118,6 @@ namespace EmpTaskAPI.Controllers
             return Ok(data);
         }
 
-
         /// <summary>
         /// Deletes a specific task assignment.
         /// Requires Admin role.
@@ -131,7 +125,7 @@ namespace EmpTaskAPI.Controllers
         /// <param name="id">The ID of the task assignment to delete.</param>
         /// <returns>The deleted task assignment object if successful, otherwise NotFound result.</returns>
         [Authorize(Roles = "Admin")]
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAssignment(int id)
         {
             _logger.LogInformation("Deleting task assignment with ID {assignmentId}", id);
@@ -147,10 +141,5 @@ namespace EmpTaskAPI.Controllers
             _logger.LogInformation("Task assignment with ID {assignmentId} deleted", id);
             return Ok(data);
         }
-
-
-
-
-
     }
 }
