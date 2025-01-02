@@ -32,6 +32,13 @@ namespace EmpTaskAPI.Controllers
         {
             _logger.LogInformation("Fetching all assigned tasks");
             var data = await context.AssignedTasks.ToListAsync();
+          //  var data = await context.Employees.ToListAsync();
+
+            if (data == null || data.Count == 0)
+            {
+                _logger.LogWarning("No task found.");
+                return NotFound("No task found.");
+            }
             _logger.LogInformation("Fetched {count} assigned tasks", data.Count);
             return Ok(data);
         }

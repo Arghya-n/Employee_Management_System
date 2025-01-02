@@ -28,20 +28,67 @@ namespace EmpTaskAPI.Controllers
 
         /// <returns></returns>
 
+        //[Authorize(Roles = "Admin")]
+        //[HttpGet]
+        //public async Task<ActionResult> GetEmployees()
+        //{
+        //    _logger.LogInformation("GetEmployees endpoint called.");
+        //    var data = await context.Employees.ToListAsync();
+
+        //    if (data == null || data.Count == 0)
+        //    {
+        //        _logger.LogWarning("No employees found.");
+        //        return NotFound("No employees found.");
+        //    }
+
+        //    var employeesDTO = data.Select(emp => new EmployeeDTO
+        //    {
+        //        EmployeeId = emp.EmployeeId,
+        //        Name = emp.Name,
+        //        Email = emp.Email,
+        //        Stack = emp.Stack,
+        //        Role = emp.Role
+        //    }).ToList();
+
+        //    return Ok(employeesDTO);
+        //}
         [Authorize(Roles = "Admin")]
         [HttpGet]
-        public async Task<ActionResult> GetEmployees()
+        public async Task<ActionResult> GetEmployees([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
             _logger.LogInformation("GetEmployees endpoint called.");
-            var data = await context.Employees.ToListAsync();
 
-            if (data == null || data.Count == 0)
+            if (pageNumber < 1 || pageSize < 1)
+            {
+                _logger.LogWarning("Invalid pagination parameters.");
+                return BadRequest("Page number and page size must be greater than 0.");
+            }
+
+            // Total record count
+            var totalEmployees = await context.Employees.CountAsync();
+
+            // Calculate total pages
+            var totalPages = (int)Math.Ceiling(totalEmployees / (double)pageSize);
+
+            if (pageNumber > totalPages)
+            {
+                _logger.LogWarning("Requested page number exceeds total pages.");
+                return NotFound("Requested page does not exist.");
+            }
+
+            // Fetch paginated data
+            var employees = await context.Employees
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            if (!employees.Any())
             {
                 _logger.LogWarning("No employees found.");
                 return NotFound("No employees found.");
             }
 
-            var employeesDTO = data.Select(emp => new EmployeeDTO
+            var employeesDTO = employees.Select(emp => new EmployeeDTO
             {
                 EmployeeId = emp.EmployeeId,
                 Name = emp.Name,
@@ -50,8 +97,23 @@ namespace EmpTaskAPI.Controllers
                 Role = emp.Role
             }).ToList();
 
+            // Create metadata
+            var metadata = new
+            {
+                TotalItems = totalEmployees,
+                PageSize = pageSize,
+                CurrentPage = pageNumber,
+                TotalPages = totalPages,
+                HasPrevious = pageNumber > 1,
+                HasNext = pageNumber < totalPages
+            };
+
+            // Add metadata to response headers
+            Response.Headers.Add("X-Pagination", System.Text.Json.JsonSerializer.Serialize(metadata));
+
             return Ok(employeesDTO);
         }
+
 
 
         /// <summary>
