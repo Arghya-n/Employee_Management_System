@@ -3,3 +3,139 @@
 2025-01-03 01:01:34.767 +06:00 [INF] Login attempt for email: s@gmail.com
 2025-01-03 01:01:43.781 +06:00 [INF] Login successful for email: s@gmail.com
 2025-01-03 01:05:26.217 +06:00 [INF] Logging is working fine.
+2025-01-03 10:28:42.407 +06:00 [INF] Logging is working fine.
+2025-01-03 10:31:09.188 +06:00 [INF] Login attempt for email: s@gmail.com
+2025-01-03 10:31:15.121 +06:00 [INF] Login successful for email: s@gmail.com
+2025-01-03 10:31:34.960 +06:00 [INF] GetEmployees endpoint called.
+2025-01-03 10:32:08.115 +06:00 [INF] Adding new employee.
+2025-01-03 10:44:56.113 +06:00 [INF] Logging is working fine.
+2025-01-03 11:12:38.199 +06:00 [INF] Logging is working fine.
+2025-01-03 11:13:16.475 +06:00 [INF] Logging is working fine.
+2025-01-03 11:18:57.305 +06:00 [INF] Logging is working fine.
+2025-01-03 11:19:15.855 +06:00 [INF] Logging is working fine.
+2025-01-03 11:32:11.634 +06:00 [INF] Logging is working fine.
+2025-01-03 11:37:18.593 +06:00 [INF] Logging is working fine.
+2025-01-03 11:37:38.607 +06:00 [INF] Logging is working fine.
+2025-01-03 11:38:06.783 +06:00 [INF] Login attempt for email: s@gmail.com
+2025-01-03 11:38:10.478 +06:00 [INF] Login successful for email: s@gmail.com
+2025-01-03 11:46:01.145 +06:00 [INF] Logging is working fine.
+2025-01-03 11:46:04.846 +06:00 [ERR] An unhandled exception occurred.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Project/{employeeId}" for actions - EmpTaskAPI.Controllers.ProjectController.GetProjectByEmployeeId (EmpTaskAPI),EmpTaskAPI.Controllers.ProjectController.GetProjectById (EmpTaskAPI). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at GlobalExceptionMiddleware.Invoke(HttpContext context) in E:\Attachment\BackEnd\EmpTaskAPI\Middlewares\GlobalExceptionMiddleware.cs:line 23
+2025-01-03 11:48:12.124 +06:00 [INF] Logging is working fine.
+2025-01-03 11:49:56.488 +06:00 [INF] GetProjects endpoint called.
+2025-01-03 11:49:59.297 +06:00 [INF] Successfully retrieved all projects.
+2025-01-03 11:49:59.611 +06:00 [INF] GetProjects endpoint called.
+2025-01-03 11:49:59.631 +06:00 [INF] Successfully retrieved all projects.
+2025-01-03 11:50:21.422 +06:00 [INF] Logging is working fine.
+2025-01-03 11:50:42.973 +06:00 [INF] Login attempt for email: s@gmail.com
+2025-01-03 11:50:46.584 +06:00 [INF] Login successful for email: s@gmail.com
+2025-01-03 11:51:11.468 +06:00 [INF] GetProjects endpoint called.
+2025-01-03 11:51:11.531 +06:00 [INF] Successfully retrieved all projects.
+2025-01-03 11:51:20.487 +06:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+EmpTaskAPI.Controllers.ProjectController.GetProjectByEmployeeId (EmpTaskAPI)
+EmpTaskAPI.Controllers.ProjectController.GetProjectById (EmpTaskAPI)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(CandidateState[] candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, CandidateState[] candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, CandidateState[] candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2025-01-03 11:52:36.010 +06:00 [INF] Logging is working fine.
+2025-01-03 11:52:39.623 +06:00 [ERR] An unhandled exception occurred.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Task" for actions - EmpTaskAPI.Controllers.TaskController.Get (EmpTaskAPI),EmpTaskAPI.Controllers.TaskController.GetTaskByEmployeeId (EmpTaskAPI). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at GlobalExceptionMiddleware.Invoke(HttpContext context) in E:\Attachment\BackEnd\EmpTaskAPI\Middlewares\GlobalExceptionMiddleware.cs:line 23
+2025-01-03 11:52:56.801 +06:00 [INF] Logging is working fine.
+2025-01-03 11:53:00.558 +06:00 [ERR] An unhandled exception occurred.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Task" for actions - EmpTaskAPI.Controllers.TaskController.Get (EmpTaskAPI),EmpTaskAPI.Controllers.TaskController.GetTaskByEmployeeId (EmpTaskAPI). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at GlobalExceptionMiddleware.Invoke(HttpContext context) in E:\Attachment\BackEnd\EmpTaskAPI\Middlewares\GlobalExceptionMiddleware.cs:line 23
+2025-01-03 11:54:00.762 +06:00 [INF] Logging is working fine.
+2025-01-03 11:54:05.742 +06:00 [ERR] An unhandled exception occurred.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Task" for actions - EmpTaskAPI.Controllers.TaskController.Get (EmpTaskAPI),EmpTaskAPI.Controllers.TaskController.GetTaskByEmployeeId (EmpTaskAPI). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at GlobalExceptionMiddleware.Invoke(HttpContext context) in E:\Attachment\BackEnd\EmpTaskAPI\Middlewares\GlobalExceptionMiddleware.cs:line 23
+2025-01-03 11:58:40.333 +06:00 [INF] Logging is working fine.
+2025-01-03 11:59:03.280 +06:00 [INF] Login attempt for email: s@gmail.com
+2025-01-03 11:59:07.128 +06:00 [INF] Login successful for email: s@gmail.com
+2025-01-03 11:59:25.934 +06:00 [INF] Fetching all tasks
+2025-01-03 11:59:37.674 +06:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+EmpTaskAPI.Controllers.TaskController.GetTaskByEmployeeId (EmpTaskAPI)
+EmpTaskAPI.Controllers.TaskController.GetTaskByTaskId (EmpTaskAPI)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(CandidateState[] candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, CandidateState[] candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, CandidateState[] candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2025-01-03 12:00:01.968 +06:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Routing.Matching.AmbiguousMatchException: The request matched multiple endpoints. Matches: 
+
+EmpTaskAPI.Controllers.TaskController.GetTaskByEmployeeId (EmpTaskAPI)
+EmpTaskAPI.Controllers.TaskController.GetTaskByTaskId (EmpTaskAPI)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ReportAmbiguity(CandidateState[] candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.ProcessFinalCandidates(HttpContext httpContext, CandidateState[] candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DefaultEndpointSelector.Select(HttpContext httpContext, CandidateState[] candidateState)
+   at Microsoft.AspNetCore.Routing.Matching.DfaMatcher.MatchAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2025-01-03 12:01:43.786 +06:00 [INF] Logging is working fine.
+2025-01-03 12:02:16.215 +06:00 [INF] Fetching all tasks
+2025-01-03 12:03:02.072 +06:00 [INF] Fetching all assigned tasks
+2025-01-03 12:03:02.092 +06:00 [INF] Fetched 2 assigned tasks
+2025-01-03 12:04:01.836 +06:00 [INF] Logging is working fine.
+2025-01-03 12:04:25.909 +06:00 [INF] GetProjects endpoint called.
+2025-01-03 12:04:28.921 +06:00 [INF] Successfully retrieved all projects.
+2025-01-03 12:04:46.762 +06:00 [INF] GetProjectById endpoint called by Admin
+2025-01-03 12:04:47.213 +06:00 [INF] Successfully retrieved project .
+2025-01-03 12:04:55.369 +06:00 [INF] GetProjectById endpoint called by user: NewEmployee for employeeId: 5.
+2025-01-03 12:06:55.922 +06:00 [INF] Logging is working fine.
+2025-01-03 12:07:17.906 +06:00 [INF] GetProjectById endpoint called by user: NewEmployee for employeeId: 2.
+2025-01-03 12:08:04.821 +06:00 [INF] Logging is working fine.
+2025-01-03 12:08:18.623 +06:00 [INF] Logging is working fine.
+2025-01-03 12:08:42.140 +06:00 [INF] Logging is working fine.
+2025-01-03 12:37:23.239 +06:00 [INF] Logging is working fine.
+2025-01-03 12:37:50.579 +06:00 [INF] Logging is working fine.
+2025-01-03 12:47:06.283 +06:00 [INF] Login attempt for email: s@gmail.com
+2025-01-03 12:47:11.362 +06:00 [INF] Login successful for email: s@gmail.com
+2025-01-03 12:47:31.814 +06:00 [INF] Fetching all tasks
+2025-01-03 12:47:42.946 +06:00 [INF] Fetching all assigned tasks
+2025-01-03 12:47:42.959 +06:00 [INF] Fetched 2 assigned tasks
+2025-01-03 12:48:43.626 +06:00 [INF] Updating task assignment with ID 1
+2025-01-03 12:48:43.650 +06:00 [INF] Task assignment with ID 1 updated successfully
+2025-01-03 12:50:27.886 +06:00 [INF] Fetching task assignment for employee 10
+2025-01-03 12:50:27.897 +06:00 [WRN] Task assignment not found for employee 10
+2025-01-03 12:50:35.948 +06:00 [INF] Fetching task assignment for employee 6
+2025-01-03 12:50:35.956 +06:00 [INF] Task assignment found for employee 6: 1
+2025-01-03 12:50:44.870 +06:00 [INF] Updating task assignment with ID 1
+2025-01-03 12:50:44.880 +06:00 [INF] Task assignment with ID 1 updated successfully

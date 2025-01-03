@@ -63,8 +63,8 @@ namespace EmpTaskAPI.Controllers
         /// <param name="employeeId">The ID of the employee.</param>
         /// <returns>The project details if found and authorized, otherwise Unauthorized or NotFound result.</returns>
         [Authorize(Roles = "Admin,User")]
-        [HttpGet("{employeeId}")]
-        public async Task<ActionResult> GetProjectById(int employeeId)
+        [HttpGet("by-employee/{employeeId}")]
+        public async Task<ActionResult> GetProjectByEmployeeId(int employeeId)
         {
             try
             {
@@ -74,7 +74,15 @@ namespace EmpTaskAPI.Controllers
                 var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
 
                 var assignedTask = await _context.AssignedTasks.FirstOrDefaultAsync(x => x.EmployeeId == employeeId);
+                if (assignedTask == null)
+                {
+                    return NotFound("No Project Associated with the employee");
+                }
                 var task = await _context.Tasks.FirstOrDefaultAsync(x => x.TaskId == assignedTask.TaskId);
+                if (task == null)
+                {
+                    return NotFound("No Task Associated with the employee");
+                }
                 var project = await _context.Projects.FirstOrDefaultAsync(x => x.ProjectId == task.ProjectId);
 
                 if (project == null)
@@ -90,6 +98,40 @@ namespace EmpTaskAPI.Controllers
                 }
 
                 _logger.LogInformation("Successfully retrieved project for employeeId: {EmployeeId}.", employeeId);
+                return Ok(project);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred in GetProjectById.");
+                throw;
+            }
+        }
+
+
+        /// <summary>
+        /// Retrieves the project details for a specific employee.
+        /// Requires Admin or User role.
+        /// </summary>
+        /// <param name="employeeId">The ID of the employee.</param>
+        /// <returns>The project details if found and authorized, otherwise Unauthorized or NotFound result.</returns>
+        [Authorize(Roles = "Admin")]
+        [HttpGet("{projectId}")]
+        public async Task<ActionResult> GetProjectById(int projectId)
+        {
+            try
+            {
+                _logger.LogInformation("GetProjectById endpoint called by Admin");
+                var project = await _context.Projects.FirstOrDefaultAsync(x => x.ProjectId == projectId);
+
+                if (project == null)
+                {
+                    _logger.LogWarning("Unauthorized Access");
+                    return Unauthorized();
+                }
+
+                
+
+                _logger.LogInformation("Successfully retrieved project .");
                 return Ok(project);
             }
             catch (Exception ex)

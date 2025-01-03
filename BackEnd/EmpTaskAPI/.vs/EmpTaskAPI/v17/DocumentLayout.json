@@ -3,32 +3,40 @@
   "WorkspaceRootPath": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\controllers\\taskassignmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:controllers\\taskassignmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\properties\\publishprofiles\\folderprofile1.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:properties\\publishprofiles\\folderprofile1.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\properties\\publishprofiles\\folderprofile.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:properties\\publishprofiles\\folderprofile.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\dataaccesslayer\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:dataaccesslayer\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\controllers\\taskassignmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:controllers\\taskassignmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\dataaccesslayer\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|solutionrelative:dataaccesslayer\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4371FB37-886C-4BBC-A84F-6E988CE26E83}|EmpTaskAPI.csproj|e:\\attachment\\backend\\emptaskapi\\dtomodels\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -109,7 +117,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -141,27 +149,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProjectController.cs",
-              "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\ProjectController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProjectController.cs",
-              "ToolTip": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\ProjectController.cs",
-              "RelativeToolTip": "Controllers\\ProjectController.cs",
-              "ViewState": "AgIAAMwAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:45:45.11Z"
+              "DocumentIndex": 2,
+              "Title": "FolderProfile1.pubxml",
+              "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Properties\\PublishProfiles\\FolderProfile1.pubxml",
+              "RelativeDocumentMoniker": "Properties\\PublishProfiles\\FolderProfile1.pubxml",
+              "ToolTip": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Properties\\PublishProfiles\\FolderProfile1.pubxml",
+              "RelativeToolTip": "Properties\\PublishProfiles\\FolderProfile1.pubxml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2025-01-03T06:54:53.69Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TaskController.cs",
-              "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\TaskController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TaskController.cs",
-              "ToolTip": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\TaskController.cs",
-              "RelativeToolTip": "Controllers\\TaskController.cs",
-              "ViewState": "AgIAAKUAAAAAAAAAAAAkwL4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:46:38.156Z",
+              "DocumentIndex": 3,
+              "Title": "FolderProfile.pubxml",
+              "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Properties\\PublishProfiles\\FolderProfile.pubxml",
+              "RelativeDocumentMoniker": "Properties\\PublishProfiles\\FolderProfile.pubxml",
+              "ToolTip": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Properties\\PublishProfiles\\FolderProfile.pubxml",
+              "RelativeToolTip": "Properties\\PublishProfiles\\FolderProfile.pubxml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2025-01-03T06:54:51.072Z",
               "EditorCaption": ""
             },
             {
@@ -172,13 +181,14 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAAAJIAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAIoAAAAAAAAAAAArwJcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T15:45:30.295Z"
+              "WhenOpened": "2024-12-28T15:45:30.295Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "EmployeeDTO.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\DTOModels\\EmployeeDTO.cs",
               "RelativeDocumentMoniker": "DTOModels\\EmployeeDTO.cs",
@@ -186,50 +196,77 @@
               "RelativeToolTip": "DTOModels\\EmployeeDTO.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T04:08:31.58Z"
+              "WhenOpened": "2025-01-02T04:08:31.58Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "EmployeeController.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\EmployeeController.cs",
               "RelativeDocumentMoniker": "Controllers\\EmployeeController.cs",
               "ToolTip": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\EmployeeController.cs",
               "RelativeToolTip": "Controllers\\EmployeeController.cs",
-              "ViewState": "AgIAALcAAAAAAAAAAADwv8cAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAANMAAAAAAAAAAAAAANMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-28T07:32:32.43Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "launchSettings.json",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
               "ToolTip": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Properties\\launchSettings.json",
               "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABIAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-01-01T06:32:06.82Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "TaskAssignmentController.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\TaskAssignmentController.cs",
               "RelativeDocumentMoniker": "Controllers\\TaskAssignmentController.cs",
               "ToolTip": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\TaskAssignmentController.cs",
               "RelativeToolTip": "Controllers\\TaskAssignmentController.cs",
-              "ViewState": "AgIAAI4AAAAAAAAAAAAAAJQAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAAAKIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-28T07:46:14.997Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
+              "Title": "ProjectController.cs",
+              "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\ProjectController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProjectController.cs",
+              "ToolTip": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\ProjectController.cs",
+              "RelativeToolTip": "Controllers\\ProjectController.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAAAFYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T07:45:45.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TaskController.cs",
+              "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\TaskController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TaskController.cs",
+              "ToolTip": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\TaskController.cs",
+              "RelativeToolTip": "Controllers\\TaskController.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAF0AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T07:46:38.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "LoginController.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
@@ -237,11 +274,12 @@
               "RelativeToolTip": "Controllers\\LoginController.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-29T04:27:39.261Z"
+              "WhenOpened": "2024-12-29T04:27:39.261Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "AppDBContext.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\DataAccessLayer\\AppDBContext.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\AppDBContext.cs",
@@ -253,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -265,7 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "Apidoc.xml",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Documentation\\Apidoc.xml",
               "RelativeDocumentMoniker": "Documentation\\Apidoc.xml",
@@ -277,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "LogoutController.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Controllers\\LogoutController.cs",
               "RelativeDocumentMoniker": "Controllers\\LogoutController.cs",
@@ -289,7 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Document.txt",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Documentation\\Document.txt",
               "RelativeDocumentMoniker": "Documentation\\Document.txt",
@@ -301,7 +339,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "web.config",
               "DocumentMoniker": "D:\\mysite\\web.config",
               "ToolTip": "D:\\mysite\\web.config",
@@ -311,18 +349,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "EmpTaskAPI",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\EmpTaskAPI.csproj",
               "RelativeDocumentMoniker": "EmpTaskAPI.csproj",
               "ToolTip": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\EmpTaskAPI.csproj",
               "RelativeToolTip": "EmpTaskAPI.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-31T08:21:40.452Z"
+              "WhenOpened": "2024-12-31T08:21:40.452Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": ".gitignore",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
@@ -334,7 +373,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "EmpTaskAPI.csproj",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\EmpTaskAPI.csproj",
               "RelativeDocumentMoniker": "EmpTaskAPI.csproj",
@@ -342,11 +381,12 @@
               "RelativeToolTip": "EmpTaskAPI.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-31T08:46:30.89Z"
+              "WhenOpened": "2024-12-31T08:46:30.89Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "Employee.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Models\\Employee.cs",
               "RelativeDocumentMoniker": "Models\\Employee.cs",
@@ -354,11 +394,12 @@
               "RelativeToolTip": "Models\\Employee.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:31:06.776Z"
+              "WhenOpened": "2024-12-28T07:31:06.776Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "PasswordHasher.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\HashPassword\\PasswordHasher.cs",
               "RelativeDocumentMoniker": "HashPassword\\PasswordHasher.cs",
@@ -370,7 +411,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "20241231052852_UpdateDatabase.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Migrations\\20241231052852_UpdateDatabase.cs",
               "RelativeDocumentMoniker": "Migrations\\20241231052852_UpdateDatabase.cs",
@@ -382,7 +423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "20241230055008_EmployeeAPI.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Migrations\\20241230055008_EmployeeAPI.cs",
               "RelativeDocumentMoniker": "Migrations\\20241230055008_EmployeeAPI.cs",
@@ -394,7 +435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "Project.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Models\\Project.cs",
               "RelativeDocumentMoniker": "Models\\Project.cs",
@@ -402,11 +443,12 @@
               "RelativeToolTip": "Models\\Project.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:36:02.142Z"
+              "WhenOpened": "2024-12-28T07:36:02.142Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "Task.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Models\\Task.cs",
               "RelativeDocumentMoniker": "Models\\Task.cs",
@@ -414,11 +456,12 @@
               "RelativeToolTip": "Models\\Task.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-30T05:02:03.937Z"
+              "WhenOpened": "2024-12-30T05:02:03.937Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "TaskAssignment.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Models\\TaskAssignment.cs",
               "RelativeDocumentMoniker": "Models\\TaskAssignment.cs",
@@ -430,7 +473,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "20241228074000_createdatabase.cs",
               "DocumentMoniker": "E:\\Attachment\\BackEnd\\EmpTaskAPI\\Migrations\\20241228074000_createdatabase.cs",
               "RelativeDocumentMoniker": "Migrations\\20241228074000_createdatabase.cs",

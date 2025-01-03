@@ -133,7 +133,7 @@ namespace EmpTaskAPI.Controllers
         /// <param name="id">The Id of the employee to update.</param>
         /// <param name="updatedEmployee">The updated employee object containing the new details.</param>
         /// <returns>Returns the updated employee object if successful, or appropriate error messages otherwise.</returns>
-        [Authorize(Roles = "Admin")]
+        
 
         [Authorize(Roles = "Admin")]
         [HttpPut("{employeeId}")]

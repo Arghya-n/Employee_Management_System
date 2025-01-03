@@ -49,6 +49,40 @@ namespace EmpTaskAPI.Controllers
         }
 
 
+
+        /// <summary>
+        /// Retrieves the task details for a specific employee.
+        /// Requires Admin or User role.
+        /// </summary>
+        /// <param name="employeeId">The ID of the employee.</param>
+        /// <returns>The task details if found and authorized, otherwise Forbidden or NotFound result.</returns>
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("{taskId}")]
+        public async Task<ActionResult> GetTaskByTaskId(int taskId)
+        {
+            // Fetch the task by taskId
+            var task = await context.Tasks.FirstOrDefaultAsync(x => x.TaskId == taskId);
+            if (task == null)
+            {
+                return NotFound(new { Message = $"Task with ID {taskId} not found." });
+            }
+
+            // Transform the task into a DTO with formatted date
+            var taskDTO = new
+            {
+                TaskId = task.TaskId,
+                ProjectId = task.ProjectId,
+                AssignDate = task.AssignDate.ToString("dd MMM, yyyy"), // Format date
+                SubmitDate = task.SubmitDate?.ToString("dd MMM, yyyy"), // Handle nullable date
+                Status = task.Status,
+                Comments = task.Comments
+            };
+
+            return Ok(taskDTO);
+        }
+
+
         /// <summary>
         /// Retrieves the task details for a specific employee.
         /// Requires Admin or User role.
@@ -57,36 +91,50 @@ namespace EmpTaskAPI.Controllers
         /// <returns>The task details if found and authorized, otherwise Forbidden or NotFound result.</returns>
 
         [Authorize(Roles = "Admin,User")]
-        [HttpGet("{employeeId}")]
-        public async Task<ActionResult> GetEmployeeById(int employeeId)
+        [HttpGet("by-employee/{employeeId}")]
+        public async Task<ActionResult> GetTaskByEmployeeId(int employeeId)
         {
-            var loggedInEmployeeId = int.Parse(User.FindFirst("EmployeeId")?.Value);
+            // Get logged-in employee's ID and role from the claims
+            var loggedInEmployeeId = int.Parse(User.FindFirst("EmployeeId")?.Value ?? "0");
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
 
+            // Restrict non-admins to access only their own tasks
             if (userRole != "Admin" && loggedInEmployeeId != employeeId)
             {
                 return Forbid();
             }
 
-            var assignTask = await context.AssignedTasks.FirstOrDefaultAsync(x => x.EmployeeId == employeeId);
-            if (assignTask == null) return NotFound();
+            // Fetch all assigned tasks for the given employeeId
+            var assignedTasks = await context.AssignedTasks
+                .Where(x => x.EmployeeId == employeeId)
+                .ToListAsync();
 
-            var task = await context.Tasks.FirstOrDefaultAsync(x => x.TaskId == assignTask.TaskId);
-            if (task == null) return NotFound();
+            if (assignedTasks == null || !assignedTasks.Any())
+                return NotFound(new { Message = "No tasks assigned to this employee." });
 
-            // Transform the task into a DTO with formatted date
-            var taskDTO = new
+            // Fetch task details for the assigned task IDs
+            var taskIds = assignedTasks.Select(at => at.TaskId).ToList();
+            var tasks = await context.Tasks
+                .Where(t => taskIds.Contains(t.TaskId))
+                .ToListAsync();
+
+            if (tasks == null || !tasks.Any())
+                return NotFound(new { Message = "No tasks found for the assigned task IDs." });
+
+            // Transform tasks into DTOs with formatted dates
+            var taskDTOs = tasks.Select(task => new
             {
-                task.TaskId,
-                task.ProjectId,
+                TaskId = task.TaskId,
+                ProjectId = task.ProjectId,
                 AssignDate = task.AssignDate.ToString("dd MMM, yyyy"),
                 SubmitDate = task.SubmitDate?.ToString("dd MMM, yyyy"),
-                task.Status,
-                task.Comments
-            };
+                Status = task.Status,
+                Comments = task.Comments
+            });
 
-            return Ok(taskDTO);
+            return Ok(taskDTOs);
         }
+
 
 
         /// <summary>
