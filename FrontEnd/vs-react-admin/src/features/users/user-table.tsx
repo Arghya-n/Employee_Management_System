@@ -19,7 +19,7 @@ const UserTable = () => {
 
   return (
     <Card
-      title={"Users"}
+      title={"Employee List"}
       extra={
         <div className="my-6">
           <Input.Search

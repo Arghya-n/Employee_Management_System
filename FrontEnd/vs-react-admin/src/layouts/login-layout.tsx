@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import { Image } from 'antd';
 
-import IconMarketplace from '@assets/icon.png';
+import IconMarketplace from '@assets/login_logo.png';
 import LoginBanner from '@assets/login-banner.jpeg';
 
 const LoginLayout = () => {
@@ -13,8 +13,8 @@ const LoginLayout = () => {
           <Image
             src={IconMarketplace}
             preview={false}
-            width={35}
-            className="mb-8"
+            width={250}
+            className="mb-1"
           />
           <Outlet/>
         </div>

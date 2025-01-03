@@ -1,9 +1,8 @@
-import React from 'react';
-import UserForm from '@features/users/user-form';
-import PageContent from '@layouts/partials/page-content';
-import PageHeader from '@layouts/partials/page-header';
-import { UserPartial } from '@models/user-model';
-import { Row, Col } from 'antd';
+import UserForm from "@features/users/user-form";
+import PageContent from "@layouts/partials/page-content";
+import PageHeader from "@layouts/partials/page-header";
+import { UserPartial } from "@models/user-model";
+import { Row, Col } from "antd";
 
 const UserCreate = () => {
   const initialValues: UserPartial = {};

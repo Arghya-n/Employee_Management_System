@@ -60,8 +60,7 @@ export const useUserForm = () => {
   
   const onSaved = (user: User) => {
     userSaved({
-      ...user,
-      avatar: 'https://i.imgur.com/DTfowdu.jpg'
+      ...user
     });
   };
   

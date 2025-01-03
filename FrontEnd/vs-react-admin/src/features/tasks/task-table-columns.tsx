@@ -9,6 +9,7 @@ import {
 } from "antd";
 import { EditOutlined, MoreOutlined } from "@ant-design/icons";
 import { Tasks } from "@models/tasks-model";
+import { format } from "date-fns/format";
 
 const { Text } = Typography;
 
@@ -39,13 +40,25 @@ const columns: TableProps<Tasks>["columns"] = [
   {
     title: "Start Date",
     key: "start_date",
-    render: (_, record) => <Text>{record.startDate}</Text>,
+    render: (_, record) => (
+      <Text>
+        {record.startDate
+          ? format(new Date(record.startDate), "dd/MM/yyyy")
+          : "N/A"}
+      </Text>
+    ),
     width: 150, // Fixed width to prevent wrapping
   },
   {
     title: "End Date",
     key: "end_date",
-    render: (_, record) => <Text>{record.endDate}</Text>,
+    render: (_, record) => (
+      <Text>
+        {record.startDate
+          ? format(new Date(record.endDate), "dd/MM/yyyy")
+          : "N/A"}
+      </Text>
+    ),
     width: 150, // Fixed width to prevent wrapping
   },
   {
